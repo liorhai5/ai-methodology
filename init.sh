@@ -19,7 +19,7 @@ Usage:
   ./init.sh --ide <cursor|claude> [--dry-run] [--no-backup]
 
 Options:
-  --ide <name>     Target IDE: cursor or claude (required)
+  --ide <name>     Target IDE: claude, cursor, or all (required)
   --dry-run        Preview without writing
   --no-backup      Skip backup before write
   -h, --help       Show help
@@ -120,8 +120,8 @@ if [ -z "$IDE" ]; then
   exit 1
 fi
 
-if [ "$IDE" != "claude" ] && [ "$IDE" != "cursor" ]; then
-  echo "Unsupported --ide value: $IDE (expected: claude or cursor)" >&2
+if [ "$IDE" != "claude" ] && [ "$IDE" != "cursor" ] && [ "$IDE" != "all" ]; then
+  echo "Unsupported --ide value: $IDE (expected: claude, cursor, or all)" >&2
   exit 1
 fi
 
@@ -130,9 +130,11 @@ require_file "$METHODOLOGY_FILE"
 
 copy_source_files
 
-if [ "$IDE" = "claude" ]; then
+if [ "$IDE" = "claude" ] || [ "$IDE" = "all" ]; then
   write_claude
-else
+fi
+
+if [ "$IDE" = "cursor" ] || [ "$IDE" = "all" ]; then
   write_cursor
 fi
 

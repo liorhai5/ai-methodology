@@ -79,8 +79,3 @@ Before querying any platform about a person:
 - End responses with actionable prompt when decisions are needed
 - Use CLI-style confirmations: "Approve? [Y/n]", "Proceed? [Y/n]"
 - When I say "remember this", save it to the appropriate memory file
-
-## Data Aggregation Rule
-- DO: read one source item, write findings to disk immediately, then move to the next item.
-- DON'T: batch many source reads in memory before writing.
-- WHEN LARGE: split into shard files + one small manifest/index, and query shards/canonical files.

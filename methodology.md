@@ -48,3 +48,8 @@ Before requesting approval, pressure-test the design from these angles:
 - **Correctness** — Does it follow conventions? Are edge cases handled? Is the contract solid?
 - **Resilience** — What are the failure modes? Is performance acceptable? What breaks under load?
 - **Value** — Does it solve the stated problem? Is the user value clear and measurable?
+
+## Data Aggregation Rule
+- DO: read one source item, write findings to disk immediately, then move to the next item.
+- DON'T: batch many source reads in memory before writing.
+- WHEN LARGE: split into shard files + one small manifest/index, and query shards/canonical files.
