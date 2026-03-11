@@ -11,11 +11,12 @@ You edit the methodology and identity here. Running `init.sh` propagates hard-ga
 git clone <repo-url> ~/Projects/ai-methodology
 cd ~/Projects/ai-methodology
 
-# Inject into Claude Code (writes ~/.claude/CLAUDE.md)
-./init.sh --ide claude
+# Inject into all supported IDEs at once
+./init.sh --ide all
 
-# Inject into Cursor (copies rules to clipboard)
-./init.sh --ide cursor
+# Or inject into a specific IDE
+./init.sh --ide claude   # writes ~/.claude/CLAUDE.md
+./init.sh --ide cursor   # copies rules to clipboard
 # Then paste into: Cursor > Settings > Rules > User Rules
 ```
 
@@ -81,7 +82,7 @@ Cursor User Rules      # short hard-gate rules (pasted manually)
 ## Init Options
 
 ```bash
-./init.sh --ide <claude|cursor>   # required: target IDE
+./init.sh --ide <claude|cursor|all>  # required: target IDE (all = both)
 ./init.sh --ide claude --dry-run  # preview without writing
 ./init.sh --ide claude --no-backup # skip backup before write
 ```
