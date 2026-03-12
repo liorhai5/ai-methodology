@@ -61,9 +61,14 @@ See `methodology.md` for the full template, structured design patterns, and revi
 ai-methodology/
   soul.md              # identity, preferences, operating context
   methodology.md       # full workflow rules and design log template
-  init.sh              # propagates rules to IDEs
+  init.sh              # propagates rules and skills to IDEs
   templates/
     methodology.md.tpl # shared hard-gate template (all IDEs)
+  skills/
+    design-log/          # /design-log slash command
+    design-log-review/   # /design-log-review slash command
+    design-log-status/   # /design-log-status slash command
+    research-log/        # /research-log slash command
   design-logs/         # decision history for this project
   README.md
 ```
@@ -78,6 +83,10 @@ ai-methodology/
 ~/.claude/CLAUDE.md    # methodology in managed block (written by init)
 ~/.codex/AGENTS.md     # methodology in managed block (written by init)
 Cursor User Rules      # methodology text (pasted manually from clipboard)
+
+~/.claude/skills/{design-log*,research-log}/SKILL.md   # methodology skills
+~/.cursor/skills/{design-log*,research-log}/SKILL.md   # methodology skills
+~/.agents/skills/{design-log*,research-log}/SKILL.md   # methodology skills (Codex)
 ```
 
 ## Managed Blocks
@@ -93,6 +102,23 @@ For file-based IDEs (Claude, Codex), init.sh uses managed blocks:
 - Content inside markers is replaced on each run.
 - Content outside markers is preserved — safe for other tools or manual additions.
 - First run on an existing file without markers prepends the block, preserving existing content.
+
+## Skills (Slash Commands)
+
+init.sh deploys methodology skills as `SKILL.md` files to each IDE's skills directory:
+
+| Skill | Command | Purpose |
+|-------|---------|---------|
+| `design-log` | `/design-log` | Create a new design log from the template |
+| `design-log-review` | `/design-log-review` | Review a design log from multiple perspectives |
+| `design-log-status` | `/design-log-status` | Progress briefing on a design log |
+| `research-log` | `/research-log` | Harvest sources into files to survive context compaction |
+
+Skills are user-triggered (not auto-invoked). Target paths per IDE:
+
+- Claude: `~/.claude/skills/<name>/SKILL.md`
+- Cursor: `~/.cursor/skills/<name>/SKILL.md`
+- Codex: `~/.agents/skills/<name>/SKILL.md`
 
 ## Init Options
 

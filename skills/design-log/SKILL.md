@@ -1,0 +1,71 @@
+---
+name: design-log
+description: Create a new design log — research the problem, break it into decisions/questions, and iterate through Q&A until the design is complete. Use when starting a new feature, refactoring, or any non-trivial change.
+argument-hint: "[problem description or leave empty to capture from conversation]"
+disable-model-invocation: true
+---
+
+# Design Log Workflow
+
+Read the template and review checklist from [~/.ai-methodology/methodology.md](~/.ai-methodology/methodology.md).
+
+## Input
+
+- If `$ARGUMENTS` is provided, use it as the problem statement.
+- If empty, extract the topic from the current conversation context.
+
+## Workflow
+
+Copy this checklist and track progress:
+
+```
+Design Log Progress:
+- [ ] Step 1: Research — understand the problem and current state
+- [ ] Step 2: Scaffold — create the design log file
+- [ ] Step 3: Break down — decompose into decisions/questions
+- [ ] Step 4: Deep dive — resolve each question with the user
+- [ ] Step 5: Complete — design is ready for approval or abandonment
+```
+
+**Step 1: Research**
+
+Investigate before writing anything:
+- Read relevant code, configs, or architecture
+- Check links provided by the user (docs, Slack, URLs)
+- Scan `design-logs/` for related prior designs
+- Summarize findings to the user before proceeding
+
+**Step 2: Scaffold**
+
+- Find the next available NNN number in `design-logs/`
+- Derive a short kebab-case semantic name from the problem
+- Create `design-logs/NNN-<name>.md` with the template from methodology.md
+- Set status: `draft`, created: today's date
+- Fill in the Problem Statement from Step 1 findings
+
+**Step 3: Break down**
+
+Decompose the problem into numbered decisions/questions in the Q&A section:
+- Each question should be specific and answerable
+- Mark each as `[draft]`
+- Order by dependency — foundational decisions first
+- Present the breakdown to the user for review before proceeding
+- Prompt: "Ready for deep dive? [Y/n]"
+
+**Step 4: Deep dive** (repeat for each question)
+
+For each question from the breakdown:
+1. Research as needed (read code, check docs, explore options)
+2. Present options with trade-offs when relevant
+3. Record the answer once the user confirms
+4. Mark the question as `[decided]` in the Q&A section
+5. Update the Design section with the decision
+6. Prompt: "Next: Q<N> — <title>. Proceed? [Y/n]"
+
+**Step 5: Complete**
+
+When all questions are resolved:
+- Ensure the Design section reflects all decisions
+- Fill in the Verification section with testable criteria
+- Present the full design for review
+- Prompt: "Ready for approval? [Y/n]"

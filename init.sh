@@ -7,6 +7,7 @@ SOUL_FILE="$SCRIPT_DIR/soul.md"
 METHODOLOGY_FILE="$SCRIPT_DIR/methodology.md"
 STABLE_DIR="$HOME/.ai-methodology"
 TEMPLATE_FILE="$TEMPLATES_DIR/methodology.md.tpl"
+SKILLS_DIR="$SCRIPT_DIR/skills"
 
 CLAUDE_TARGET="$HOME/.claude/CLAUDE.md"
 CODEX_TARGET="$HOME/.codex/AGENTS.md"
@@ -128,6 +129,43 @@ write_cursor() {
   echo "Copied to clipboard. Paste into: Cursor > Settings > Rules > User Rules"
 }
 
+skills_dir_for_ide() {
+  case "$1" in
+    claude) echo "$HOME/.claude/skills" ;;
+    cursor) echo "$HOME/.cursor/skills" ;;
+    codex)  echo "$HOME/.agents/skills" ;;
+  esac
+}
+
+write_skills() {
+  local ide="$1"
+  local target_base
+  target_base=$(skills_dir_for_ide "$ide")
+
+  for skill_dir in "$SKILLS_DIR"/*/; do
+    local name
+    name=$(basename "$skill_dir")
+    local src="$skill_dir/SKILL.md"
+    local dst="$target_base/$name/SKILL.md"
+
+    if [ ! -f "$src" ]; then continue; fi
+
+    if [ "$DRY_RUN" = true ]; then
+      echo "[dry-run] would write skill: $dst"
+      continue
+    fi
+
+    if [ -f "$dst" ] && diff -q "$src" "$dst" >/dev/null 2>&1; then
+      echo "Skill unchanged: $name ($ide)"
+      continue
+    fi
+
+    mkdir -p "$(dirname "$dst")"
+    cp "$src" "$dst"
+    echo "Wrote skill: $name → $dst"
+  done
+}
+
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --ide)
@@ -183,6 +221,17 @@ fi
 
 if [ "$IDE" = "cursor" ] || [ "$IDE" = "all" ]; then
   write_cursor
+fi
+
+# Deploy skills
+if [ "$IDE" = "claude" ] || [ "$IDE" = "all" ]; then
+  write_skills "claude"
+fi
+if [ "$IDE" = "codex" ] || [ "$IDE" = "all" ]; then
+  write_skills "codex"
+fi
+if [ "$IDE" = "cursor" ] || [ "$IDE" = "all" ]; then
+  write_skills "cursor"
 fi
 
 echo "Done."
