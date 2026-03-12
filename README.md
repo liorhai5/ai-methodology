@@ -15,12 +15,13 @@ cd ~/Projects/ai-methodology
 ./init.sh --ide all
 
 # Or inject into a specific IDE
-./init.sh --ide claude   # writes ~/.claude/CLAUDE.md
+./init.sh --ide claude   # writes managed block to ~/.claude/CLAUDE.md
+./init.sh --ide codex    # writes managed block to ~/.codex/AGENTS.md
 ./init.sh --ide cursor   # copies rules to clipboard
 # Then paste into: Cursor > Settings > Rules > User Rules
 ```
 
-After init, every new AI session in both IDEs will enforce the methodology gates automatically.
+After init, every new AI session will enforce the methodology gates automatically.
 
 ## The Methodology
 
@@ -62,8 +63,7 @@ ai-methodology/
   methodology.md       # full workflow rules and design log template
   init.sh              # propagates rules to IDEs
   templates/
-    claude.md.tpl      # hard-gate template for Claude
-    cursor.txt.tpl     # hard-gate template for Cursor
+    methodology.md.tpl # shared hard-gate template (all IDEs)
   design-logs/         # decision history for this project
   README.md
 ```
@@ -75,23 +75,39 @@ ai-methodology/
   soul.md              # copy from repo (agents read on demand)
   methodology.md       # copy from repo (agents read on demand)
 
-~/.claude/CLAUDE.md    # short hard-gate rules (written by init)
-Cursor User Rules      # short hard-gate rules (pasted manually)
+~/.claude/CLAUDE.md    # methodology in managed block (written by init)
+~/.codex/AGENTS.md     # methodology in managed block (written by init)
+Cursor User Rules      # methodology text (pasted manually from clipboard)
 ```
+
+## Managed Blocks
+
+For file-based IDEs (Claude, Codex), init.sh uses managed blocks:
+
+```markdown
+<!-- ai-methodology:begin -->
+(methodology content — owned by init.sh)
+<!-- ai-methodology:end -->
+```
+
+- Content inside markers is replaced on each run.
+- Content outside markers is preserved — safe for other tools or manual additions.
+- First run on an existing file without markers prepends the block, preserving existing content.
 
 ## Init Options
 
 ```bash
-./init.sh --ide <claude|cursor|all>  # required: target IDE (all = both)
-./init.sh --ide claude --dry-run  # preview without writing
-./init.sh --ide claude --no-backup # skip backup before write
+./init.sh --ide <claude|cursor|codex|all>  # required: target IDE
+./init.sh --ide claude --dry-run           # preview without writing
+./init.sh --ide claude --no-backup         # skip backup before write
 ```
 
 ## How It Works
 
 - `soul.md` and `methodology.md` are the source of truth. Edit them here.
 - `init.sh` copies both files to `~/.ai-methodology/` so agents can read them from any project.
-- For Claude: init writes a short rules file to `~/.claude/CLAUDE.md`.
-- For Cursor: init copies short rules to clipboard for pasting into Settings > Rules > User Rules (Cursor stores user rules in the cloud, not on disk).
-- IDE globals contain only the 5 mandatory gates + references to `~/.ai-methodology/` for full docs.
+- For Claude: init writes a managed block to `~/.claude/CLAUDE.md`.
+- For Codex: init writes a managed block to `~/.codex/AGENTS.md`.
+- For Cursor: init copies rules to clipboard for pasting into Settings > Rules > User Rules.
+- IDE globals contain the methodology gates + references to `~/.ai-methodology/` for full docs.
 - Re-run init after editing `soul.md` or `methodology.md` to propagate changes.
