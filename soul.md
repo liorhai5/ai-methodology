@@ -45,7 +45,7 @@
 
 ### Key Slack Channels
 - **EP-specific**: `#editor-platform-private`, `#editor-platform-dev`, `#editor-platform-releases`
-- **Cross-team**: `#the-editor`, `#the-odeditor`, `#www2wix`, `#wix-studio-feds`
+- **Cross-team**: `#the-editor`, `#the-odeditor`, `#wix-studio-feds`
 - **Reviewer group**: SS7DLLYCB (tag for PR reviews in shared repos)
 
 ## MCP Tool Integration (Wix MCP-S)

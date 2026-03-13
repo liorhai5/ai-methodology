@@ -44,13 +44,24 @@ These five rules are enforced in every AI session:
 4. Design freeze — once implementation starts, only append results.
 5. Design logs live at `design-logs/NNN-semantic-name.md` in each project root.
 
+### Agent Operating Rules (injected into IDEs)
+
+General behavior rules for all AI work, not just design logs:
+
+1. Suggest before change — never implement without explicit approval.
+2. Options before action — present alternatives with trade-offs, let user choose.
+3. Research before opinion — read code, context, memory before recommending.
+4. Scope discipline — do exactly what was asked, no extras.
+5. One gate at a time — separate approval for each decision point.
+6. No auto-commit — do not commit, push, or create PRs unless explicitly asked.
+
 ### Design Logs
 
 The design log is the primary unit of work. One markdown file carries a feature from idea to completion.
 
 - **Location:** `design-logs/NNN-semantic-name.md` (at project root of any project)
 - **Status lifecycle:** `draft` → `approved` → `implemented` (or `abandoned`)
-- **Sections:** Problem Statement → Q&A → Design → Verification → Results
+- **Sections:** Problem Statement → Q&A → Design → Verification → Plan → Results
 - **Key rule:** design is frozen once coding starts — only append to Results
 
 See `methodology.md` for the full template, structured design patterns, and review perspectives.
@@ -66,6 +77,7 @@ ai-methodology/
     methodology.md.tpl # shared hard-gate template (all IDEs)
   skills/
     design-log/          # /design-log slash command
+    design-log-implement/# /design-log-implement slash command
     design-log-review/   # /design-log-review slash command
     design-log-status/   # /design-log-status slash command
     research-log/        # /research-log slash command
@@ -110,6 +122,7 @@ init.sh deploys methodology skills as `SKILL.md` files to each IDE's skills dire
 | Skill | Command | Purpose |
 |-------|---------|---------|
 | `design-log` | `/design-log` | Create a new design log from the template |
+| `design-log-implement` | `/design-log-implement` | Systematically implement an approved design log |
 | `design-log-review` | `/design-log-review` | Review a design log from multiple perspectives |
 | `design-log-status` | `/design-log-status` | Progress briefing on a design log |
 | `research-log` | `/research-log` | Harvest sources into files to survive context compaction |

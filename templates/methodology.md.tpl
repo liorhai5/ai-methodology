@@ -22,6 +22,15 @@ Every non-trivial change follows this pattern:
 4. Design freeze — once implementation starts, only append results. Do not alter approved design.
 5. Design logs live at design-logs/NNN-semantic-name.md in each project root.
 
+## Agent Operating Rules
+
+1. Suggest before change — never implement without explicit approval.
+2. Options before action — present alternatives with trade-offs, let user choose.
+3. Research before opinion — read code, context, memory before recommending.
+4. Scope discipline — do exactly what was asked, no extras.
+5. One gate at a time — separate approval for each decision point.
+6. No auto-commit — do not commit, push, or create PRs unless explicitly asked.
+
 ## Design Log Status
 
 - draft — being designed, Q&A ongoing

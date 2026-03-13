@@ -25,6 +25,7 @@ Design Log Progress:
 - [ ] Step 3: Break down — decompose into decisions/questions
 - [ ] Step 4: Deep dive — resolve each question with the user
 - [ ] Step 5: Complete — design is ready for approval or abandonment
+- [ ] Step 6: Plan — derive implementation plan from approved design
 ```
 
 **Step 1: Research**
@@ -50,7 +51,7 @@ Decompose the problem into numbered decisions/questions in the Q&A section:
 - Mark each as `[draft]`
 - Order by dependency — foundational decisions first
 - Present the breakdown to the user for review before proceeding
-- Prompt: "Ready for deep dive? [Y/n]"
+- Prompt: "Start deep dive? [Y/n]"
 
 **Step 4: Deep dive** (repeat for each question)
 
@@ -68,4 +69,16 @@ When all questions are resolved:
 - Ensure the Design section reflects all decisions
 - Fill in the Verification section with testable criteria
 - Present the full design for review
-- Prompt: "Ready for approval? [Y/n]"
+- Prompt: "Do you approve the design? [Y/n]"
+- On approval, update the design log status to `approved`
+- **Do NOT start implementation automatically.** Ask separately: "Start planning implementation? [Y/n]"
+
+**Step 6: Plan**
+
+After the design is approved:
+- Derive an implementation plan from §3 (Design) and §4 (Verification)
+- Break into ordered tasks: implementation steps, test-writing, documentation check, verification pass
+- Write the plan as a task table into §5 (Implementation Plan) of the design log
+- Present for confirmation: "Implementation plan ready. Approve? [Y/n]"
+- This is a separate gate — user approves the plan independently from the design
+- **Do NOT start implementation automatically.** Ask separately: "Start implementation? [Y/n]"
