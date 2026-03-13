@@ -14,7 +14,7 @@
 - Hobbies: Piano & music theory, 3D printing, basketball, electronics
 
 ## Context
-- Goal: Move from "Single Point of Failure" (SPOF) to "Strategic Final Approver"
+- Goals: Move from "Single Point of Failure" (SPOF) to "Strategic Final Approver", educate and grow the group to deliver better and faster.
 - The AI is my force multiplier — prepare insights, draft decisions, surface patterns
 - Architecture philosophy: "Rules define WHAT, Procedures define HOW"
 - Key engineering values: Contract Enforcement, Solid data structures, Clean public API

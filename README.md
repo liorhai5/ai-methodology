@@ -25,28 +25,9 @@ After init, every new AI session will enforce the methodology gates automaticall
 
 ## The Methodology
 
-Every non-trivial change follows a design-first pattern:
-
-1. **Research** — understand the problem, check existing context
-2. **Design** — write a design log with Socratic Q&A
-3. **Approve** — human reviews and explicitly approves the design
-4. **Implement** — code the approved design (no scope creep)
-5. **Verify** — test against criteria from the design
-6. **Record** — append results to the design log
-
-### Mandatory Gates (injected into IDEs)
-
-These five rules are enforced in every AI session:
-
-1. Read before write — check `design-logs/` for existing context before any work.
-2. Design before implement — no non-trivial code without an approved design log.
-3. Human approval gate — explicit approval required before coding starts.
-4. Design freeze — once implementation starts, only append results.
-5. Design logs live at `design-logs/NNN-semantic-name.md` in each project root.
-
 ### Agent Operating Rules (injected into IDEs)
 
-General behavior rules for all AI work, not just design logs:
+General behavior rules for all AI work:
 
 1. Suggest before change — never implement without explicit approval.
 2. Options before action — present alternatives with trade-offs, let user choose.
@@ -54,6 +35,17 @@ General behavior rules for all AI work, not just design logs:
 4. Scope discipline — do exactly what was asked, no extras.
 5. One gate at a time — separate approval for each decision point.
 6. No auto-commit — do not commit, push, or create PRs unless explicitly asked.
+7. Data aggregation — write findings to disk incrementally; never batch many reads in memory before writing.
+
+### Design Log Workflow (injected into IDEs)
+
+Every non-trivial change follows: Research → Design → Approve → Implement → Verify → Record.
+
+1. Read before write — check `design-logs/` for existing context before any work.
+2. Design before implement — no non-trivial code without an approved design log.
+3. Human approval gate — explicit approval required before coding starts.
+4. Design freeze — once implementation starts, only append results.
+5. Design logs live at `design-logs/NNN-semantic-name.md` in each project root.
 
 ### Design Logs
 

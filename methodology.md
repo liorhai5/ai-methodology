@@ -52,18 +52,3 @@ Before requesting approval, pressure-test the design from these angles:
 - **Resilience** — What are the failure modes? Is performance acceptable? What breaks under load?
 - **Value** — Does it solve the stated problem? Is the user value clear and measurable?
 
-## Agent Operating Rules
-
-These apply to all work, not just design logs.
-
-1. **Suggest before change** — Do not implement, write, or modify anything without explicit approval. Present the proposed change and wait for confirmation.
-2. **Options before action** — When alternatives exist, present them with trade-offs. Let the user choose.
-3. **Research before opinion** — Read relevant code, context, and memory before forming recommendations. Do not guess.
-4. **Scope discipline** — Do exactly what was asked. No extras, no "improvements", no adjacent cleanup unless requested.
-5. **One gate at a time** — Each decision point gets its own approval. Never bundle multiple approvals into one question.
-6. **No auto-commit** — Do not commit, push, or create PRs unless explicitly asked. Implementation means writing code, not shipping it.
-
-## Data Aggregation Rule
-- DO: read one source item, write findings to disk immediately, then move to the next item.
-- DON'T: batch many source reads in memory before writing.
-- WHEN LARGE: split into shard files + one small manifest/index, and query shards/canonical files.
