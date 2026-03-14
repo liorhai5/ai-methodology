@@ -69,7 +69,7 @@ ai-methodology/
   skills/
     design-log/          # /design-log slash command
     design-log-implement/# /design-log-implement slash command
-    design-log-implementation-review/ # /design-log-implementation-review slash command
+    design-log-implement-review/ # /design-log-implement-review slash command
     design-log-review/   # /design-log-review slash command
     design-log-status/   # /design-log-status slash command
     research-log/        # /research-log slash command
@@ -114,7 +114,7 @@ init.sh deploys methodology skills as `SKILL.md` files to each IDE's skills dire
 |-------|---------|---------|
 | `design-log` | `/design-log` | Create a new design log from the template |
 | `design-log-implement` | `/design-log-implement` | Systematically implement an approved design log |
-| `design-log-implementation-review` | `/design-log-implementation-review` | Review implementation against its design log |
+| `design-log-implement-review` | `/design-log-implement-review` | Review implementation against its design log |
 | `design-log-review` | `/design-log-review` | Review a design log from multiple perspectives |
 | `design-log-status` | `/design-log-status` | Progress briefing on a design log |
 | `research-log` | `/research-log` | Harvest sources into files to survive context compaction |
