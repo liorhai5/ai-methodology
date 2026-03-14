@@ -2,7 +2,7 @@
 
 A design-first AI development methodology, enforced across IDEs.
 
-You edit the methodology and identity here. Running `init.sh` propagates hard-gate rules into your IDE and copies full docs to a stable machine path for agents to read on demand.
+You edit the methodology here. Running `init.sh` propagates hard-gate rules into your IDE and copies methodology docs to a stable machine path for agents to read on demand.
 
 ## Quick Start
 
@@ -25,18 +25,21 @@ After init, every new AI session will enforce the methodology gates automaticall
 
 ## The Methodology
 
-Every non-trivial change follows a design-first pattern:
+### Agent Operating Rules (injected into IDEs)
 
-1. **Research** — understand the problem, check existing context
-2. **Design** — write a design log with Socratic Q&A
-3. **Approve** — human reviews and explicitly approves the design
-4. **Implement** — code the approved design (no scope creep)
-5. **Verify** — test against criteria from the design
-6. **Record** — append results to the design log
+General behavior rules for all AI work:
 
-### Mandatory Gates (injected into IDEs)
+1. Suggest before change — never implement without explicit approval.
+2. Options before action — present alternatives with trade-offs, let user choose.
+3. Research before opinion — read code, context, memory before recommending.
+4. Scope discipline — do exactly what was asked, no extras.
+5. One gate at a time — separate approval for each decision point.
+6. No auto-commit — do not commit, push, or create PRs unless explicitly asked.
+7. Data aggregation — write findings to disk incrementally; never batch many reads in memory before writing.
 
-These five rules are enforced in every AI session:
+### Design Log Workflow (injected into IDEs)
+
+Every non-trivial change follows: Research → Design → Approve → Implement → Verify → Record.
 
 1. Read before write — check `design-logs/` for existing context before any work.
 2. Design before implement — no non-trivial code without an approved design log.
@@ -50,7 +53,7 @@ The design log is the primary unit of work. One markdown file carries a feature 
 
 - **Location:** `design-logs/NNN-semantic-name.md` (at project root of any project)
 - **Status lifecycle:** `draft` → `approved` → `implemented` (or `abandoned`)
-- **Sections:** Problem Statement → Q&A → Design → Verification → Results
+- **Sections:** Problem Statement → Q&A → Design → Verification → Plan → Results
 - **Key rule:** design is frozen once coding starts — only append to Results
 
 See `methodology.md` for the full template, structured design patterns, and review perspectives.
@@ -59,13 +62,13 @@ See `methodology.md` for the full template, structured design patterns, and revi
 
 ```
 ai-methodology/
-  soul.md              # identity, preferences, operating context
   methodology.md       # full workflow rules and design log template
   init.sh              # propagates rules and skills to IDEs
   templates/
     methodology.md.tpl # shared hard-gate template (all IDEs)
   skills/
     design-log/          # /design-log slash command
+    design-log-implement/# /design-log-implement slash command
     design-log-review/   # /design-log-review slash command
     design-log-status/   # /design-log-status slash command
     research-log/        # /research-log slash command
@@ -77,7 +80,6 @@ ai-methodology/
 
 ```
 ~/.ai-methodology/
-  soul.md              # copy from repo (agents read on demand)
   methodology.md       # copy from repo (agents read on demand)
 
 ~/.claude/CLAUDE.md    # methodology in managed block (written by init)
@@ -110,6 +112,7 @@ init.sh deploys methodology skills as `SKILL.md` files to each IDE's skills dire
 | Skill | Command | Purpose |
 |-------|---------|---------|
 | `design-log` | `/design-log` | Create a new design log from the template |
+| `design-log-implement` | `/design-log-implement` | Systematically implement an approved design log |
 | `design-log-review` | `/design-log-review` | Review a design log from multiple perspectives |
 | `design-log-status` | `/design-log-status` | Progress briefing on a design log |
 | `research-log` | `/research-log` | Harvest sources into files to survive context compaction |
@@ -130,10 +133,10 @@ Skills are user-triggered (not auto-invoked). Target paths per IDE:
 
 ## How It Works
 
-- `soul.md` and `methodology.md` are the source of truth. Edit them here.
-- `init.sh` copies both files to `~/.ai-methodology/` so agents can read them from any project.
+- `methodology.md` is the source of truth. Edit it here.
+- `init.sh` copies it to `~/.ai-methodology/` so agents can read it from any project.
 - For Claude: init writes a managed block to `~/.claude/CLAUDE.md`.
 - For Codex: init writes a managed block to `~/.codex/AGENTS.md`.
 - For Cursor: init copies rules to clipboard for pasting into Settings > Rules > User Rules.
 - IDE globals contain the methodology gates + references to `~/.ai-methodology/` for full docs.
-- Re-run init after editing `soul.md` or `methodology.md` to propagate changes.
+- Re-run init after editing `methodology.md` to propagate changes.

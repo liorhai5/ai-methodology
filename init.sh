@@ -3,7 +3,6 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 TEMPLATES_DIR="$SCRIPT_DIR/templates"
-SOUL_FILE="$SCRIPT_DIR/soul.md"
 METHODOLOGY_FILE="$SCRIPT_DIR/methodology.md"
 STABLE_DIR="$HOME/.ai-methodology"
 TEMPLATE_FILE="$TEMPLATES_DIR/methodology.md.tpl"
@@ -47,12 +46,10 @@ copy_source_files() {
   mkdir -p "$STABLE_DIR"
 
   if [ "$DRY_RUN" = true ]; then
-    echo "[dry-run] would copy soul.md → $STABLE_DIR/soul.md"
     echo "[dry-run] would copy methodology.md → $STABLE_DIR/methodology.md"
     return
   fi
 
-  cp "$SOUL_FILE" "$STABLE_DIR/soul.md"
   cp "$METHODOLOGY_FILE" "$STABLE_DIR/methodology.md"
   echo "Copied source files to $STABLE_DIR/"
 }
@@ -203,7 +200,6 @@ if [ "$IDE" != "claude" ] && [ "$IDE" != "cursor" ] && [ "$IDE" != "codex" ] && 
   exit 1
 fi
 
-require_file "$SOUL_FILE"
 require_file "$METHODOLOGY_FILE"
 require_file "$TEMPLATE_FILE"
 

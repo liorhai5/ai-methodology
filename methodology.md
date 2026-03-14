@@ -22,10 +22,13 @@ The solution. Only written after Q&A is sufficient.
 ## 4. Verification
 How to test that the design works.
 
-## 5. Implementation Results
+## 5. Implementation Plan
+Ordered task table. Filled before implementation starts.
+
+## 6. Implementation Results
 Appended after coding. What was built, what changed.
 
-## 6. Revision History
+## 7. Revision History
 | Version | Date | Changes |
 (Optional — used for complex, multi-session designs)
 ```
@@ -49,7 +52,3 @@ Before requesting approval, pressure-test the design from these angles:
 - **Resilience** — What are the failure modes? Is performance acceptable? What breaks under load?
 - **Value** — Does it solve the stated problem? Is the user value clear and measurable?
 
-## Data Aggregation Rule
-- DO: read one source item, write findings to disk immediately, then move to the next item.
-- DON'T: batch many source reads in memory before writing.
-- WHEN LARGE: split into shard files + one small manifest/index, and query shards/canonical files.
