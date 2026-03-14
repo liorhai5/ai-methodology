@@ -1,6 +1,5 @@
 # Methodology
 
-Read ~/.ai-methodology/soul.md at conversation start for identity and preferences.
 Read ~/.ai-methodology/methodology.md for design log template and review checklist.
 
 ## Agent Operating Rules

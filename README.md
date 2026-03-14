@@ -2,7 +2,7 @@
 
 A design-first AI development methodology, enforced across IDEs.
 
-You edit the methodology and identity here. Running `init.sh` propagates hard-gate rules into your IDE and copies full docs to a stable machine path for agents to read on demand.
+You edit the methodology here. Running `init.sh` propagates hard-gate rules into your IDE and copies methodology docs to a stable machine path for agents to read on demand.
 
 ## Quick Start
 
@@ -62,7 +62,6 @@ See `methodology.md` for the full template, structured design patterns, and revi
 
 ```
 ai-methodology/
-  soul.md              # identity, preferences, operating context
   methodology.md       # full workflow rules and design log template
   init.sh              # propagates rules and skills to IDEs
   templates/
@@ -81,7 +80,6 @@ ai-methodology/
 
 ```
 ~/.ai-methodology/
-  soul.md              # copy from repo (agents read on demand)
   methodology.md       # copy from repo (agents read on demand)
 
 ~/.claude/CLAUDE.md    # methodology in managed block (written by init)
@@ -135,10 +133,10 @@ Skills are user-triggered (not auto-invoked). Target paths per IDE:
 
 ## How It Works
 
-- `soul.md` and `methodology.md` are the source of truth. Edit them here.
-- `init.sh` copies both files to `~/.ai-methodology/` so agents can read them from any project.
+- `methodology.md` is the source of truth. Edit it here.
+- `init.sh` copies it to `~/.ai-methodology/` so agents can read it from any project.
 - For Claude: init writes a managed block to `~/.claude/CLAUDE.md`.
 - For Codex: init writes a managed block to `~/.codex/AGENTS.md`.
 - For Cursor: init copies rules to clipboard for pasting into Settings > Rules > User Rules.
 - IDE globals contain the methodology gates + references to `~/.ai-methodology/` for full docs.
-- Re-run init after editing `soul.md` or `methodology.md` to propagate changes.
+- Re-run init after editing `methodology.md` to propagate changes.
