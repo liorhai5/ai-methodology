@@ -12,6 +12,7 @@ Read ~/.ai-methodology/methodology.md for design log template and review checkli
 5. One gate at a time — separate approval for each decision point.
 6. No auto-commit — do not commit, push, or create PRs unless explicitly asked.
 7. Data aggregation — write findings to disk incrementally; never batch many reads in memory before writing.
+8. Branch discipline — never commit directly to master/main. Create a feature branch first.
 
 ## Design Log Workflow
 
