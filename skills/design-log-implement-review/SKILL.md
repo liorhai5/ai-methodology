@@ -1,5 +1,5 @@
 ---
-name: design-log-implementation-review
+name: design-log-implement-review
 description: Review an implementation against its design log — verify design fidelity, test quality, deviation detection, documentation alignment, and more. Use after implementation to independently verify that what was built matches what was designed.
 argument-hint: "[design log path or number, or leave empty to select]"
 disable-model-invocation: true

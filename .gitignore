@@ -1,3 +1,9 @@
+*.log
+.DS_Store
 design-logs/
-research/
+research-logs/
 legacy/
+.claude/
+.codex/
+.cursor/
+.gemini/
