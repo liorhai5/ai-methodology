@@ -3,9 +3,9 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 TEMPLATES_DIR="$SCRIPT_DIR/templates"
-METHODOLOGY_FILE="$SCRIPT_DIR/methodology.md"
+METHODOLOGY_FILE="$TEMPLATES_DIR/methodology-template.tpl"
 STABLE_DIR="$HOME/.ai-methodology"
-TEMPLATE_FILE="$TEMPLATES_DIR/methodology.md.tpl"
+TEMPLATE_FILE="$TEMPLATES_DIR/methodology-rules.md.tpl"
 SKILLS_DIR="$SCRIPT_DIR/skills"
 
 CLAUDE_TARGET="$HOME/.claude/CLAUDE.md"
@@ -46,11 +46,11 @@ copy_source_files() {
   mkdir -p "$STABLE_DIR"
 
   if [ "$DRY_RUN" = true ]; then
-    echo "[dry-run] would copy methodology.md → $STABLE_DIR/methodology.md"
+    echo "[dry-run] would copy methodology-template.tpl → $STABLE_DIR/methodology-template.tpl"
     return
   fi
 
-  cp "$METHODOLOGY_FILE" "$STABLE_DIR/methodology.md"
+  cp "$METHODOLOGY_FILE" "$STABLE_DIR/methodology-template.tpl"
   echo "Copied source files to $STABLE_DIR/"
 }
 

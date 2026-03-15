@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Implementation Review Workflow
 
-Read the review checklist from [~/.ai-methodology/methodology.md](~/.ai-methodology/methodology.md).
+Read the review checklist from [~/.ai-methodology/methodology-template.tpl](~/.ai-methodology/methodology-template.tpl).
 
 ## Target
 

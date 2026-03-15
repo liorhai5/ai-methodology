@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Design Log Workflow
 
-Read the template and review checklist from [~/.ai-methodology/methodology.md](~/.ai-methodology/methodology.md).
+Read the template and review checklist from [~/.ai-methodology/methodology-template.tpl](~/.ai-methodology/methodology-template.tpl).
 
 ## Input
 
@@ -40,7 +40,7 @@ Investigate before writing anything:
 
 - Find the next available NNN number in `design-logs/`
 - Derive a short kebab-case semantic name from the problem
-- Create `design-logs/NNN-<name>.md` with the template from methodology.md
+- Create `design-logs/NNN-<name>.md` with the template from methodology-template.tpl
 - Set status: `draft`, created: today's date
 - Fill in the Problem Statement from Step 1 findings
 
