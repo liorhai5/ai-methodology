@@ -64,3 +64,15 @@ Run these checks on the staged changes:
 
 - After successful commit, ask: "Push to remote? [Y/n]"
 - If yes → `git push -u origin <branch>` (sets upstream on first push)
+
+## Next Step
+
+When the commit and push succeed:
+  Prompt: "Create a PR? [Y/n]"
+  If Y → create PR using `gh pr create`.
+  If n → end.
+
+When the commit fails (pre-commit hook failure, lint errors, test failures):
+  Prompt: "Run `/design-log-implement <NNN>` to fix and retry? [Y/n]"
+  If Y → invoke `/design-log-implement <NNN>`.
+  If n → end.

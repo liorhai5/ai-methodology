@@ -80,3 +80,29 @@ Then recommend one of:
 - **Ready for approval** — no concerns or fails
 - **Address concerns** — list specific items to resolve
 - **Needs rework** — fundamental issues found
+
+## Update Design Log
+
+After presenting the verdict, if there are concerns or fails:
+
+1. **Present suggested changes** — show the user what you propose to add/reopen in §2 (Q&A):
+   - New questions to add (as `[draft]`)
+   - Existing questions to reopen (revert from `[decided]` to `[draft]`) with rationale
+   - Suggest setting design log status back to `draft`
+2. **User approval gate** — prompt: "Apply these updates to the design log? [Y/n/edit]"
+   - If Y → apply changes to §2 and update status to `draft`
+   - If edit → incorporate user modifications, then apply
+   - If n → skip updates, leave design log unchanged
+
+## Next Step
+
+When the review passes (Ready for approval):
+  Prompt: "Run `/design-log-implement <NNN>`? [Y/n]"
+  If Y → invoke `/design-log-implement <NNN>`.
+  If n → end.
+
+When the review finds issues (Address concerns / Needs rework):
+  After applying updates to the design log (or if user skipped updates):
+  Prompt: "Run `/design-log <NNN>` to address findings in §2? [Y/n]"
+  If Y → invoke `/design-log <NNN>`.
+  If n → end.
