@@ -71,7 +71,10 @@ When all questions are resolved:
 - Present the full design for review
 - Prompt: "Do you approve the design? [Y/n]"
 - On approval, update the design log status to `approved`
-- **Do NOT start implementation automatically.** Ask separately: "Start planning implementation? [Y/n]"
+- **Do NOT start implementation automatically.**
+
+When the design is abandoned:
+  End without suggestion.
 
 **Step 6: Plan**
 
@@ -81,4 +84,14 @@ After the design is approved:
 - Write the plan as a task table into §5 (Implementation Plan) of the design log
 - Present for confirmation: "Implementation plan ready. Approve? [Y/n]"
 - This is a separate gate — user approves the plan independently from the design
-- **Do NOT start implementation automatically.** Ask separately: "Start implementation? [Y/n]"
+- **Do NOT start implementation automatically.**
+
+## Next Step
+
+When the design and plan are approved:
+  Prompt: "Run `/design-log-review <NNN>`? [Y/n]"
+  If Y → invoke `/design-log-review <NNN>`.
+  If n → end.
+
+When the design is abandoned:
+  End without suggestion.

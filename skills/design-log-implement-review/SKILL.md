@@ -25,7 +25,7 @@ Implementation Review Progress:
 - [ ] Phase 2: Gather evidence — read files and git diff
 - [ ] Phase 3: Evaluate — assess each dimension
 - [ ] Phase 4: Verdict — present findings and recommendation
-- [ ] Phase 5: Record (optional) — append report to design log
+- [ ] Phase 5: Update Design Log — present findings for approval, then update
 ```
 
 **Phase 1: Load**
@@ -112,7 +112,30 @@ Then recommend one of:
 - **Needs fixes** — concerns or fails with clear actionable items
 - **Needs rework** — fundamental divergence from the design
 
-**Phase 5: Record (optional)**
+**Phase 5: Update Design Log**
 
-Prompt: "Append verification report to the design log? [Y/n]"
-If yes, append the verdict table and actionable items to §6 (Implementation Results).
+If the review found concerns or fails:
+
+1. **Present suggested changes** — show the user what you propose to append to §6 (Implementation Results):
+   - A `### Review Findings (YYYY-MM-DD)` subsection with the verdict table and actionable items
+2. **User approval gate** — prompt: "Apply these findings to the design log? [Y/n/edit]"
+   - If Y → append findings to §6
+   - If edit → incorporate user modifications, then append
+   - If n → skip updates, leave design log unchanged
+
+If the review passed cleanly (all dimensions pass):
+  Prompt: "Append verification report to the design log? [Y/n]"
+  If yes → append the verdict table to §6 as `### Review Verified (YYYY-MM-DD)`
+
+## Next Step
+
+When the review passes (Verified):
+  Prompt: "Run `/commit-log`? [Y/n]"
+  If Y → invoke `/commit-log`.
+  If n → end.
+
+When the review finds issues (Needs fixes / Needs rework):
+  After applying updates to the design log (or if user skipped updates):
+  Prompt: "Run `/design-log-implement <NNN>` to fix issues per §6? [Y/n]"
+  If Y → invoke `/design-log-implement <NNN>`.
+  If n → end.

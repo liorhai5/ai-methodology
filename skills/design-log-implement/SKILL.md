@@ -91,3 +91,20 @@ Report pass/fail for each.
   - Deviations from plan (if any)
   - Verification outcomes
 - Update design log status to `implemented`
+
+## Next Step
+
+When implementation completes successfully (all verification passes):
+  Prompt: "Run `/design-log-implement-review <NNN>`? [Y/n]"
+  If Y → invoke `/design-log-implement-review <NNN>`.
+  If n → end.
+
+When implementation fails or is blocked:
+  Write findings to §6 of the design log before suggesting next step.
+  Prompt:
+    "Next:
+      1. `/design-log <NNN>` — revisit design (see findings in §6)
+      2. Skip
+    [1/2]"
+  If 1 → invoke `/design-log <NNN>`.
+  If 2 → end.

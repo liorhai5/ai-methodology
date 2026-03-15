@@ -34,6 +34,20 @@ Read the design log and report:
 
 **Blockers**: External dependencies, missing information, or references that need follow-up.
 
+## Next Step Suggestion
+
+After displaying the status briefing for a specific design log, suggest the next action based on these rules:
+
+| Status | §5 (Plan) | §6 (Results) | Suggestion |
+|---|---|---|---|
+| `draft` | — | — | "Run `/design-log <NNN>`? [Y/n]" |
+| `approved` | any | empty or absent | "Run `/design-log-implement <NNN>`? [Y/n]" |
+| `approved` | filled | has content | "Run `/design-log-implement-review <NNN>`? [Y/n]" |
+| `implemented` | — | — | "Run `/commit-log`? [Y/n]" |
+| `abandoned` | — | — | No suggestion |
+
+If Y → invoke the suggested skill. If n → end.
+
 ## Summary table (for "all" or no-args listing)
 
 ```
