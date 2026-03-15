@@ -53,6 +53,14 @@ Focus on facts, decisions, patterns — not raw dumps.
 Extract what matters for answering the research question.>
 ```
 
+## Critical Constraint
+
+> **One-at-a-time loop**: Read ONE source → write its shard → update INDEX → then read the next.
+> Never hold findings from multiple sources or sub sources in context before writing.
+> Never fetch more than one source before persisting to disk.
+>
+> ⚠️ Anti-pattern: fetching sources 1, 2, 3 then writing shards 1, 2, 3. This defeats context-compaction safety.
+
 ## Workflow
 
 **Step 1: Define**
@@ -69,16 +77,15 @@ Extract what matters for answering the research question.>
 
 The source list is a starting point — new sources will be discovered during harvesting.
 
-**Step 3: Harvest** (systematic, one source at a time, with discovery)
+**Step 3: Harvest** (strict sequential loop)
 
-For each source:
-1. Read/fetch the source
+Repeat for each source in the queue:
+1. Read/fetch ONE source
 2. Extract findings relevant to the research question
-3. Identify links or references within the source that are relevant and need following
-4. Write to `research-logs/NNN-short-name/NN-source-name.md`
-5. Update `INDEX.md` with the shard link and a one-line summary
-6. Add any discovered links to the harvest queue in the INDEX
-7. Move to next source immediately — do not accumulate in memory
+3. **WRITE** shard file to disk immediately — `NN-source-name.md`
+4. **UPDATE** `INDEX.md` with the shard link and a one-line summary — this is the gate; do not proceed without it
+5. Add any discovered links to the harvest queue in the INDEX
+6. Only NOW move to the next source
 
 Discovery rules:
 - Follow links that are relevant to the research question — skip tangential ones
