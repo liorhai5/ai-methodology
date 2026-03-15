@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Design Log Implementation Workflow
 
-Read the template from [~/.ai-methodology/methodology.md](~/.ai-methodology/methodology.md).
+Read the template from [~/.ai-methodology/methodology-template.tpl](~/.ai-methodology/methodology-template.tpl).
 
 ## Target
 

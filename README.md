@@ -56,16 +56,16 @@ The design log is the primary unit of work. One markdown file carries a feature 
 - **Sections:** Problem Statement → Q&A → Design → Verification → Plan → Results
 - **Key rule:** design is frozen once coding starts — only append to Results
 
-See `methodology.md` for the full template, structured design patterns, and review perspectives.
+See `templates/methodology-template.tpl` for the full template, structured design patterns, and review perspectives.
 
 ## Repository Layout
 
 ```
 ai-methodology/
-  methodology.md       # full workflow rules and design log template
   init.sh              # propagates rules and skills to IDEs
   templates/
-    methodology.md.tpl # shared hard-gate template (all IDEs)
+    methodology-template.tpl  # design log template and review checklist
+    methodology-rules.md.tpl  # agent rules injected into IDEs
   skills/
     design-log/          # /design-log slash command
     design-log-implement/# /design-log-implement slash command
@@ -81,7 +81,7 @@ ai-methodology/
 
 ```
 ~/.ai-methodology/
-  methodology.md       # copy from repo (agents read on demand)
+  methodology-template.tpl  # copy from repo (agents read on demand)
 
 ~/.claude/CLAUDE.md    # methodology in managed block (written by init)
 ~/.codex/AGENTS.md     # methodology in managed block (written by init)
@@ -135,10 +135,11 @@ Skills are user-triggered (not auto-invoked). Target paths per IDE:
 
 ## How It Works
 
-- `methodology.md` is the source of truth. Edit it here.
-- `init.sh` copies it to `~/.ai-methodology/` so agents can read it from any project.
+- `templates/methodology-template.tpl` is the design log template source of truth.
+- `templates/methodology-rules.md.tpl` is the agent rules source of truth (injected into IDEs).
+- `init.sh` copies the template to `~/.ai-methodology/` so agents can read it from any project.
 - For Claude: init writes a managed block to `~/.claude/CLAUDE.md`.
 - For Codex: init writes a managed block to `~/.codex/AGENTS.md`.
 - For Cursor: init copies rules to clipboard for pasting into Settings > Rules > User Rules.
 - IDE globals contain the methodology gates + references to `~/.ai-methodology/` for full docs.
-- Re-run init after editing `methodology.md` to propagate changes.
+- Re-run init after editing templates to propagate changes.

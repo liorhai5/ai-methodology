@@ -1,6 +1,6 @@
 # Methodology
 
-Read ~/.ai-methodology/methodology.md for design log template and review checklist.
+Read ~/.ai-methodology/methodology-template.tpl for design log template and review checklist.
 
 ## Agent Operating Rules
 

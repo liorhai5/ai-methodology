@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Research Workflow
 
-Follows the Data Aggregation Rule from [~/.ai-methodology/methodology.md](~/.ai-methodology/methodology.md):
+Follows the Data Aggregation Rule from [~/.ai-methodology/methodology-template.tpl](~/.ai-methodology/methodology-template.tpl):
 read one source, write findings to disk immediately, then move to the next.
 
 ## Input
