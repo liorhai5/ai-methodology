@@ -72,6 +72,7 @@ ai-methodology/
     design-log-implement-review/ # /design-log-implement-review slash command
     design-log-review/   # /design-log-review slash command
     design-log-status/   # /design-log-status slash command
+    commit-log/          # /commit-log slash command
     research-log/        # /research-log slash command
   design-logs/         # decision history for this project
   README.md
@@ -87,9 +88,9 @@ ai-methodology/
 ~/.codex/AGENTS.md     # methodology in managed block (written by init)
 Cursor User Rules      # methodology text (pasted manually from clipboard)
 
-~/.claude/skills/{design-log*,research-log}/SKILL.md   # methodology skills
-~/.cursor/skills/{design-log*,research-log}/SKILL.md   # methodology skills
-~/.agents/skills/{design-log*,research-log}/SKILL.md   # methodology skills (Codex)
+~/.claude/skills/{design-log*,commit-log,research-log}/SKILL.md   # methodology skills
+~/.cursor/skills/{design-log*,commit-log,research-log}/SKILL.md   # methodology skills
+~/.agents/skills/{design-log*,commit-log,research-log}/SKILL.md   # methodology skills (Codex)
 ```
 
 ## Managed Blocks
@@ -117,6 +118,7 @@ init.sh deploys methodology skills as `SKILL.md` files to each IDE's skills dire
 | `design-log-implement-review` | `/design-log-implement-review` | Review implementation against its design log |
 | `design-log-review` | `/design-log-review` | Review a design log from multiple perspectives |
 | `design-log-status` | `/design-log-status` | Progress briefing on a design log |
+| `commit-log` | `/commit-log` | Quality-gated commit workflow with pre-commit checks |
 | `research-log` | `/research-log` | Harvest sources into files to survive context compaction |
 
 Skills are user-triggered (not auto-invoked). Target paths per IDE:
