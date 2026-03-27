@@ -1,0 +1,8 @@
+.DS_Store
+design-logs/
+research-logs/
+legacy/
+.claude/
+.codex/
+.cursor/
+.gemini/
