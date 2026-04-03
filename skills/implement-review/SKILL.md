@@ -1,5 +1,5 @@
 ---
-name: design-log-implement-review
+name: implement-review
 description: Review an implementation against its design log — verify design fidelity, test quality, deviation detection, documentation alignment, and more. Use after implementation to independently verify that what was built matches what was designed.
 argument-hint: "[design log path or number, or leave empty to select]"
 disable-model-invocation: true
@@ -130,12 +130,12 @@ If the review passed cleanly (all dimensions pass):
 ## Next Step
 
 When the review passes (Verified):
-  Prompt: "Run `/commit-log`? [Y/n]"
-  If Y → invoke `/commit-log`.
+  Prompt: "Run `/mtg:commit`? [Y/n]"
+  If Y → invoke `/mtg:commit`.
   If n → end.
 
 When the review finds issues (Needs fixes / Needs rework):
   After applying updates to the design log (or if user skipped updates):
-  Prompt: "Run `/design-log-implement <NNN>` to fix issues per §6? [Y/n]"
-  If Y → invoke `/design-log-implement <NNN>`.
+  Prompt: "Run `/mtg:implement <NNN>` to fix issues per §6? [Y/n]"
+  If Y → invoke `/mtg:implement <NNN>`.
   If n → end.

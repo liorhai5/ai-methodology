@@ -1,0 +1,9 @@
+{
+  "name": "mtg",
+  "description": "Design-first development methodology",
+  "instructions": "instructions/",
+  "skills": "skills/",
+  "lifecycle": {
+    "postInstall": "scripts/post-install.sh"
+  }
+}

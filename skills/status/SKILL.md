@@ -1,5 +1,5 @@
 ---
-name: design-log-status
+name: status
 description: Progress briefing on a design log — what's decided, what's open, and what's the next step. Use when picking up a design in a new session or checking where things stand.
 argument-hint: "[design log path or number, or leave empty to select]"
 disable-model-invocation: true
@@ -40,10 +40,10 @@ After displaying the status briefing for a specific design log, suggest the next
 
 | Status | §5 (Plan) | §6 (Results) | Suggestion |
 |---|---|---|---|
-| `draft` | — | — | "Run `/design-log <NNN>`? [Y/n]" |
-| `approved` | any | empty or absent | "Run `/design-log-implement <NNN>`? [Y/n]" |
-| `approved` | filled | has content | "Run `/design-log-implement-review <NNN>`? [Y/n]" |
-| `implemented` | — | — | "Run `/commit-log`? [Y/n]" |
+| `draft` | — | — | "Run `/mtg:design <NNN>`? [Y/n]" |
+| `approved` | any | empty or absent | "Run `/mtg:implement <NNN>`? [Y/n]" |
+| `approved` | filled | has content | "Run `/mtg:implement-review <NNN>`? [Y/n]" |
+| `implemented` | — | — | "Run `/mtg:commit`? [Y/n]" |
 | `abandoned` | — | — | No suggestion |
 
 If Y → invoke the suggested skill. If n → end.
