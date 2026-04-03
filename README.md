@@ -30,17 +30,17 @@ After install, every new AI session will enforce the methodology gates automatic
 
 Every non-trivial change follows: Research → Design → Approve → Implement → Verify → Record.
 
-1. Read before write — check `design-logs/` for existing context before any work.
+1. Read before write — check `.ai/design-logs/` for existing context before any work.
 2. Design before implement — no non-trivial code without an approved design log.
 3. Human approval gate — explicit approval required before coding starts.
 4. Design freeze — once implementation starts, only append results.
-5. Design logs live at `design-logs/NNN-semantic-name.md` in each project root.
+5. Design logs live at `.ai/design-logs/NNN-semantic-name.md` in each project root.
 
 ### Design Logs
 
 The design log is the primary unit of work. One markdown file carries a feature from idea to completion.
 
-- **Location:** `design-logs/NNN-semantic-name.md` (at project root of any project)
+- **Location:** `.ai/design-logs/NNN-semantic-name.md` (at project root of any project)
 - **Status lifecycle:** `draft` → `approved` → `implemented` (or `abandoned`)
 - **Sections:** Problem Statement → Q&A → Design → Verification → Plan → Results
 - **Key rule:** design is frozen once coding starts — only append to Results
@@ -51,15 +51,27 @@ See `templates/methodology-template.tpl` for the full template, structured desig
 
 | Skill | Command | Purpose |
 |-------|---------|---------|
-| `design` | `/mtg:design` | Create a new design log from the template |
+| `deep-interview` | `/mtg:deep-interview` | Reduce ambiguity in underspecified inputs; scaffolds a design log |
+| `design` | `/mtg:design` | Create a new design log with full Q&A deep-dive |
+| `plan` | `/mtg:plan` | Create an approved design log for bounded, known-scope tasks |
 | `review` | `/mtg:review` | Review a design log from multiple perspectives |
 | `implement` | `/mtg:implement` | Systematically implement an approved design log |
-| `implement-review` | `/mtg:implement-review` | Review implementation against its design log |
+| `code-review` | `/mtg:code-review` | Review implementation against its design log |
 | `status` | `/mtg:status` | Progress briefing on a design log |
 | `commit` | `/mtg:commit` | Quality-gated commit workflow with pre-commit checks |
 | `research` | `/mtg:research` | Harvest sources into files to survive context compaction |
 
-Skill chain: `/mtg:design` → `/mtg:review` → `/mtg:implement` → `/mtg:implement-review` → `/mtg:commit`
+Skill chains:
+
+```
+design → review → implement → code-review → commit
+plan   →          implement → code-review → commit
+
+deep-interview → design → review → implement → code-review → commit
+deep-interview → plan   →          implement → code-review → commit
+```
+
+Use `/mtg:design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg:plan` when scope is clear and bounded. Use `/mtg:deep-interview` when the input is too fuzzy to start either.
 
 ## Repository Layout
 
@@ -69,18 +81,20 @@ ai-methodology/
   instructions/
     rules.md               # agent rules injected into IDEs
   skills/
-    design/SKILL.md        # /mtg:design
-    review/SKILL.md        # /mtg:review
-    implement/SKILL.md     # /mtg:implement
-    implement-review/SKILL.md # /mtg:implement-review
-    status/SKILL.md        # /mtg:status
-    commit/SKILL.md        # /mtg:commit
-    research/SKILL.md      # /mtg:research
+    deep-interview/SKILL.md  # /mtg:deep-interview
+    design/SKILL.md          # /mtg:design
+    plan/SKILL.md            # /mtg:plan
+    review/SKILL.md          # /mtg:review
+    implement/SKILL.md       # /mtg:implement
+    code-review/SKILL.md     # /mtg:code-review
+    status/SKILL.md          # /mtg:status
+    commit/SKILL.md          # /mtg:commit
+    research/SKILL.md        # /mtg:research
   templates/
     methodology-template.tpl  # design log template and review checklist
   scripts/
     post-install.sh        # copies template to stable path
-  design-logs/             # decision history for this project
+  .ai/design-logs/             # decision history for this project
 ```
 
 ## Machine Layout After Install
@@ -92,7 +106,7 @@ ai-methodology/
 
 ~/.claude/
   CLAUDE.md                # <!-- mtg:begin --> ... <!-- mtg:end -->
-  skills/mtg_design/       # all 7 skills namespaced with mtg_
+  skills/mtg_deep_interview/  # all 9 skills namespaced with mtg_
   skills/mtg_review/
   ...
 

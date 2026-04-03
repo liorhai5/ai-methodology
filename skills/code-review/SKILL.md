@@ -1,5 +1,5 @@
 ---
-name: implement-review
+name: code-review
 description: Review an implementation against its design log — verify design fidelity, test quality, deviation detection, documentation alignment, and more. Use after implementation to independently verify that what was built matches what was designed.
 argument-hint: "[design log path or number, or leave empty to select]"
 disable-model-invocation: true
@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Implementation Review Workflow
 
-Read the review checklist from [~/.ai-methodology/methodology-template.tpl](~/.ai-methodology/methodology-template.tpl).
+Read the review checklist from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl).
 
 ## Target
 
@@ -45,7 +45,7 @@ Implementation Review Progress:
 
 **Phase 3: Evaluate**
 
-Assess each of the 8 dimensions:
+Assess each of the 9 dimensions:
 
 **Design fidelity**
 - Does the code implement all of §3?
@@ -86,6 +86,13 @@ Assess each of the 8 dimensions:
 - Are new features or workflows documented where applicable?
 - Are removed or changed features updated in docs?
 
+**Security**
+- Are there hardcoded secrets, API keys, or tokens in changed code?
+- Is user input validated before use? (SQL, command, path injection risks)
+- Is output escaped where rendered? (XSS)
+- Is authentication/authorization enforced on any new paths or interfaces?
+- Is sensitive data absent from logs and error messages?
+
 Rate each dimension: **pass**, **concern**, or **fail** with specific notes.
 
 **Phase 4: Verdict**
@@ -103,6 +110,7 @@ Present findings as a verdict table:
 | Verification criteria    | pass    | ...   |
 | Results accuracy         | fail    | ...   |
 | Documentation alignment  | pass    | ...   |
+| Security                 | pass    | ...   |
 ```
 
 If any dimension is concern or fail, add a numbered list of specific actionable items to fix.

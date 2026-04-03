@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Design Review Workflow
 
-Read the review checklist from [~/.ai-methodology/methodology-template.tpl](~/.ai-methodology/methodology-template.tpl).
+Read the review checklist from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl).
 
 ## Target
 
@@ -18,7 +18,7 @@ Read the review checklist from [~/.ai-methodology/methodology-template.tpl](~/.a
 
 Before reviewing:
 1. Read the target design log fully.
-2. Scan `design-logs/` for related prior designs referenced or superseded.
+2. Scan `.ai/design-logs/` for related prior designs referenced or superseded.
 3. Read relevant code, configs, or architecture touched by the design.
 
 ## Review Perspectives
@@ -33,7 +33,8 @@ Evaluate the design through each lens. For each, state **pass**, **concern**, or
 **Risk**
 - What failure modes exist? What's underspecified?
 - What assumptions could break? What happens if they do?
-- Are there security, performance, or data integrity concerns?
+- Are there security concerns? (auth gaps, trust boundaries, input handling, secrets exposure)
+- Are there performance or data integrity concerns?
 
 **Coherence**
 - Do all decisions fit together without contradictions?
