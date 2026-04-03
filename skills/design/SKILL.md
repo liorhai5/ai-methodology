@@ -1,5 +1,5 @@
 ---
-name: design-log
+name: design
 description: Create a new design log — research the problem, break it into decisions/questions, and iterate through Q&A until the design is complete. Use when starting a new feature, refactoring, or any non-trivial change.
 argument-hint: "[problem description or leave empty to capture from conversation]"
 disable-model-invocation: true
@@ -89,8 +89,8 @@ After the design is approved:
 ## Next Step
 
 When the design and plan are approved:
-  Prompt: "Run `/design-log-review <NNN>`? [Y/n]"
-  If Y → invoke `/design-log-review <NNN>`.
+  Prompt: "Run `/mtg:review <NNN>`? [Y/n]"
+  If Y → invoke `/mtg:review <NNN>`.
   If n → end.
 
 When the design is abandoned:

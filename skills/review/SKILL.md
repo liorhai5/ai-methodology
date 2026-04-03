@@ -1,5 +1,5 @@
 ---
-name: design-log-review
+name: review
 description: Review a design log from multiple perspectives — feasibility, risks, coherence, architecture, value, and alignment. Works on drafts, approved designs, and post-implementation. Use when evaluating a design before approval or after implementation.
 argument-hint: "[design log path or number, or leave empty to select]"
 disable-model-invocation: true
@@ -97,12 +97,12 @@ After presenting the verdict, if there are concerns or fails:
 ## Next Step
 
 When the review passes (Ready for approval):
-  Prompt: "Run `/design-log-implement <NNN>`? [Y/n]"
-  If Y → invoke `/design-log-implement <NNN>`.
+  Prompt: "Run `/mtg:implement <NNN>`? [Y/n]"
+  If Y → invoke `/mtg:implement <NNN>`.
   If n → end.
 
 When the review finds issues (Address concerns / Needs rework):
   After applying updates to the design log (or if user skipped updates):
-  Prompt: "Run `/design-log <NNN>` to address findings in §2? [Y/n]"
-  If Y → invoke `/design-log <NNN>`.
+  Prompt: "Run `/mtg:design <NNN>` to address findings in §2? [Y/n]"
+  If Y → invoke `/mtg:design <NNN>`.
   If n → end.
