@@ -1,5 +1,5 @@
 ---
-name: research-log
+name: research
 description: Investigate a topic by harvesting sources into files — read one source, write findings to disk, move to next. Survives context compaction. Use when multiple sources need to be read and synthesized (Slack, docs, web, PRs, code).
 argument-hint: "[research question or topic]"
 disable-model-invocation: true
