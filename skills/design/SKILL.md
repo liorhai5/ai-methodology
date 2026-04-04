@@ -3,11 +3,12 @@ name: design
 description: Create a new design log — research the problem, break it into decisions/questions, and iterate through Q&A until the design is complete. Use when starting a new feature, refactoring, or any non-trivial change.
 argument-hint: "[problem description or leave empty to capture from conversation]"
 disable-model-invocation: true
+plugin_data: ../..
 ---
 
 # Design Log Workflow
 
-Read the template and review checklist from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl).
+Read the template and review checklist from {{plugin_data}}/templates/methodology-template.tpl.
 
 ## Input
 

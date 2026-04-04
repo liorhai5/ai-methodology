@@ -3,11 +3,12 @@ name: review
 description: Review a design log from multiple perspectives — feasibility, risks, coherence, architecture, value, and alignment. Works on drafts, approved designs, and post-implementation. Use when evaluating a design before approval or after implementation.
 argument-hint: "[design log path or number, or leave empty to select]"
 disable-model-invocation: true
+plugin_data: ../..
 ---
 
 # Design Review Workflow
 
-Read the review checklist from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl).
+Read the review checklist from {{plugin_data}}/templates/methodology-template.tpl.
 
 ## Target
 
