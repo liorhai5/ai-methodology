@@ -10,7 +10,7 @@ disable-model-invocation: true
 ## Target
 
 - If `$ARGUMENTS` names a design log (path or NNN number), use it.
-- If empty, scan `design-logs/` and list all with their status. Ask which to brief on, or if the user says "all", present the summary table only.
+- If empty, scan `.ai/design-logs/` and list all with their status. Ask which to brief on, or if the user says "all", present the summary table only.
 
 ## For a specific design log
 
@@ -42,7 +42,7 @@ After displaying the status briefing for a specific design log, suggest the next
 |---|---|---|---|
 | `draft` | — | — | "Run `/mtg:design <NNN>`? [Y/n]" |
 | `approved` | any | empty or absent | "Run `/mtg:implement <NNN>`? [Y/n]" |
-| `approved` | filled | has content | "Run `/mtg:implement-review <NNN>`? [Y/n]" |
+| `approved` | filled | has content | "Run `/mtg:code-review <NNN>`? [Y/n]" |
 | `implemented` | — | — | "Run `/mtg:commit`? [Y/n]" |
 | `abandoned` | — | — | No suggestion |
 
