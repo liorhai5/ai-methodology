@@ -3,11 +3,12 @@ name: research
 description: Investigate a topic by harvesting sources into files — read one source, write findings to disk, move to next. Survives context compaction. Use when multiple sources need to be read and synthesized (Slack, docs, web, PRs, code).
 argument-hint: "[research question or topic]"
 disable-model-invocation: true
+plugin_data: ../..
 ---
 
 # Research Workflow
 
-Follows the Data Aggregation Rule from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl):
+Follows the Data Aggregation Rule from {{plugin_data}}/templates/methodology-template.tpl:
 read one source, write findings to disk immediately, then move to the next.
 
 ## Input

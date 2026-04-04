@@ -3,11 +3,12 @@ name: deep-interview
 description: Structured ambiguity-reduction workflow for underspecified inputs — goals unclear, constraints missing, success criteria undefined, or the problem could be interpreted multiple ways. Produces a scaffolded design log ready for /mtg:design or /mtg:plan to continue.
 argument-hint: "[fuzzy topic or leave empty to capture from conversation]"
 disable-model-invocation: true
+plugin_data: ../..
 ---
 
 # Deep Interview Workflow
 
-Read the template from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl).
+Read the template from {{plugin_data}}/templates/methodology-template.tpl.
 
 ## Input
 

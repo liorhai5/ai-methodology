@@ -3,11 +3,12 @@ name: implement
 description: Systematically implement an approved design log — load, plan, execute step-by-step, verify, and record results. Use after a design is approved and the user wants to start implementation.
 argument-hint: "[design log path or number, or leave empty to select]"
 disable-model-invocation: true
+plugin_data: ../..
 ---
 
 # Design Log Implementation Workflow
 
-Read the template from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl).
+Read the template from {{plugin_data}}/templates/methodology-template.tpl.
 
 ## Target
 
