@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Research Workflow
 
-Follows the Data Aggregation Rule from [~/.ai-methodology/methodology-template.tpl](~/.ai-methodology/methodology-template.tpl):
+Follows the Data Aggregation Rule from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl):
 read one source, write findings to disk immediately, then move to the next.
 
 ## Input
@@ -17,10 +17,10 @@ read one source, write findings to disk immediately, then move to the next.
 
 ## File naming
 
-Research files live in `research-logs/` at the project root, one folder per research topic:
+Research files live in `.ai/research-logs/` at the project root, one folder per research topic:
 
 ```
-research-logs/
+.ai/research-logs/
   001-system-complexity/       # folder per research topic
     01-current-architecture.md # shard files (one per source)
     02-hook-fragility.md
@@ -33,7 +33,7 @@ research-logs/
 - Folder: `NNN-short-name/` — `NNN` = research number (001, 002, ...), short kebab-case name
 - Shards inside: `NN-source-name.md` — `NN` = shard number (01, 02, ...)
 - `INDEX.md` per folder — manifest with research question, source list, and synthesis
-- Find the next available NNN by scanning `research-logs/`
+- Find the next available NNN by scanning `.ai/research-logs/`
 
 ## Shard format
 
@@ -71,7 +71,7 @@ Extract what matters for answering the research question.>
 **Step 2: Seed sources**
 
 - List initial sources from the user's links, instructions, or search locations
-- Create `research-logs/NNN-short-name/INDEX.md` with the research question and seed sources
+- Create `.ai/research-logs/NNN-short-name/INDEX.md` with the research question and seed sources
 - Present the plan to the user
 - Prompt: "Seed sources identified. Proceed with harvesting? [Y/n]"
 

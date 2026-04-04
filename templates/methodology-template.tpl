@@ -2,7 +2,7 @@
 
 ## Design Log Template
 
-Location: `design-logs/NNN-semantic-name.md` (at project root)
+Location: `.ai/design-logs/NNN-semantic-name.md` (at project root)
 
 ```
 # [Title] — Design Log

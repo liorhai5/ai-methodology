@@ -17,8 +17,8 @@ Read ~/.ai-methodology/methodology-template.tpl for design log template and revi
 
 Every non-trivial change follows: Research → Design → Approve → Implement → Verify → Record.
 
-1. Read before write — check design-logs/ for existing context before any work.
+1. Read before write — check .ai/design-logs/ for existing context before any work.
 2. Design before implement — no non-trivial code without an approved design log.
 3. Human approval gate — explicit approval required before coding starts.
 4. Design freeze — once implementation starts, only append results.
-5. Design logs live at design-logs/NNN-semantic-name.md in each project root.
+5. Design logs live at .ai/design-logs/NNN-semantic-name.md in each project root.

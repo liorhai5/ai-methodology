@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Design Log Implementation Workflow
 
-Read the template from [~/.ai-methodology/methodology-template.tpl](~/.ai-methodology/methodology-template.tpl).
+Read the template from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl).
 
 ## Target
 
@@ -95,8 +95,8 @@ Report pass/fail for each.
 ## Next Step
 
 When implementation completes successfully (all verification passes):
-  Prompt: "Run `/mtg:implement-review <NNN>`? [Y/n]"
-  If Y → invoke `/mtg:implement-review <NNN>`.
+  Prompt: "Run `/mtg:code-review <NNN>`? [Y/n]"
+  If Y → invoke `/mtg:code-review <NNN>`.
   If n → end.
 
 When implementation fails or is blocked:

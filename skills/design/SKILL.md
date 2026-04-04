@@ -7,12 +7,21 @@ disable-model-invocation: true
 
 # Design Log Workflow
 
-Read the template and review checklist from [~/.ai-methodology/methodology-template.tpl](~/.ai-methodology/methodology-template.tpl).
+Read the template and review checklist from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl).
 
 ## Input
 
 - If `$ARGUMENTS` is provided, use it as the problem statement.
 - If empty, extract the topic from the current conversation context.
+
+## When to use this skill
+
+| Situation | Use |
+|---|---|
+| One file, no decisions, fits in a commit message | Nothing — just commit |
+| You know what needs doing, scope is clear, no design decisions to resolve | `/mtg:plan` |
+| Uncertain, multiple decisions, requires research or Q&A | `/mtg:design` (this skill) |
+| When in doubt | `/mtg:design` |
 
 ## Workflow
 
@@ -33,14 +42,15 @@ Design Log Progress:
 Investigate before writing anything:
 - Read relevant code, configs, or architecture
 - Check links provided by the user (docs, Slack, URLs)
-- Scan `design-logs/` for related prior designs
+- Scan `.ai/design-logs/` for related prior designs
 - Summarize findings to the user before proceeding
+- If research reveals the problem is well-understood and bounded with no open design decisions, suggest switching to `/mtg:plan` instead
 
 **Step 2: Scaffold**
 
-- Find the next available NNN number in `design-logs/`
+- Find the next available NNN number in `.ai/design-logs/`
 - Derive a short kebab-case semantic name from the problem
-- Create `design-logs/NNN-<name>.md` with the template from methodology-template.tpl
+- Create `.ai/design-logs/NNN-<name>.md` with the template from methodology-template.tpl
 - Set status: `draft`, created: today's date
 - Fill in the Problem Statement from Step 1 findings
 
