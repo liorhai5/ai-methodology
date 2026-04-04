@@ -3,11 +3,12 @@ name: plan
 description: Create a lightweight structured plan for bounded, known-scope tasks — no Q&A loop, no research phase. Produces an approved design log ready for implementation. Use when you know what needs doing and scope is clear.
 argument-hint: "[problem description or leave empty to capture from conversation]"
 disable-model-invocation: true
+plugin_data: ../..
 ---
 
 # Plan Workflow
 
-Read the template from [~/.ai-stack/mtg/methodology-template.tpl](~/.ai-stack/mtg/methodology-template.tpl).
+Read the template from {{plugin_data}}/templates/methodology-template.tpl.
 
 ## Input
 

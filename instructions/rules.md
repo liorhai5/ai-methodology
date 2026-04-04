@@ -1,6 +1,6 @@
 # Methodology
 
-Read ~/.ai-stack/mtg/methodology-template.tpl for design log template and review checklist.
+Read {plugin_data}/templates/methodology-template.tpl for design log template and review checklist.
 
 ## Agent Operating Rules
 
