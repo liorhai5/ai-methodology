@@ -70,6 +70,13 @@ Run these checks on the staged changes:
 When the commit and push succeed:
   Prompt: "Create a PR? [Y/n]"
   If Y → create PR using `gh pr create`.
+    Then prompt: "PR merged? Clean up branch? [Y/n]"
+    If Y:
+      1. `git checkout master` (or `main` — use whichever is the default branch)
+      2. `git pull origin master`
+      3. `git branch -d <branch>` — delete local branch (the one from Step 1)
+      4. Confirm: "master is up to date. Branch <branch> removed."
+    If n → end.
   If n → end.
 
 When the commit fails (pre-commit hook failure, lint errors, test failures):
