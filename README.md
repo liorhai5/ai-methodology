@@ -10,7 +10,7 @@ A design-first AI development methodology, packaged as an [AgentSkills](https://
 npx skills add liorhai5/ai-methodology
 ```
 
-This installs the skill to all your selected agents (Claude Code, Codex, and 50+ others). Use `npx skills update` to update, `npx skills remove mtg` to uninstall.
+When prompted, select **Claude Code** (and any other agents you use). The skill is installed to `~/.agents/skills/mtg/` and symlinked to each selected agent. Use `npx skills update` to update, `npx skills remove mtg` to uninstall.
 
 **Always-on rules (recommended):**
 
@@ -26,15 +26,13 @@ This injects the 8 agent operating rules into your `CLAUDE.md` and `AGENTS.md` s
 # Clone to canonical location
 git clone https://github.com/liorhai5/ai-methodology ~/.agents/skills/mtg
 
-# Symlink to the agents you use
-ln -s ~/.agents/skills/mtg ~/.claude/skills/mtg    # Claude Code
-ln -s ~/.agents/skills/mtg ~/.codex/skills/mtg     # Codex
+# Symlink to the agents you use (relative paths)
+cd ~/.claude/skills && ln -s ../../.agents/skills/mtg mtg    # Claude Code
+cd ~/.codex/skills && ln -s ../../.agents/skills/mtg mtg     # Codex
 
 # Always-on rules (recommended)
 ~/.agents/skills/mtg/scripts/install-rules.sh
 ```
-
-**Migrating from ai-stack?** Remove stale `mtg_*` skill directories from `~/.claude/skills/`, `~/.agents/skills/`, and `~/.codex/skills/`.
 
 ## Usage
 
