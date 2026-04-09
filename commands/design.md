@@ -1,28 +1,20 @@
----
-name: design
-description: Create a new design log — research the problem, break it into decisions/questions, and iterate through Q&A until the design is complete. Use when starting a new feature, refactoring, or any non-trivial change.
-argument-hint: "[problem description or leave empty to capture from conversation]"
-disable-model-invocation: true
-plugin_data: ../..
----
-
 # Design Log Workflow
 
-Read the template and review checklist from {{plugin_data}}/templates/methodology-template.tpl.
+Read docs/methodology-template.tpl for the template structure and review checklist.
 
 ## Input
 
-- If `$ARGUMENTS` is provided, use it as the problem statement.
-- If empty, extract the topic from the current conversation context.
+- Use the topic/description provided after the command name.
+- If none provided, extract the topic from the current conversation context.
 
-## When to use this skill
+## When to use this command
 
 | Situation | Use |
 |---|---|
 | One file, no decisions, fits in a commit message | Nothing — just commit |
-| You know what needs doing, scope is clear, no design decisions to resolve | `/mtg:plan` |
-| Uncertain, multiple decisions, requires research or Q&A | `/mtg:design` (this skill) |
-| When in doubt | `/mtg:design` |
+| You know what needs doing, scope is clear, no design decisions to resolve | `/mtg plan` |
+| Uncertain, multiple decisions, requires research or Q&A | `/mtg design` (this command) |
+| When in doubt | `/mtg design` |
 
 ## Workflow
 
@@ -45,7 +37,7 @@ Investigate before writing anything:
 - Check links provided by the user (docs, Slack, URLs)
 - Scan `.ai/design-logs/` for related prior designs
 - Summarize findings to the user before proceeding
-- If research reveals the problem is well-understood and bounded with no open design decisions, suggest switching to `/mtg:plan` instead
+- If research reveals the problem is well-understood and bounded with no open design decisions, suggest switching to `/mtg plan` instead
 
 **Step 2: Scaffold**
 
@@ -100,8 +92,8 @@ After the design is approved:
 ## Next Step
 
 When the design and plan are approved:
-  Prompt: "Run `/mtg:review <NNN>`? [Y/n]"
-  If Y → invoke `/mtg:review <NNN>`.
+  Prompt: "Run `/mtg review <NNN>`? [Y/n]"
+  If Y → invoke `/mtg review <NNN>`.
   If n → end.
 
 When the design is abandoned:
