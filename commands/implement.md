@@ -1,20 +1,12 @@
----
-name: implement
-description: Systematically implement an approved design log — load, plan, execute step-by-step, verify, and record results. Use after a design is approved and the user wants to start implementation.
-argument-hint: "[design log path or number, or leave empty to select]"
-disable-model-invocation: true
-plugin_data: ../..
----
-
 # Design Log Implementation Workflow
 
-Read the template from {{plugin_data}}/templates/methodology-template.tpl.
+Read docs/methodology-template.tpl for the template structure and review checklist.
 
 ## Target
 
-- If `$ARGUMENTS` names a design log (path or NNN number), use it.
+- Use the design log number or path provided after the command name.
 - If a design log is in the current conversation context, use that.
-- If empty, list design logs with `approved` status and ask which to implement.
+- If none provided, list design logs with `approved` status and ask which to implement.
 
 ## Workflow
 
@@ -96,16 +88,16 @@ Report pass/fail for each.
 ## Next Step
 
 When implementation completes successfully (all verification passes):
-  Prompt: "Run `/mtg:code-review <NNN>`? [Y/n]"
-  If Y → invoke `/mtg:code-review <NNN>`.
+  Prompt: "Run `/mtg code-review <NNN>`? [Y/n]"
+  If Y → invoke `/mtg code-review <NNN>`.
   If n → end.
 
 When implementation fails or is blocked:
   Write findings to §6 of the design log before suggesting next step.
   Prompt:
     "Next:
-      1. `/mtg:design <NNN>` — revisit design (see findings in §6)
+      1. `/mtg design <NNN>` — revisit design (see findings in §6)
       2. Skip
     [1/2]"
-  If 1 → invoke `/mtg:design <NNN>`.
+  If 1 → invoke `/mtg design <NNN>`.
   If 2 → end.

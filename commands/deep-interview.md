@@ -1,28 +1,20 @@
----
-name: deep-interview
-description: Structured ambiguity-reduction workflow for underspecified inputs — goals unclear, constraints missing, success criteria undefined, or the problem could be interpreted multiple ways. Produces a scaffolded design log ready for /mtg:design or /mtg:plan to continue.
-argument-hint: "[fuzzy topic or leave empty to capture from conversation]"
-disable-model-invocation: true
-plugin_data: ../..
----
-
 # Deep Interview Workflow
 
-Read the template from {{plugin_data}}/templates/methodology-template.tpl.
+Read docs/methodology-template.tpl for the template structure and review checklist.
 
 ## Input
 
-- If `$ARGUMENTS` is provided, use it as the starting topic.
-- If empty, extract the topic from the current conversation context.
+- Use the topic/description provided after the command name.
+- If none provided, extract the topic from the current conversation context.
 
-## When to use this skill
+## When to use this command
 
 | Situation | Use |
 |---|---|
-| Problem is clear enough to design or plan | Skip — go directly to `/mtg:design` or `/mtg:plan` |
-| Goals are unclear, constraints missing, success criteria undefined | `/mtg:deep-interview` (this skill) |
-| Request could be interpreted multiple ways | `/mtg:deep-interview` (this skill) |
-| When in doubt whether design or plan is right | `/mtg:deep-interview` (this skill) |
+| Problem is clear enough to design or plan | Skip — go directly to `/mtg design` or `/mtg plan` |
+| Goals are unclear, constraints missing, success criteria undefined | `/mtg deep-interview` (this command) |
+| Request could be interpreted multiple ways | `/mtg deep-interview` (this command) |
+| When in doubt whether design or plan is right | `/mtg deep-interview` (this command) |
 
 ## Workflow
 
@@ -39,7 +31,7 @@ Deep Interview Progress:
 
 **Step 1: Recognize**
 
-Confirm the input is underspecified enough to warrant a deep interview. If the problem is already clear, tell the user and recommend `/mtg:design` or `/mtg:plan` directly.
+Confirm the input is underspecified enough to warrant a deep interview. If the problem is already clear, tell the user and recommend `/mtg design` or `/mtg plan` directly.
 
 Signs this step is needed:
 - Goals are stated in vague terms ("improve", "fix", "make it better")
@@ -85,10 +77,10 @@ Present the summary to the user for confirmation before scaffolding.
 
 Based on the interview findings, recommend the next step:
 
-- **Recommend `/mtg:design`** if: open questions remain, design decisions need resolving, scope is uncertain, or the problem has multiple valid approaches.
-- **Recommend `/mtg:plan`** if: the interview resolved all ambiguity and the scope is now clear and bounded.
+- **Recommend `/mtg design`** if: open questions remain, design decisions need resolving, scope is uncertain, or the problem has multiple valid approaches.
+- **Recommend `/mtg plan`** if: the interview resolved all ambiguity and the scope is now clear and bounded.
 
-Prompt: "Continue with `/mtg:design <NNN>`? [Y/n]" (or `/mtg:plan` if appropriate)
+Prompt: "Continue with `/mtg design <NNN>`? [Y/n]" (or `/mtg plan` if appropriate)
 
 ## Output
 
@@ -97,4 +89,4 @@ A scaffolded design log at `.ai/design-logs/NNN-<name>.md`:
 - §2 (Q&A) seeded with initial questions marked `[draft]`
 - Status: `draft`
 
-This is a standard design log. No new file type, no separate directory. The next skill in the chain continues from the same file.
+This is a standard design log. No new file type, no separate directory. The next command in the chain continues from the same file.
