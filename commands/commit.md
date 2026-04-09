@@ -1,10 +1,4 @@
----
-name: commit
-description: Quality-gated commit workflow — branch check, staging, pre-commit checks (sensitive files, secrets, README, lint/test), commit message drafting with user approval, and optional push. Use when the user asks to commit changes.
-disable-model-invocation: true
----
-
-# Commit Log Workflow
+# Commit Workflow
 
 ## Workflow
 
@@ -80,6 +74,6 @@ When the commit and push succeed:
   If n → end.
 
 When the commit fails (pre-commit hook failure, lint errors, test failures):
-  Prompt: "Run `/mtg:implement <NNN>` to fix and retry? [Y/n]"
-  If Y → invoke `/mtg:implement <NNN>`.
+  Prompt: "Run `/mtg implement <NNN>` to fix and retry? [Y/n]"
+  If Y → invoke `/mtg implement <NNN>`.
   If n → end.
