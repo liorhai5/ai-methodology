@@ -1,20 +1,12 @@
----
-name: code-review
-description: Review an implementation against its design log — verify design fidelity, test quality, deviation detection, documentation alignment, and more. Use after implementation to independently verify that what was built matches what was designed.
-argument-hint: "[design log path or number, or leave empty to select]"
-disable-model-invocation: true
-plugin_data: ../..
----
-
 # Implementation Review Workflow
 
-Read the review checklist from {{plugin_data}}/templates/methodology-template.tpl.
+Read docs/methodology-template.tpl for the review checklist.
 
 ## Target
 
-- If `$ARGUMENTS` names a design log (path or NNN number), use it.
+- Use the design log number or path provided after the command name.
 - If a design log is in the current conversation context, use that.
-- If empty, list design logs with `implemented` status and ask which to review.
+- If none provided, list design logs with `implemented` status and ask which to review.
 
 ## Workflow
 
@@ -139,12 +131,12 @@ If the review passed cleanly (all dimensions pass):
 ## Next Step
 
 When the review passes (Verified):
-  Prompt: "Run `/mtg:commit`? [Y/n]"
-  If Y → invoke `/mtg:commit`.
+  Prompt: "Run `/mtg commit`? [Y/n]"
+  If Y → invoke `/mtg commit`.
   If n → end.
 
 When the review finds issues (Needs fixes / Needs rework):
   After applying updates to the design log (or if user skipped updates):
-  Prompt: "Run `/mtg:implement <NNN>` to fix issues per §6? [Y/n]"
-  If Y → invoke `/mtg:implement <NNN>`.
+  Prompt: "Run `/mtg implement <NNN>` to fix issues per §6? [Y/n]"
+  If Y → invoke `/mtg implement <NNN>`.
   If n → end.

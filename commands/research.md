@@ -1,20 +1,12 @@
----
-name: research
-description: Investigate a topic by harvesting sources into files — read one source, write findings to disk, move to next. Survives context compaction. Use when multiple sources need to be read and synthesized (Slack, docs, web, PRs, code).
-argument-hint: "[research question or topic]"
-disable-model-invocation: true
-plugin_data: ../..
----
-
 # Research Workflow
 
-Follows the Data Aggregation Rule from {{plugin_data}}/templates/methodology-template.tpl:
+Follows the Data Aggregation Rule:
 read one source, write findings to disk immediately, then move to the next.
 
 ## Input
 
-- If `$ARGUMENTS` is provided, use it as the research question.
-- If empty, extract the topic from the current conversation context.
+- Use the research question/topic provided after the command name.
+- If none provided, extract the topic from the current conversation context.
 
 ## File naming
 
@@ -60,7 +52,7 @@ Extract what matters for answering the research question.>
 > Never hold findings from multiple sources or sub sources in context before writing.
 > Never fetch more than one source before persisting to disk.
 >
-> ⚠️ Anti-pattern: fetching sources 1, 2, 3 then writing shards 1, 2, 3. This defeats context-compaction safety.
+> Anti-pattern: fetching sources 1, 2, 3 then writing shards 1, 2, 3. This defeats context-compaction safety.
 
 ## Workflow
 

@@ -1,16 +1,11 @@
----
-name: status
-description: Progress briefing on a design log — what's decided, what's open, and what's the next step. Use when picking up a design in a new session or checking where things stand.
-argument-hint: "[design log path or number, or leave empty to select]"
-disable-model-invocation: true
----
-
 # Design Status Briefing
+
+Read docs/methodology-template.tpl for the template structure.
 
 ## Target
 
-- If `$ARGUMENTS` names a design log (path or NNN number), use it.
-- If empty, scan `.ai/design-logs/` and list all with their status. Ask which to brief on, or if the user says "all", present the summary table only.
+- Use the design log number or path provided after the command name.
+- If none provided, scan `.ai/design-logs/` and list all with their status. Ask which to brief on, or if the user says "all", present the summary table only.
 
 ## For a specific design log
 
@@ -28,7 +23,7 @@ Read the design log and report:
 
 **Next step**: One clear action, e.g.:
 - "3 questions remain — continue deep dive with Q4"
-- "All questions resolved — ready for /design-review"
+- "All questions resolved — ready for review"
 - "Approved — ready for implementation"
 - "Implemented — append results to close out"
 
@@ -40,13 +35,13 @@ After displaying the status briefing for a specific design log, suggest the next
 
 | Status | §5 (Plan) | §6 (Results) | Suggestion |
 |---|---|---|---|
-| `draft` | — | — | "Run `/mtg:design <NNN>`? [Y/n]" |
-| `approved` | any | empty or absent | "Run `/mtg:implement <NNN>`? [Y/n]" |
-| `approved` | filled | has content | "Run `/mtg:code-review <NNN>`? [Y/n]" |
-| `implemented` | — | — | "Run `/mtg:commit`? [Y/n]" |
+| `draft` | — | — | "Run `/mtg design <NNN>`? [Y/n]" |
+| `approved` | any | empty or absent | "Run `/mtg implement <NNN>`? [Y/n]" |
+| `approved` | filled | has content | "Run `/mtg code-review <NNN>`? [Y/n]" |
+| `implemented` | — | — | "Run `/mtg commit`? [Y/n]" |
 | `abandoned` | — | — | No suggestion |
 
-If Y → invoke the suggested skill. If n → end.
+If Y → invoke the suggested command. If n → end.
 
 ## Summary table (for "all" or no-args listing)
 
