@@ -1,7 +1,6 @@
 .DS_Store
-design-logs/
-research-logs/
-.claude/
+.ai/
 .codex/
 .cursor/
 .gemini/
+.claude/
