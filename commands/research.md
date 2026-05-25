@@ -84,6 +84,8 @@ Discovery rules:
 - Follow links that are relevant to the research question — skip tangential ones
 - Go up to 2 levels deep from seed sources unless the user instructs otherwise
 - Mark each entry in the INDEX as `[seed]` or `[discovered]`
+- Web ↔ code cross-pollination: a blog names a tool → search the repo; a repo README links to docs → fetch them; a discussion complains about X → check the code
+- For queues >8 with independent facets, you may dispatch parallel subagents. Each must follow the one-at-a-time loop within its bucket; merge facet INDEXes after.
 
 Do NOT stop between sources for confirmation. Harvest all sources systematically.
 If a source is unreachable, note it in the index and move on.

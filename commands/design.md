@@ -45,12 +45,13 @@ Investigate before writing anything:
 - Derive a short kebab-case semantic name from the problem
 - Create `.ai/design-logs/NNN-<name>.md` with the template from methodology-template.tpl
 - Set status: `draft`, created: today's date
-- Fill in the Problem Statement from Step 1 findings
+- Fill in the Problem Statement — clearly answer "why now"
 
 **Step 3: Break down**
 
 Decompose the problem into numbered decisions/questions in the Q&A section:
 - Each question should be specific and answerable
+- Decision questions list ≥2 options with trade-offs. Clarifications don't.
 - Mark each as `[draft]`
 - Order by dependency — foundational decisions first
 - Present the breakdown to the user for review before proceeding
@@ -63,13 +64,13 @@ For each question from the breakdown:
 2. Present options with trade-offs when relevant
 3. Record the answer once the user confirms
 4. Mark the question as `[decided]` in the Q&A section
-5. Update the Design section with the decision
+5. Update the Design section with the decision and its trade-off
 6. Prompt: "Next: Q<N> — <title>. Proceed? [Y/n]"
 
 **Step 5: Complete**
 
 When all questions are resolved:
-- Ensure the Design section reflects all decisions
+- Ensure the Design section reflects all decisions and their trade-offs
 - Fill in the Verification section with testable criteria
 - Present the full design for review
 - Prompt: "Do you approve the design? [Y/n]"
@@ -88,6 +89,16 @@ After the design is approved:
 - Present for confirmation: "Implementation plan ready. Approve? [Y/n]"
 - This is a separate gate — user approves the plan independently from the design
 - **Do NOT start implementation automatically.**
+
+## Existing-Project Framing (optional)
+
+When the design topic modifies an existing system (not greenfield), the Problem Statement and Design sections should include three explicit buckets:
+
+- **What exists today** — current state, with file:line citations or specific references
+- **What should stay** — invariants and behaviors that must not change
+- **What should improve** — concrete changes the design introduces
+
+This prevents the common failure mode of designing in a vacuum and discovering the existing system contradicts the design.
 
 ## Next Step
 
