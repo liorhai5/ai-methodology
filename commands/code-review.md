@@ -38,7 +38,9 @@ Implementation Review Progress:
 
 **Phase 3: Evaluate**
 
-Assess each of the 9 dimensions:
+Cite specific evidence (file:line, design section, command output, comparable pattern) where it exists. Vague findings ("it looks wrong") aren't actionable.
+
+Assess each of the 10 dimensions:
 
 **Design fidelity**
 - Does the code implement all of §3?
@@ -79,6 +81,13 @@ Assess each of the 9 dimensions:
 - Are new features or workflows documented where applicable?
 - Are removed or changed features updated in docs?
 
+**Boundary & blast radius**
+- Are all callers/consumers of the changed code identified?
+- Do the changes preserve public contracts (types, schemas, wire protocols)?
+- Are there cross-layer edits (e.g., UI calling DB directly)? If so, are they justified?
+- For any destructive change (delete, migration, force-push, schema drop), is rollback documented?
+- When the change has callers/consumers, include an explicit blast-radius statement — files/modules/consumers touched, layered by impact.
+
 **Security**
 - Are there hardcoded secrets, API keys, or tokens in changed code?
 - Is user input validated before use? (SQL, command, path injection risks)
@@ -103,10 +112,20 @@ Present findings as a verdict table:
 | Verification criteria    | pass    | ...   |
 | Results accuracy         | fail    | ...   |
 | Documentation alignment  | pass    | ...   |
+| Boundary & blast radius  | pass    | ...   |
 | Security                 | pass    | ...   |
 ```
 
 If any dimension is concern or fail, add a numbered list of specific actionable items to fix.
+
+## Hard Gates
+
+If the implementation crosses any of these lines without explicit user approval, raise as a **fail** regardless of other dimensions:
+
+- **Public contract change** — type/schema/wire-protocol modifications that affect external consumers
+- **Cross-layer edit** — UI layer reaching into data layer, service reaching into UI, or similar architecture violations
+- **Destructive action** — file deletes, table drops, force-pushes, irreversible migrations
+- **Large blast radius** — change touches >10 files or >3 modules without commensurate design log scope
 
 Then recommend one of:
 - **Verified** — all pass, implementation matches the design
