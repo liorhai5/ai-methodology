@@ -44,10 +44,11 @@ Signs this step is needed:
 Ask structured questions to surface the missing information. Cover:
 
 1. **Goals** — What outcome is expected? What problem does this solve for the user?
-2. **Constraints** — What must not change? What technologies, timelines, or interfaces are fixed?
-3. **Out of scope** — What is explicitly not included?
-4. **Success criteria** — What does done look like? How will you know it worked?
-5. **Known blockers** — Anything known to be hard, risky, or uncertain?
+2. **Prior art** — Has anyone solved this before? In what form? (Even partial solutions or related work matters — they shape the search space and prevent reinventing.)
+3. **Constraints** — What must not change? What technologies, timelines, or interfaces are fixed?
+4. **Out of scope** — What is explicitly not included?
+5. **Success criteria** — What does done look like? How will you know it worked?
+6. **Known blockers** — Anything known to be hard, risky, or uncertain?
 
 Ask only what is missing — do not interrogate a clear answer. Proceed to Step 3 when enough is known to write a problem statement.
 
