@@ -18,7 +18,7 @@ When prompted, select **Claude Code** (and any other agents you use). The skill 
 ~/.agents/skills/mtg/scripts/install-rules.sh
 ```
 
-This injects the 8 agent operating rules into your `CLAUDE.md` and `AGENTS.md` so they're active in every session — not just when you invoke `/mtg`.
+This injects the 8 agent operating rules into your `CLAUDE.md`, `AGENTS.md`, and `GEMINI.md` so they're active in every session — not just when you invoke `/mtg`.
 
 **Manual alternative** (no npm required):
 
@@ -112,7 +112,7 @@ ai-methodology/
     rules.md                     # agent operating rules + design log workflow
     methodology-template.tpl     # design log template + review checklist
   scripts/
-    install-rules.sh             # optional: inject rules into CLAUDE.md / AGENTS.md
+    install-rules.sh             # optional: inject rules into CLAUDE.md / AGENTS.md / GEMINI.md
   design-logs/                   # gitignored — decision history for this project
   README.md
 ```
