@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install/update methodology rules into CLAUDE.md and AGENTS.md as a managed block.
+# Install/update methodology rules into CLAUDE.md, AGENTS.md, and GEMINI.md as a managed block.
 # Re-runnable to update. Use --remove to clean up.
 
 set -e
@@ -12,6 +12,7 @@ END_MARKER="<!-- mtg:end -->"
 TARGETS=(
   "$HOME/.claude/CLAUDE.md"
   "$HOME/.codex/AGENTS.md"
+  "$HOME/.gemini/GEMINI.md"
 )
 
 remove_block() {
