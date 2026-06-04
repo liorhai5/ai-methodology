@@ -53,6 +53,7 @@ Work through the plan table sequentially. For each task:
 1. **Read before write** — inspect relevant source files and understand the current code before changing anything
 2. **Implement the change** — follow the design exactly, preserve existing code style and conventions
 2.5. **Scope-check** — if the change touches a file or symbol not listed in the design's §3 or §5 → STOP, ask whether to expand scope or skip
+2.6. **Blast-radius gate** — if a single task's change would touch **>5 files**, STOP and pick: **proceed** (scope is genuinely that wide — say why), **split** (break the task into smaller increments), or **rethink** (the approach may be wrong). Do not silently fan out across the repo.
 3. **Self-audit** the change:
    - Does it match the design? No features added, no scope creep
    - Is it the simplest solution? Could we do less and still satisfy the requirement?
@@ -70,6 +71,7 @@ Self-review the full implementation. Cite specific evidence (file:line, command 
 
 - **Design fidelity** — all requirements addressed, nothing added beyond the design
 - **Test coverage** — tests cover the changes
+- **Regression test** — if the change fixes a defect, the regression test must **fail without** the fix and **pass with** it (confirm both directions; a test that passes either way proves nothing)
 - **Regressions** — no obvious regressions in existing behavior
 - **Simplicity** — no over-engineering, no unnecessary abstractions
 - **Code style** — consistent with existing codebase conventions

@@ -40,6 +40,31 @@ Implementation Review Progress:
 
 Cite specific evidence (file:line, design section, command output, comparable pattern) where it exists. Vague findings ("it looks wrong") aren't actionable.
 
+### Finding discipline (applies to every actionable finding)
+
+**Pre-emit verification gate (FP killer).** Before any finding is promoted into the actionable list, quote the specific motivating line — `file:line` + verbatim text:
+- If the claim is "field X doesn't exist on model Y", quote the lines of class Y.
+- If the claim is "`dict.get()` might return None", quote the dict initialization.
+- **If you cannot quote the motivating line(s), the finding is unverified → force confidence to 4-5 (suppressed).** Do not work around this by inventing speculative confidence 7+ — that defeats the gate.
+- *Framework-meta nudge:* when the symbol is framework-generated (Django `Meta`, Rails `has_many`/`scope`, SQLAlchemy `relationship`, TypeORM/Sequelize/Prisma), quote the meta-construct that creates the symbol, not the class body. The verification is "I read the source that creates this symbol", not "I grep'd for the name and didn't find it."
+
+**Confidence calibration rubric** (1-10, governs whether a finding is shown):
+
+| Score | Meaning | Display |
+|---|---|---|
+| 9-10 | Verified by reading specific code; concrete bug/exploit demonstrated | Show normally |
+| 7-8 | High-confidence pattern match; very likely correct | Show normally |
+| 5-6 | Moderate; could be a false positive | Show with caveat ("verify") |
+| 3-4 | Low; suspicious but may be fine | **Suppress — count only** |
+| 1-2 | Speculation | **Omit unless severity = Critical** |
+
+**Severity** ∈ {Critical, Major, Minor, Nit}. Critical = anything that trips a Hard Gate or breaks a public contract / data integrity / security. The 4 existing Hard Gates map to Critical.
+
+**Do-not-flag (suppressions) list** — keep reviewer noise down; do not raise findings for:
+- Harmless redundancy that aids readability.
+- "Add a comment here" suggestions.
+- Pure style nits already enforced by a linter.
+
 Assess each of the 10 dimensions:
 
 **Design fidelity**
@@ -51,21 +76,28 @@ Assess each of the 10 dimensions:
 - Were all §5 plan tasks addressed?
 - Are any tasks left `pending` without explanation?
 - Were skipped tasks justified?
+- **Enum & value completeness:** before flagging a completeness gap, **READ** (not grep) every consumer outside the diff — switch/filter/display sites of a new enum/status/tier. The gap is only real if a consumer is genuinely missing a case.
 
-**Deviation detection**
-- Are there code changes beyond the design scope?
-- Are all deviations recorded in §6?
-- Were files changed but not listed in §6, or listed but not changed?
+**Deviation detection (scope-drift, operationalized)**
+- Extract deliverables from the **§5 task table** and acceptance criteria from **§4 Verification**; cross-reference against the diff. Tag each item:
+  - **DONE** — deliverable present in the diff.
+  - **MISSING** — §5 task / §4 criterion with no matching diff.
+  - **CREEP** — change in the diff not traceable to §5 or §4.
+- Honesty rule: *"code that handles a deliverable is not the deliverable."*
+- Are all deviations recorded in §6? Were files changed but not listed in §6, or listed but not changed?
 
 **Test quality**
 - Are tests meaningful and cover product requirements?
 - Were existing tests changed without good reason?
 - Do tests verify behavior, not just exercise code?
+- **Score each new/changed test:** ★ smoke / ★★ happy-path / ★★★ behavior+edge+error.
+- **Tag recommended coverage:** `[→E2E]` (3+ component flows, mock-hides-failure, auth/payment/destruction) or `[→EVAL]` (LLM/prompt/tool-def changes).
 
 **Regression check**
 - Does existing behavior break?
 - Are there unintended side effects?
 - Were existing interfaces or contracts preserved?
+- **Regression IRON RULE:** if the diff broke previously-working code, a regression test is added as a **Critical** actionable item — **no gate, no skip.**
 
 **Verification criteria**
 - Does each criterion from §4 actually pass?
@@ -116,7 +148,19 @@ Present findings as a verdict table:
 | Security                 | pass    | ...   |
 ```
 
-If any dimension is concern or fail, add a numbered list of specific actionable items to fix.
+Dimension verdicts stay plain `pass` / `concern` / `fail` with prose notes (a dimension isn't a single finding).
+
+If any dimension is concern or fail, add a numbered list of specific actionable items. **Every actionable item is emitted in the two-layer finding format:**
+
+```
+[Severity] (confidence: N/10) file:line — description
+```
+
+- Severity ∈ {Critical, Major, Minor, Nit}; order the list **Critical-first**.
+- Confidence is governed by the Phase-3 rubric; items at confidence ≤4 are suppressed from this list.
+- After the list, emit a single suppression count line (no appendix):
+
+  `N low-confidence findings suppressed (conf ≤4; Critical-severity speculation shown above).`
 
 ## Hard Gates
 
