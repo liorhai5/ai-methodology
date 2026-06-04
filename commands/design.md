@@ -12,6 +12,7 @@ Read docs/methodology-template.tpl for the template structure and review checkli
 | Situation | Use |
 |---|---|
 | One file, no decisions, fits in a commit message | Nothing — just commit |
+| The premise itself is unexamined — "should we even build this?" | `/mtg challenge` first, then design |
 | You know what needs doing, scope is clear, no design decisions to resolve | `/mtg plan` |
 | Uncertain, multiple decisions, requires research or Q&A | `/mtg design` (this command) |
 | When in doubt | `/mtg design` |
@@ -45,7 +46,17 @@ Investigate before writing anything:
 - Derive a short kebab-case semantic name from the problem
 - Create `.ai/design-logs/NNN-<name>.md` with the template from methodology-template.tpl
 - Set status: `draft`, created: today's date
-- Fill in the Problem Statement — clearly answer "why now"
+
+**Fill missing context first.** Before writing the Problem Statement, if any of the following is unstated, ask the user (cooperative gap-fill — ask only what's genuinely missing, don't interrogate clear answers):
+
+1. **Goals** — what outcome is expected? what problem does this solve?
+2. **Prior art** — has anyone solved this before, even partially? (shapes the search space, prevents reinventing)
+3. **Constraints** — what must not change? what tech / timelines / interfaces are fixed?
+4. **Out of scope** — what is explicitly not included?
+5. **Success criteria** — what does done look like? how will you know it worked?
+6. **Known blockers** — anything known to be hard, risky, or uncertain?
+
+- Fill in the Problem Statement — clearly answer "why now", synthesizing the gap-fill answers above.
 
 **Step 3: Break down**
 
@@ -71,7 +82,9 @@ For each question from the breakdown:
 
 When all questions are resolved:
 - Ensure the Design section reflects all decisions and their trade-offs
+- **Spec scope-lock** — the Design section must state, in this order: (1) explicit **out-of-scope** items *first*, (2) the **MVP cut** (smallest shippable slice), (3) a **failure / rollback path**.
 - Fill in the Verification section with testable criteria
+- **§4 "observable, not vibes" standard** — every done-criterion must be observable (a metric, a pass condition, a command output), not subjective. No "faster" / "better" / "cleaner" without a measurable bar.
 - Present the full design for review
 - Prompt: "Do you approve the design? [Y/n]"
 - On approval, update the design log status to `approved`

@@ -22,12 +22,28 @@ Copy this checklist and track progress:
 
 ```
 Plan Progress:
+- [ ] Step 0: Scope mode — pick how much scope this plan takes on (default HOLD)
 - [ ] Step 1: Problem — capture problem statement and constraints
 - [ ] Step 2: Design — describe what will be done (no Q&A loop)
 - [ ] Step 3: Verification — define done criteria
 - [ ] Step 4: Plan — write implementation task table
 - [ ] Step 5: Approve — gate on user approval
 ```
+
+**Step 0: Scope mode** *(sequenced after `/mtg challenge`, which decides whether the work should exist; this decides how much scope to take on given it should)*
+
+Pick a scope posture and state it explicitly. **Default HOLD** (per the scope-discipline rule — do exactly what was asked, no extras).
+
+| Mode | When | Posture |
+|---|---|---|
+| **HOLD** *(default)* | clear, bounded ask | do exactly what was asked, nothing adjacent |
+| **SELECTIVE** | a few adjacent improvements clearly worth it | take named extras, list each |
+| **EXPANSION** | the ask is a slice of a larger needed change | widen scope deliberately, justify the widening |
+| **REDUCTION** | an already-accepted plan is too big | trim an accepted plan to its essential core |
+
+**Complexity tripwire:** if the plan would touch **>8 files or add >2 new classes/services**, that's a smell → STOP and challenge whether fewer moving parts achieve the goal before proceeding.
+
+**Decision principles (heuristics that *surface*, never auto-expand):** completeness, consistency, future-proofing, and similar principles may *recommend* more scope — but they never silently take it. Surface the recommendation; the user decides. (gstack's "boil-the-lake" maximalism is deliberately not adopted — it conflicts with scope-discipline.)
 
 **Step 1: Problem**
 
@@ -46,6 +62,8 @@ Describe what will be done — no Q&A loop, no research phase:
 - What stays the same?
 
 This is a direct description, not a discovery process. If you find yourself needing to resolve decisions, stop and switch to `/mtg design`.
+
+**Implementation Alternatives.** Before settling on the approach, present **2-3 alternatives** with equal weight — including a minimal version *and* a more complete version. **Don't default to minimal just because it's smaller**; don't default to ideal just because it's more complete. State the trade-off of each and recommend one with reasoning. The chosen scope mode (Step 0) frames which alternative fits.
 
 **Step 3: Verification**
 

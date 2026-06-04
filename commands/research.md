@@ -99,6 +99,8 @@ After all sources are harvested:
 
 ## Key rules
 
+- **Read code before asking** — cite `path:line`. Don't ask the user what you can answer by reading the code yourself. A question that the repo already answers is wasted gate-time.
+- **Search annotation convention** — when harvesting code/search results, tag depth and breakthroughs: `[Layer 1]` surface/entry points, `[Layer 2]` supporting logic, `[Layer 3]` deep internals, `[EUREKA]` the line that actually answers the question. Makes shards skimmable and flags the load-bearing findings.
 - **Write after each source** — this is the core rule. The LLM context will compact; the files won't.
 - **Re-fetch on deep dive** — if the user wants to discuss a specific source in depth, go back to the original (URL, Slack thread, etc.), not just the shard. The shard is a summary, not a replacement.
 - **Shards are focused** — extract what's relevant to the research question, not a raw dump of the source.

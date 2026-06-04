@@ -13,10 +13,15 @@ Before reviewing:
 1. Read the target design log fully.
 2. Scan `.ai/design-logs/` for related prior designs referenced or superseded.
 3. Read relevant code, configs, or architecture touched by the design.
+4. **PRE-REVIEW system audit** — before evaluating, sweep the actual repo state: `git log` (recent changes), `git diff` (uncommitted), `git stash list`, and a TODO/FIXME grep across touched areas. The design is reviewed against reality, not against itself.
+
+**Anti-shortcut clause:** the design log is the **OUTPUT** of review, not a substitute for doing the review. Every non-trivial finding goes **THROUGH** the question gate — do not paper over a concern by editing the log; raise it, resolve it, then record it.
 
 ## Review Perspectives
 
-Evaluate the design through each lens. For each, state **pass**, **concern**, or **fail** with specific notes.
+Evaluate the design through each lens. For each, state **pass**, **concern**, or **fail** with specific notes. **Every rating MUST cite specific evidence** (file:line / design-section / command output) — a rating without evidence is a vibe, not a review.
+
+**Rate → name-the-gap → fix → re-rate loop:** when a lens rates `concern` or `fail`, name the specific gap, propose the fix (through the question gate), and only then re-rate. A lens isn't `pass` until its named gap is closed.
 
 **Feasibility**
 - Are there gaps or unknowns that block implementation?

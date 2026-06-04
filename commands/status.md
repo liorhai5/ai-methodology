@@ -21,6 +21,10 @@ Read the design log and report:
 
 **Open items**: Remaining `[draft]` questions or empty sections.
 
+**Code metrics** (when the log has implementation activity):
+- Report **logical SLOC over raw LOC** — count meaningful statements, not blank/comment/boilerplate lines. AI inflates raw LOC; logical SLOC is the honest size signal.
+- Flag a **fix-ratio >50%** (commits/edits that fix prior commits in the same effort) as a **review-gap signal** — it means changes are shipping under-reviewed and bouncing back.
+
 **Next step**: One clear action, e.g.:
 - "3 questions remain — continue deep dive with Q4"
 - "All questions resolved — ready for review"
