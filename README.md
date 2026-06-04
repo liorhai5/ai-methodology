@@ -39,10 +39,11 @@ cd ~/.codex/skills && ln -s ../../.agents/skills/mtg mtg     # Codex
 ```
 /mtg design [topic]          — Full Q&A design log for uncertain/multi-decision problems
 /mtg plan [topic]            — Lightweight plan for bounded, known-scope tasks
-/mtg deep-interview [topic]  — Ambiguity reduction for underspecified inputs
+/mtg challenge [NNN|topic]   — Adversarially pressure-test whether the work should exist at all
 /mtg review [NNN]            — Review a design log from multiple perspectives
 /mtg implement [NNN]         — Systematically implement an approved design log
 /mtg code-review [NNN]       — Review implementation against its design log
+/mtg investigate [topic]     — Root-cause debugging entry point (no fixes without root cause)
 /mtg status [NNN]            — Progress briefing on a design log
 /mtg commit                  — Quality-gated commit workflow
 /mtg research [topic]        — Harvest sources into files to survive context compaction
@@ -51,13 +52,13 @@ cd ~/.codex/skills && ln -s ../../.agents/skills/mtg mtg     # Codex
 ## Command Chains
 
 ```
-/mtg design → /mtg review → /mtg implement → /mtg code-review → /mtg commit
-/mtg plan   →               /mtg implement → /mtg code-review → /mtg commit
+/mtg challenge → /mtg design → /mtg review → /mtg implement → /mtg code-review → /mtg commit
+                 /mtg plan   →               /mtg implement → /mtg code-review → /mtg commit
 
-/mtg deep-interview → /mtg design or /mtg plan → (continues)
+/mtg investigate → fix (trivial) or → /mtg design (design flaw) → (continues)
 ```
 
-Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg deep-interview` when the input is too fuzzy to start either.
+Use `/mtg challenge` to pressure-test whether the work should exist before designing it. Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg investigate` to debug a defect to root cause before fixing.
 
 ## The Methodology
 
@@ -101,10 +102,11 @@ ai-methodology/
   commands/
     design.md                    # /mtg design
     plan.md                      # /mtg plan
-    deep-interview.md            # /mtg deep-interview
+    challenge.md                 # /mtg challenge
     review.md                    # /mtg review
     implement.md                 # /mtg implement
     code-review.md               # /mtg code-review
+    investigate.md               # /mtg investigate
     status.md                    # /mtg status
     commit.md                    # /mtg commit
     research.md                  # /mtg research
