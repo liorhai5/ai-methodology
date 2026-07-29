@@ -10,17 +10,6 @@ Read docs/methodology-template.tpl for the template structure and review checkli
 
 ## Workflow
 
-Copy this checklist and track progress:
-
-```
-Implementation Progress:
-- [ ] Phase 1: Load — read design log and check pre-conditions
-- [ ] Phase 2: Plan — derive or confirm implementation plan
-- [ ] Phase 3: Execute — implement each task step by step
-- [ ] Phase 4: Verify — run all verification criteria
-- [ ] Phase 5: Record — append results, update status
-```
-
 **Phase 1: Load**
 
 - Read the target design log fully
@@ -52,7 +41,7 @@ Work through the plan table sequentially. For each task:
 
 1. **Read before write** — inspect relevant source files and understand the current code before changing anything
 2. **Implement the change** — follow the design exactly, preserve existing code style and conventions
-2.5. **Scope-check** — if the change touches a file or symbol not listed in the design's §3 or §5 → STOP, ask whether to expand scope or skip
+2.5. **Scope lock** — if the change touches a file or symbol not listed in the design's §3 or §5 → STOP, ask whether to expand scope or skip
 2.6. **Blast-radius gate** — if a single task's change would touch **>5 files**, STOP and pick: **proceed** (scope is genuinely that wide — say why), **split** (break the task into smaller increments), or **rethink** (the approach may be wrong). Do not silently fan out across the repo.
 3. **Self-audit** the change:
    - Does it match the design? No features added, no scope creep
@@ -63,7 +52,8 @@ Work through the plan table sequentially. For each task:
 5. Add notes for any deviations from the original design
 6. If a task is not applicable, mark `skipped` with reason in notes
 
-Do not skip ahead or batch multiple tasks. Complete one, update the table, move to the next.
+This command executes its plan serially: complete one task, update the table,
+then move to the next. Any parallel orchestration belongs outside this command.
 
 **Phase 4: Verify**
 

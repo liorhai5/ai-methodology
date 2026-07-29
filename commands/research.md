@@ -48,7 +48,7 @@ Extract what matters for answering the research question.>
 
 ## Critical Constraint
 
-> **One-at-a-time loop**: Read ONE source → write its shard → update INDEX → then read the next.
+> **Shard loop**: Read ONE source → write its shard → update INDEX → then read the next.
 > Never hold findings from multiple sources or sub sources in context before writing.
 > Never fetch more than one source before persisting to disk.
 >
@@ -70,7 +70,7 @@ Extract what matters for answering the research question.>
 
 The source list is a starting point — new sources will be discovered during harvesting.
 
-**Step 3: Harvest** (strict sequential loop)
+**Step 3: Harvest**
 
 Repeat for each source in the queue:
 1. Read/fetch ONE source
