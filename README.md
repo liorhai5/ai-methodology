@@ -37,16 +37,18 @@ cd ~/.codex/skills && ln -s ../../.agents/skills/mtg mtg     # Codex
 ## Usage
 
 ```
+/mtg goal [expected result]    — Navigate a broad objective through existing MTG flows
+/mtg challenge [NNN|topic]   — Adversarially pressure-test whether the work should exist at all
+/mtg design-map [destination]  — Map a known destination with a foggy route before design
+/mtg research [topic]        — Harvest sources into files to survive context compaction
 /mtg design [topic]          — Full Q&A design log for uncertain/multi-decision problems
 /mtg plan [topic]            — Lightweight plan for bounded, known-scope tasks
-/mtg challenge [NNN|topic]   — Adversarially pressure-test whether the work should exist at all
 /mtg review [NNN]            — Review a design log from multiple perspectives
 /mtg implement [NNN]         — Systematically implement an approved design log
 /mtg code-review [NNN]       — Review implementation against its design log
+/mtg commit                  — Quality-gated commit workflow
 /mtg investigate [topic]     — Root-cause debugging entry point (no fixes without root cause)
 /mtg status [NNN]            — Progress briefing on a design log
-/mtg commit                  — Quality-gated commit workflow
-/mtg research [topic]        — Harvest sources into files to survive context compaction
 ```
 
 ## Command Chains
@@ -56,9 +58,10 @@ cd ~/.codex/skills && ln -s ../../.agents/skills/mtg mtg     # Codex
                  /mtg plan   →               /mtg implement → /mtg code-review → /mtg commit
 
 /mtg investigate → fix (trivial) or → /mtg design (design flaw) → (continues)
+/mtg goal → one next MTG route → reassess evidence → (continues until DoD)
 ```
 
-Use `/mtg challenge` to pressure-test whether the work should exist before designing it. Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg investigate` to debug a defect to root cause before fixing.
+Use `/mtg goal` for a broad expected result spanning normal MTG flows or sessions; it is optional and preserves their gates. Use `/mtg design-map` when the destination is known but the route is still foggy. Use `/mtg challenge` to pressure-test whether the work should exist before designing it. Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg investigate` to debug a defect to root cause before fixing.
 
 ## The Methodology
 
@@ -100,16 +103,18 @@ See `docs/methodology-template.tpl` for the full template, structured design pat
 ai-methodology/
   SKILL.md                       # entry point — routes /mtg commands
   commands/
+    goal.md                      # /mtg goal
+    challenge.md                 # /mtg challenge
+    design-map.md                # /mtg design-map
+    research.md                  # /mtg research
     design.md                    # /mtg design
     plan.md                      # /mtg plan
-    challenge.md                 # /mtg challenge
     review.md                    # /mtg review
     implement.md                 # /mtg implement
     code-review.md               # /mtg code-review
+    commit.md                    # /mtg commit
     investigate.md               # /mtg investigate
     status.md                    # /mtg status
-    commit.md                    # /mtg commit
-    research.md                  # /mtg research
   docs/
     rules.md                     # agent operating rules + design log workflow
     methodology-template.tpl     # design log template + review checklist

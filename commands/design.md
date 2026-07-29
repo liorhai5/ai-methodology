@@ -58,25 +58,40 @@ Investigate before writing anything:
 
 - Fill in the Problem Statement — clearly answer "why now", synthesizing the gap-fill answers above.
 
-**Step 3: Break down**
+**Step 3: Decision frontier**
 
-Decompose the problem into numbered decisions/questions in the Q&A section:
-- Each question should be specific and answerable
-- Decision questions list ≥2 options with trade-offs. Clarifications don't.
-- Mark each as `[draft]`
-- Order by dependency — foundational decisions first
-- Present the breakdown to the user for review before proceeding
-- Prompt: "Start deep dive? [Y/n]"
+Classify visible concerns in the Q&A section before turning them into a full
+question list:
 
-**Step 4: Deep dive** (repeat for each question)
+| State | Meaning | Action |
+|---|---|---|
+| `now` | Constrains the next architectural or product move | Resolve before approval. |
+| `probe` | Needs research, a spike, prototype, or observation | Gather evidence, then reclassify. |
+| `later` | Reversible detail | Do not pre-resolve. |
+| `fog` | In-scope concern not yet precise enough to question | Keep visible; do not invent a question. |
 
-For each question from the breakdown:
+Build only the current `now` frontier whose prerequisites are settled:
+- Each `now` question is specific and answerable.
+- Decision questions list ≥2 options with trade-offs; clarifications do not.
+- Mark unresolved `now` questions as `[draft]` and order them by dependency.
+- Present the current frontier, not a speculative complete questionnaire.
+- Prompt: "Start with the current frontier? [Y/n]"
+
+**Step 4: Deep dive** (repeat for the current frontier)
+
+For each eligible `now` question:
 1. Research as needed (read code, check docs, explore options)
 2. Present options with trade-offs when relevant
 3. Record the answer once the user confirms
 4. Mark the question as `[decided]` in the Q&A section
 5. Update the Design section with the decision and its trade-off
-6. Prompt: "Next: Q<N> — <title>. Proceed? [Y/n]"
+6. Recompute the frontier after the decision or evidence result
+7. Prompt: "Next frontier item: Q<N> — <title>. Proceed? [Y/n]"
+
+Independent low-risk defaults may be confirmed together when each can be
+overridden. Dependent or consequential choices stay separate. New evidence that
+changes an approved decision's basis reopens it, updates affected design content,
+and re-runs approval when the design changes.
 
 **Step 5: Complete**
 
