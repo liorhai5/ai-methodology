@@ -6,6 +6,10 @@ A systematic **debugging entry point**. It produces a **root-cause finding**, no
 
 **Iron Law:** *"NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST. Fixing symptoms creates whack-a-mole debugging… Find the root cause, then fix it."*
 
+**Red-capable loop:** reproduce an observable failure, form one testable root
+cause hypothesis, confirm it, then consider a fix. A loop that cannot expose a
+failure cannot validate the fix.
+
 This command **reuses** existing mtg machinery rather than reinventing it: `implement`'s Phase-4 Verify mechanics, `implement`'s Phase-3 scope-check, and the >5-file blast-radius / public-contract Hard Gates already in `code-review`.
 
 ## Input
@@ -13,18 +17,6 @@ This command **reuses** existing mtg machinery rather than reinventing it: `impl
 - A bug report, failing test, stack trace, or symptom description after the command name, or from conversation context.
 
 ## Workflow
-
-Copy this checklist and track progress:
-
-```
-Investigate Progress:
-- [ ] Phase 1: Root-cause investigation — read the path, emit a testable hypothesis
-- [ ] Phase 2: Scope-lock — declare the narrowest affected dir
-- [ ] Phase 3: Pattern analysis — match against known failure patterns
-- [ ] Phase 4: Hypothesis testing (3-strike) — confirm before any fix
-- [ ] Phase 5: Classify & promote — fix inline or escalate to a design log
-- [ ] Phase 6: Verify — reproduce + full suite + meaningful regression test
-```
 
 **Phase 1: Root-cause investigation**
 
@@ -92,8 +84,6 @@ DEBUG REPORT
 
 - **Fix path** → DEBUG REPORT inline (feeds the commit message).
 - **Escalation path** → DEBUG REPORT seeds the new design log's §1 Problem Statement.
-
-**Not adopted:** freeze-dir hook (hooks deferred); learning-recall (deferred to the ai-memory topic); the recurring-bug architectural-smell *escalation trigger* (needs history the harness can't yet supply — a `git log` observation is still allowed in Phase 1).
 
 ## Next Step
 

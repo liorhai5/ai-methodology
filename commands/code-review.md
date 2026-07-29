@@ -10,17 +10,6 @@ Read docs/methodology-template.tpl for the review checklist.
 
 ## Workflow
 
-Copy this checklist and track progress:
-
-```
-Implementation Review Progress:
-- [ ] Phase 1: Load — read design log and check pre-conditions
-- [ ] Phase 2: Gather evidence — read files and git diff
-- [ ] Phase 3: Evaluate — assess each dimension
-- [ ] Phase 4: Verdict — present findings and recommendation
-- [ ] Phase 5: Update Design Log — present findings for approval, then update
-```
-
 **Phase 1: Load**
 
 - Read the target design log fully
@@ -32,17 +21,26 @@ Implementation Review Progress:
 **Phase 2: Gather evidence**
 
 - Read all files listed in §6 (Implementation Results)
-- Run `git diff` to identify all changed files on the implementation branch
-- Cross-reference: flag files in git diff not listed in §6, and files in §6 not found in diff
+- Establish and state the review base: use a base declared by the design, or
+  compute `git merge-base HEAD <default-branch>`.
+- Read committed implementation changes with `git diff <base>...HEAD`.
+- Read staged and unstaged changes with `git diff --cached` and `git diff`.
+- List untracked files with `git ls-files --others --exclude-standard`, then read
+  the relevant untracked contents. Untracked implementation is part of review
+  scope even though it has no diff.
+- Cross-reference all four surfaces against §6: flag files in the committed,
+  staged, unstaged, or untracked review set that are not listed in §6, and files
+  in §6 that are absent from that set.
 - Read §5 (Implementation Plan) task table for completion status
 
 **Phase 3: Evaluate**
 
 Cite specific evidence (file:line, design section, command output, comparable pattern) where it exists. Vague findings ("it looks wrong") aren't actionable.
 
-### Finding discipline (applies to every actionable finding)
+### Quote or suppress (applies to every actionable finding)
 
-**Pre-emit verification gate (FP killer).** Before any finding is promoted into the actionable list, quote the specific motivating line — `file:line` + verbatim text:
+Before any finding is promoted into the actionable list, quote the specific
+motivating line — `file:line` + verbatim text:
 - If the claim is "field X doesn't exist on model Y", quote the lines of class Y.
 - If the claim is "`dict.get()` might return None", quote the dict initialization.
 - **If you cannot quote the motivating line(s), the finding is unverified → force confidence to 4-5 (suppressed).** Do not work around this by inventing speculative confidence 7+ — that defeats the gate.
