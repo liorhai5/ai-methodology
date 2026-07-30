@@ -37,7 +37,6 @@ cd ~/.codex/skills && ln -s ../../.agents/skills/mtg mtg     # Codex
 ## Usage
 
 ```
-/mtg goal [expected result]    — Navigate a broad objective through existing MTG flows
 /mtg challenge [NNN|topic]   — Adversarially pressure-test whether the work should exist at all
 /mtg design-map [destination]  — Map a known destination with a foggy route before design
 /mtg research [topic]        — Harvest sources into files to survive context compaction
@@ -58,10 +57,9 @@ cd ~/.codex/skills && ln -s ../../.agents/skills/mtg mtg     # Codex
                  /mtg plan   →               /mtg implement → /mtg code-review → /mtg commit
 
 /mtg investigate → fix (trivial) or → /mtg design (design flaw) → (continues)
-/mtg goal → one next MTG route → reassess evidence → (continues until DoD)
 ```
 
-Use `/mtg goal` for a broad expected result spanning normal MTG flows or sessions; it is optional and preserves their gates. Use `/mtg design-map` when the destination is known but the route is still foggy. Use `/mtg challenge` to pressure-test whether the work should exist before designing it. Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg investigate` to debug a defect to root cause before fixing.
+Use `/mtg design-map` when the destination is known but the route is still foggy. Use `/mtg challenge` to pressure-test whether the work should exist before designing it. Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg investigate` to debug a defect to root cause before fixing.
 
 ## The Methodology
 
@@ -103,7 +101,6 @@ See `docs/methodology-template.tpl` for the full template, structured design pat
 ai-methodology/
   SKILL.md                       # entry point — routes /mtg commands
   commands/
-    goal.md                      # /mtg goal
     challenge.md                 # /mtg challenge
     design-map.md                # /mtg design-map
     research.md                  # /mtg research
