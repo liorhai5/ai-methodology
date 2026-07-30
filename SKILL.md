@@ -1,7 +1,7 @@
 ---
 name: mtg
 description: Design-first AI development methodology — structured workflows for design, planning, implementation, review, and commit. Governs non-trivial changes through design logs with approval gates.
-argument-hint: "goal | challenge | design-map | research | design | plan | review | implement | code-review | commit | investigate | status"
+argument-hint: "challenge | design-map | research | design | plan | review | implement | code-review | commit | investigate | status"
 ---
 
 # Methodology
@@ -14,7 +14,6 @@ Based on $ARGUMENTS, read and follow the relevant command file:
 
 | Command | File | Purpose |
 |---|---|---|
-| goal [expected result] | commands/goal.md | Navigate a broad objective through existing MTG flows until its DoD is evidenced |
 | challenge [NNN\|topic] | commands/challenge.md | Adversarially pressure-test whether the work should exist at all |
 | design-map [destination] | commands/design-map.md | Map a known destination with a foggy route before normal design |
 | research [topic] | commands/research.md | Harvest sources into files to survive context compaction |
