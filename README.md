@@ -95,6 +95,14 @@ The design log is the primary unit of work. One markdown file carries a feature 
 
 See `docs/methodology-template.tpl` for the full template, structured design patterns, and review perspectives.
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Licence
+
+[MIT](LICENSE) © Lior Hai
+
 ## Repository Layout
 
 ```
@@ -117,6 +125,6 @@ ai-methodology/
     methodology-template.tpl     # design log template + review checklist
   scripts/
     install-rules.sh             # optional: inject rules into CLAUDE.md / AGENTS.md / GEMINI.md
-  design-logs/                   # gitignored — decision history for this project
+  .ai/design-logs/               # gitignored — decision history for this project
   README.md
 ```

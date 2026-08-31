@@ -18,8 +18,17 @@ TARGETS=(
 remove_block() {
   local file="$1"
   if [ -f "$file" ] && grep -q "$BEGIN_MARKER" "$file"; then
-    sed -i '' "/$BEGIN_MARKER/,/$END_MARKER/d" "$file"
-    echo "Removed mtg block from $file"
+    # Not `sed -i`: the in-place flag is not portable. BSD sed (macOS) requires
+    # an argument, GNU sed refuses one, so `sed -i ''` silently removes nothing
+    # on Linux and leaves the block in place. Write via a temp file, then copy
+    # back with `cat` so the target keeps its inode and permissions.
+    local tmp
+    tmp=$(mktemp) || return 1
+    if sed "/$BEGIN_MARKER/,/$END_MARKER/d" "$file" > "$tmp"; then
+      cat "$tmp" > "$file"
+      echo "Removed mtg block from $file"
+    fi
+    rm -f "$tmp"
   fi
 }
 
