@@ -33,4 +33,4 @@ Design log: <path>   Project rules: <path to the project's rules file>
 Anything not listed runs serially.
 
 ## Temporary permission rules (removed at the end of the run)
-- <exact rule, e.g. Bash(yarn workspace @x/eval run:*)>
+- <exact command or path the host's permission system needs; no wildcards over shells>

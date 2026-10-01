@@ -34,6 +34,17 @@ cd ~/.codex/skills && ln -s ../../.agents/skills/mtg mtg     # Codex
 ~/.agents/skills/mtg/scripts/install-rules.sh
 ```
 
+**Subagents for `/mtg orchestrate` (optional):**
+
+```bash
+mkdir -p ~/.claude/agents ~/.codex/agents
+cp ~/.agents/skills/mtg/agents/claude/orch-*.md ~/.claude/agents/    # Claude Code and Cursor
+cp ~/.agents/skills/mtg/agents/codex/orch-*.toml ~/.codex/agents/    # Codex
+# uninstall: rm ~/.claude/agents/orch-*.md ~/.codex/agents/orch-*.toml
+```
+
+Hosts without these wrappers still work: the orchestrator tells the subagent to act as the role file in `roles/`.
+
 ## Usage
 
 ```
@@ -62,14 +73,7 @@ cd ~/.codex/skills && ln -s ../../.agents/skills/mtg mtg     # Codex
 
 Use `/mtg design-map` when the destination is known but the route is still foggy. Use `/mtg challenge` to pressure-test whether the work should exist before designing it. Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg investigate` to debug a defect to root cause before fixing.
 
-Use `/mtg orchestrate` for multi-step work you want to delegate. You talk to one session, the orchestrator. It agrees a charter with you once (goal, allowed and forbidden actions, caps, reserved decisions, capabilities), checks access, then hands each task to a fresh-context subagent through a brief file and reports done / running / needs-you. It stops only to escalate. The subagent roles live in `roles/`. Install their wrappers once (Claude Code and Cursor read `~/.claude/agents/`, Codex reads `~/.codex/agents/`):
-
-```bash
-mkdir -p ~/.claude/agents ~/.codex/agents
-cp ~/.agents/skills/mtg/agents/claude/orch-*.md ~/.claude/agents/
-cp ~/.agents/skills/mtg/agents/codex/orch-*.toml ~/.codex/agents/
-# uninstall: rm ~/.claude/agents/orch-*.md ~/.codex/agents/orch-*.toml
-```
+Use `/mtg orchestrate` for multi-step work you want to delegate. You talk to one session, the orchestrator. It agrees a charter with you once (goal, allowed and forbidden actions, caps, reserved decisions, capabilities), checks access, then hands each task to a fresh-context subagent through a brief file and reports done / running / needs-you. It stops only to escalate. Its subagents need a one-time install (see Install).
 
 ## The Methodology
 
