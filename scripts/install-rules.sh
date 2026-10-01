@@ -22,9 +22,17 @@ remove_block() {
     # an argument, GNU sed refuses one, so `sed -i ''` silently removes nothing
     # on Linux and leaves the block in place. Write via a temp file, then copy
     # back with `cat` so the target keeps its inode and permissions.
+    # install_block adds one blank line before the block; drop that line too,
+    # so install + remove restores the file exactly and reinstalls don't grow it.
     local tmp
     tmp=$(mktemp) || return 1
-    if sed "/$BEGIN_MARKER/,/$END_MARKER/d" "$file" > "$tmp"; then
+    if awk -v begin="$BEGIN_MARKER" -v end="$END_MARKER" '
+      skip { if (index($0, end)) skip = 0; next }
+      index($0, begin) { held = 0; skip = 1; next }
+      /^$/ { if (held) print ""; held = 1; next }
+      { if (held) print ""; held = 0; print }
+      END { if (held) print "" }
+    ' "$file" > "$tmp"; then
       cat "$tmp" > "$file"
       echo "Removed mtg block from $file"
     fi
