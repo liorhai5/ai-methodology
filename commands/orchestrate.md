@@ -85,7 +85,8 @@ Batch escalations into "Needs you", update STATE, and keep any independent work 
 
 1. The done-when is verified (step 6). Write the final STATE and append results to the design log's §6.
 2. Remove the temporary permission rules, or list them for the user to keep. If the user changed the context limit for this run, remind them to restore it (see Host notes).
-3. Report the outcome, the evidence paths, and anything left open.
+3. Remove the git worktrees this run's briefs created, unless the charter or the user keeps them. Use `git worktree remove` without force. A worktree with uncommitted or untracked work is never removed: list it for the user instead. Branches are kept.
+4. Report the outcome, the evidence paths, and anything left open.
 
 ## Host notes
 
