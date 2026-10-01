@@ -13,6 +13,8 @@ Read docs/methodology-template.tpl for design log template and review checklist.
 7. Data aggregation — write findings to disk incrementally; never batch many reads in memory before writing.
 8. Branch discipline — never commit directly to master/main. Create a feature branch first.
 
+Run charter — a user-approved `.ai/runs/<run>/CHARTER.md` is explicit approval for everything it lists as allowed (satisfies rules 1, 5, 6 and workflow gates 2–3 within that scope); anything outside it still needs approval.
+
 ## Design Log Workflow
 
 Every non-trivial change follows: Research → Design → Approve → Implement → Verify → Record.
