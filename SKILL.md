@@ -1,7 +1,7 @@
 ---
 name: mtg
 description: Design-first AI development methodology — structured workflows for design, planning, implementation, review, and commit. Governs non-trivial changes through design logs with approval gates.
-argument-hint: "challenge | design-map | research | design | plan | review | implement | code-review | commit | investigate | status"
+argument-hint: "challenge | design-map | research | design | plan | review | implement | orchestrate | code-review | commit | investigate | status"
 ---
 
 # Methodology
@@ -21,6 +21,7 @@ Based on $ARGUMENTS, read and follow the relevant command file:
 | plan [topic] | commands/plan.md | Lightweight plan for bounded, known-scope tasks |
 | review [NNN] | commands/review.md | Review a design log from multiple perspectives |
 | implement [NNN] | commands/implement.md | Systematically implement an approved design log |
+| orchestrate [NNN\|topic] | commands/orchestrate.md | Run a design log or topic through delegated subagents under a user-approved charter |
 | code-review [NNN] | commands/code-review.md | Review implementation against its design log |
 | commit | commands/commit.md | Quality-gated commit workflow |
 | investigate [topic] | commands/investigate.md | Root-cause debugging entry point — no fixes without root cause first |

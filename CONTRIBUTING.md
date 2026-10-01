@@ -13,6 +13,11 @@ workflow described in the README is the one a change to it should follow.
   users' `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` by `scripts/install-rules.sh`,
   so treat every line as something that ships into other people's sessions.
 - `docs/methodology-template.tpl` — the design log template.
+- `templates/`, `roles/`, `agents/` — data for `/mtg orchestrate`: the run file
+  templates the orchestrator copies, the role prompts it hands to subagents, and
+  thin per-host subagent wrappers that point at `roles/`. The command file stays
+  the only instruction file the orchestrator follows; host-specific details live
+  in its Host notes section, so the workflow itself stays host-neutral.
 
 ## Adding or changing a command
 
