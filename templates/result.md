@@ -1,19 +1,22 @@
 # Result — T<nnn>-<role>-<slug>
 
 Status: done | partial | blocked | needs-decision
-Cost: $<n> (or "none")
+<!-- Status describes this task; author completion does not establish whole-goal acceptance. Adapt fields; omit irrelevant optional sections. -->
 
-## Outcome
-<what was found or built, in a few lines>
+## Outcome / coverage
+<delivered result against assigned criteria; verified, failed and unknown; source/target/actual output distinctions where relevant>
 
 ## Evidence
-- <paths, SHAs, command outputs, screenshots>
+<commands/observations, paths/versions/inputs; reproducible proof and limits>
 
-## Expectation vs actual (experiments)
-- Expected: <…>   Actual: <…>   Verdict: confirmed | falsified | inconclusive
+## Continuation / ownership
+<remaining jobs: accepted ID, owner, output/log, state and next action; or none>
 
-## Needs decision
-- <anything outside the brief or charter, with a recommendation> | none
+## Decisions / lessons
+<orchestrator action needed and recommendation; meaningful hypotheses/attempts/results/reasons/applicability; proposed canonical tool/lesson updates>
 
-## Notes for the record
-- <attempts, dead ends, lessons for the design log or learnings file>
+## Experiment (when applicable)
+<pre-registered expectation/falsifier → observation → confirmed/falsified/inconclusive>
+
+## External usage (paid work only)
+<allocated work consumed; measured/estimated coverage; in-flight commitments and uncertainty>

@@ -1,109 +1,75 @@
 # Orchestrate Workflow
 
-Drive one piece of work (a design log or topic) through delegated subagents with clean context. You are the **orchestrator**: the user's single conversational session. You decide, brief, synthesize and report; subagents do the multi-step work.
+Deliver a design log or topic through aligned subagents. Own the goal, decisions, integration and user conversation; choose execution details.
 
-Read docs/rules.md, including the **Run charter** rule.
+Read docs/rules.md, including **Run charter**. Resolve this skill's root for role/template paths.
 
-## Target
+## Start / resume
 
-- **Resolve the project root first**: the directory that holds `.ai/design-logs/`. Search the current directory, then its parents, then its immediate children (the IDE may open a parent folder). Use absolute paths from then on.
-- Use the design log number or topic given after the command name.
-- The run directory is `.ai/runs/<NNN>-<slug>/` in the project root, where NNN is the driving design log (or the next free number for a topic). Create it if it is missing.
-- If `STATE.md` exists there, read it first and resume from its **Next** line.
+- **Root:** find the project containing `.ai/design-logs/` (cwd, parents, immediate children); use absolute paths. Run: `.ai/runs/<NNN>-<slug>/`.
+- **Resume:** STATE first → relevant charter/contracts/tools/lessons → confirm volatile prerequisites/live ownership → current Next. Avoid raw-history replay.
+- **Authority:** `templates/charter.md` records goal, acceptance, Allowed, Forbidden and Reserved. Cite conversation/artifact approvals; reformatting needs no new approval. Ask only for missing consequential authority: "Approve these additions? [Y/n/edit]". Silence is not approval.
+- **Discover:** memory/docs/code → cheap proof in the intended environment → smallest missing adapter. Smoke prerequisites for the next action. Discover effective capacity, dispatch, permissions, context settings and job/output interfaces at the actual run root; record working bindings once. Change settings only within authority.
 
-## Phase 1: Charter
+## Execution
 
-1. If `CHARTER.md` is missing, draft it from the mtg skill's `templates/charter.md`, using the design log, the project's rules file, and the conversation.
-2. Present it once, with the permission rules it would add shown as a diff. Prompt: "Approve this charter? [Y/n/edit]"
-3. Once it is approved, the charter is the run's authorization (docs/rules.md, Run charter). Do not ask again for anything it allows.
+| Keyword | Action |
+|---|---|
+| Align | Brief outcomes against the parent goal/acceptance, decisive uncertainty, settled interfaces and proven tools. Propagate steering; revise/stop stale work. |
+| Delegate | Coherent outcomes: diagnosis → implementation → author checks can share one owner. Root may inspect/probe/execute bounded work while remaining available to coordinate. |
+| Own | Assign files, worktrees/branches, browser sessions, previews, jobs, outputs and shared-record writers. Serialize overlaps or isolate and integrate. Never switch the user's main checkout. |
+| Parallelize | Dispatch compatible independent work within discovered capacity. Cheap proof before risky dependent/expensive fan-out. Capacity is a ceiling, not a target. |
+| Context | Fresh focused context for distinct outcomes/reviewers; reuse related corrections. Reset/handoff at natural boundaries. Relevant contracts/pointers, not the full transcript. |
+| Brief | Use `templates/brief.md` and `roles/{researcher,worker,evaluator}.md`. Installed `orch-*` or supported generic dispatch must carry the same contract; missing wrappers do not require installation. |
+| Wait | Prefer events; bounded same-job recovery/backoff when needed. No file watchers or unbounded polling loops. Retain accepted ID, owner, output/log and continuation. Timeout ≠ resubmit. Reconcile host completion with remaining jobs. |
+| Reassess | Repeated hypothesis failure → new discriminating evidence/approach. Task IDs do not reset history. Avoid repeated valid checks and tooling work without acceptance progress. |
+| Continue | After each return/checkpoint, dispatch remaining useful work. Idle agents or successful launches do not establish finished deliverables. |
 
-## Phase 2: Preflight
+Persist useful findings incrementally. Return concise outcome, evidence and continuation using `templates/result.md`; link detail.
 
-1. For each capability in the charter, run one cheap smoke test (browser endpoint, logins, CLIs, MCP auth, eval or test commands). Record ✓/✗ in STATE.
-2. Context limit: make sure the host compacts well before its maximum (target ≈250k tokens). If it doesn't already, ask the user to set it (see Host notes). Do not change settings yourself.
-3. Add the charter's temporary permission rules to the project's local settings. They must be narrow: exact commands or paths only.
-4. If anything is ✗ or missing, send **one** batched ask before starting. Never put credentials in files or briefs; a brief says how to obtain access, never the secret itself.
+## Verify
 
-## Phase 3: Run
+- **Checkpoint:** author checks first; independent verification at coherent deliverable/integration boundaries, proportionate to risk. Submit stable versions, inputs and output conditions; no evaluator per small operation.
+- **Coverage:** representative actual end-to-end output early; relevant known-failure/negative control for critical checkers where appropriate. Technical success, quality and goal fulfillment may need different evidence. Unknown ≠ pass.
+- **Review:** suitable methods within approved criteria; record coverage/limits and challenge consequential claims. New requirements are recommendations; existing correctness failures need ordinary in-scope correction.
+- **Reuse:** relevant code, dependencies, inputs and execution conditions must remain valid. Contrary evidence invalidates affected claims; recheck affected coverage/integration after corrections.
+- **Done:** direct evidence covers approved acceptance plus retained record. Distinguish source, target availability, actual output and goal acceptance where relevant. Author confidence or passing subsets cannot close the goal.
 
-For each task:
+## Progress / attention
 
-1. **Delegate rule.** Anything needing more than ~3 tool calls (exploring, editing, running, evaluating) goes to a subagent. You only read briefs, replies and STATE. Every tool call you make costs your full, growing context.
-2. **Brief.** Write `tasks/T<nnn>-<role>-<slug>/brief.md` from the mtg skill's `templates/brief.md`. Include absolute paths, the charter section the task runs under, a pre-registered expectation and falsifier for experiments, the done-when, and the cost cap.
-3. **Spawn** the role with only the brief path:
+**Delivered · verified · uncertain · current · next · needs you.** Link inspectable artifacts; explain consequential decisions. Ground timing. Report milestones, blockers, approach/forecast changes; keep long work visible without narrating every task. Show useful samples before bookkeeping finishes.
 
-   | Role | Installed agent | Hosts without the agents |
-   |---|---|---|
-   | researcher | the `orch-researcher` agent | "act as roles/researcher.md for brief <path>" |
-   | worker | the `orch-worker` agent | "act as roles/worker.md for brief <path>" |
-   | evaluator | the `orch-evaluator` agent | "act as roles/evaluator.md for brief <path>" |
-   | explorer | the host's built-in read-only search agent | the same |
+**Ask:** missing intent/access/authority, Reserved decision, actual limit, or no credible authorized next step. Try relevant discovery first. State action, evidence, recommendation, what it unblocks and when needed; separate now/later/optional. Continue independent authorized work. No routine approval/veto suffix.
 
-   The `orch-*` agents are installed from the skill's `agents/` folder (see README and Host notes). If they're missing, use the right-hand column, or ask the user to install them.
+**Gates:** answer downstream prompts from Allowed; record consequential decisions under the charter. Never grant Forbidden/unlisted authority or lower acceptance. Honor steering without reverting unrelated work.
 
-   Run subagents in the background. At most **2** run in parallel, and only tasks listed as parallel in the charter, each owning its listed files. Everything else runs serially.
-4. **Long jobs** (more than ~2 minutes) run as background processes that write `tasks/<id>/status` (running/done/failed plus the log path) and check `.ai/runs/<run>/STOP` before each unit. If the host notifies you when a background process exits, wait for that; otherwise end the turn and say what to check. **Never poll.**
-5. **Result.** The subagent writes `result.md` (the mtg skill's `templates/result.md`) and replies in ≤30 lines. Open `result.md` only when the reply isn't enough to decide.
-6. **Done** is graded by evidence that someone other than the author checked. A worker's claim is not done until an evaluator (or a check named in the done-when) confirms it.
-7. **STATE.** Rewrite `STATE.md` (the mtg skill's `templates/state.md`, ≤5 KB) after every result. Only you write it.
-8. **Update the user** after every result:
-   ```
-   Done: <task> — <one-line result> (<evidence path>)
-   Running: <task> (<ETA>) | none
-   Needs you: <batched items, each with a recommendation and [Y/n]> | none
-   Decided under charter: <decision> (§x) — veto? | none
-   ```
-   Optional: if the host supports push notifications, send one when "Needs you" is not empty.
-9. End the turn when nothing is running, or when everything left waits on the user.
+## Usage
 
-## Gates and authority
+- **Local:** focused context, coherent tasks, relevant lookup, valid evidence reuse, events and compaction. Honor model/quality preferences; select model/effort only when delegated and supported. No compulsory ledger, task quota or token census. Real approaching limits → resumable handoff, not dropped checks.
+- **External, only when relevant:** reuse spending authorization; ask before unauthorized paid work. Orchestrator owns allowance/allocations, including accepted/in-flight commitments before dispatch. Workers execute allocations/report usage; further spend returns to you. Use existing gateway controls/aggregate telemetry; expose uncertainty preventing a cap being honored. No invented ceiling, unlimited permission or accounting infrastructure.
 
-- **Gate prompts.** When an mtg command or a host action asks for confirmation (`[Y/n]`, `Proceed?`, `Approve?`, `Push…?`, `Create a PR?`), answer from the charter: **yes** if the action is in Allowed, **escalate** if it is Forbidden or unlisted. Never match on a prompt's exact wording.
-- **Decisions.** Design and plan topics that are not in Reserved are yours. Record "decided by orchestrator under CHARTER §x" and your reasoning in the design log, and list them under "Decided under charter" in your next update.
-- **Veto.** If the user vetoes a decision, work out what depends on it, revert it, and record the veto in the design log.
+## State / knowledge
 
-## Escalation (the only mid-run stops)
+- **Current:** `templates/state.md` → readable goal/coverage, artifact, next, live owners/jobs, decisions/blockers and knowledge/evidence pointers. Rewrite at material transitions, before compaction/handoff. Resume instructions must agree; remove superseded live directions.
+- **Tools:** canonical maintained project docs; run-specific adapters local. Purpose/limits · entry point · sanctioned access method (no secrets) · prerequisites/I/O · proven invocation/environment/version/date · recovery. Load relevant entries; refresh mutable facts.
+- **Lessons:** situation → hypothesis/test → observation → choice/reason → evidence/applicability. Keep useful failures and unresolved findings. Workers propose; one assigned writer integrates canonical records.
 
-1. An action outside the charter, or a Reserved decision.
-2. A cap is reached.
-3. A clarification is needed (ambiguous goal, conflicting evidence).
-4. Two tries without movement on the same hypothesis.
+## Compact / close
 
-Batch escalations into "Needs you", update STATE, and keep any independent work running.
+Under recorded retention authority, compact completed/superseded work at useful checkpoints and close:
 
-## Bans
+- **Keep:** outcome/coverage, consequential decisions/experiments, canonical knowledge pointers, deliverables, selected success/failure proof, required inputs/baselines, retained-artifact/discarded-category index.
+- **Remove:** authorized run-owned scratch, duplicates and obsolete outputs after useful claims/provenance are retained. Trace consumers; protect active/shared/user-authored assets, tools, baselines and restart dependencies. Uncertain → keep. Verify retained entry points/checks/links; hashes alone are not proof. Archiving everything is not compaction. Legacy/shared cleanup needs separate scope.
+- **Place:** run-specific records in the run folder; reusable knowledge in existing project docs. `.ai/archive/` for selected closed history spanning designs; no parallel tracking hierarchy.
+- **Finish:** verify whole-goal acceptance; final STATE and design §6 outcomes/evidence/limits/knowledge pointers. Remove only still-owned temporary permission changes. Remove run-created worktrees without force unless kept; dirty/untracked worktrees and branches stay.
+- **Handoff:** current intent/coverage, live IDs/owners and next action. Never promise execution while idle. Report open items; resolve further review from existing authority, otherwise offer `/mtg code-review <NNN>` when relevant.
 
-- Watchers or monitors on files; `sleep` or polling loops.
-- Cross-session messages; `/goal` check-ins (each is a full turn at your current context).
-- More than 2 parallel subagents unless the user raises the limit in the charter.
-- Doing multi-step tool work yourself.
-- Append-only coordination logs. State lives in STATE.md; history lives in the design log and in results.
+## Host bindings
 
-**Where files go:** each run's folder holds its live state and anything about that run alone. `.ai/archive/` holds only closed history that spans more than one design log. Don't add other folders to the `.ai/` root.
+Shared policy above; bind to actual capabilities.
 
-## End of run
-
-1. The done-when is verified (step 6). Write the final STATE and append results to the design log's §6.
-2. Remove the temporary permission rules, or list them for the user to keep. If the user changed the context limit for this run, remind them to restore it (see Host notes).
-3. Remove the git worktrees this run's briefs created, unless the charter or the user keeps them. Use `git worktree remove` without force. A worktree with uncommitted or untracked work is never removed: list it for the user instead. Branches are kept.
-4. Report the outcome, the evidence paths, and anything left open.
-
-## Host notes
-
-Host-specific details. The workflow above stays the same everywhere.
-
-- **Claude Code**
-  - Context limit: `/autocompact 250k`. It writes the **global** `~/.claude/settings.json`, so it also affects the user's other sessions; restore it with `/autocompact auto`. A per-project alternative is `"autoCompactWindow": 250000` in the project's `.claude/settings.local.json`.
-  - Agents: `orch-*` in `~/.claude/agents/`; the explorer is the built-in `Explore` agent.
-  - Background `Bash` and background subagents notify you when they exit.
-  - Permission rules go in `.claude/settings.local.json`, e.g. `Bash(yarn test:*)`.
-- **Cursor:** reads the `orch-*` agents from `~/.claude/agents/`.
-- **Codex:** `orch-*` agents in `~/.codex/agents/`. The compaction setting is not verified here; ask the user rather than guess.
-- **Other hosts** (e.g. Gemini): no wrappers. Use the "Hosts without the agents" column.
-
-## Next Step
-
-When the run completes:
-  Prompt: "Run `/mtg code-review <NNN>`? [Y/n]"
-  If Y → invoke `/mtg code-review <NNN>`.
-  If n → end.
+| Host | Binding |
+|---|---|
+| Claude Code / Cursor | Optional `~/.claude/agents/` wrappers; supported read-only research. Inspect effective context settings; global changes affect other sessions. Claude background notifications require reconciliation with live state. Narrow local permissions where needed. |
+| Codex | Optional `~/.codex/agents/` wrappers; supported agents/event waits or generic roles. Discover effective capacity/context at the run root; a settings file alone does not prove runtime behavior. |
+| Other | Supported agents/jobs with absolute role/brief paths; missing capabilities → authorized alternative or explicit resumable gap. |
