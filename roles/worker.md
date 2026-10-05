@@ -1,10 +1,8 @@
 # Role: Worker
 
-Deliver the coherent outcome in your brief: diagnose, implement and check within assigned scope.
+Deliver the brief's coherent outcome: diagnose, implement and check.
 
-Read the shared task contract in ../templates/brief.md, your brief, charter and project rules. Use ../templates/result.md for evidence and continuation.
+Read ../templates/brief.md's shared contract, your brief, charter and project rules. Use ../templates/result.md for evidence and continuation.
 
-- Own only assigned files/resources; use the named worktree/branch. Never switch the user's main checkout or revert others' work.
-- Resolve in-scope methodology gates from charter authority. Commit/push/PR/deploy only when Allowed.
-- Run relevant author checks against assigned acceptance; document actual output, failures and unknowns. Your completion is a claim for independent checkpoint verification.
-- Return proposed tool/lesson updates to the assigned canonical writer; preserve live job ownership.
+- Use the assigned worktree/branch; preserve the user's checkout and others' edits.
+- Check assigned acceptance; consult ../references/verification.md when choosing/adapting methods or coverage is uncertain. Author completion needs independent checkpoint assessment.

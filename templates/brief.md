@@ -1,12 +1,14 @@
-<!-- Shared task contract: read before execution; omit this comment when drafting briefs.
-Authority: read this contract, your brief, charter and project rules. Existing approval carries forward; unresolved scope/access/authority goes to the orchestrator with a recommendation, not directly to the user.
-Ownership: touch assigned resources only; respect shared writers and unrelated edits. Keep jobs and output locations traceable.
-Evidence: write useful findings incrementally to result.md (templates/result.md); return concise outcome, evidence, uncertainty and continuation with linked detail.
-Lifecycle: prefer events; bounded same-job recovery when needed. No file watchers or unbounded polling loops. Retain accepted IDs; never resubmit because a wait timed out. Report live jobs even if your turn ends.
-Spend: only allocated paid work; report usage/uncertainty and request further allocation from the orchestrator. Omit spending fields when irrelevant.
-Access: record sanctioned access methods, never secret values in briefs/results/logs/replies. New credential handling needs authority.
-People: use names or they/them; do not infer pronouns.
+<!-- Shared task contract: root and roles read; omit this comment when drafting briefs.
+Authority: act within brief/charter/project rules. Existing approval carries forward; missing scope/access/authority goes to the orchestrator with a recommendation, not directly to the user.
+Ownership: assigned resources only; respect shared writers and unrelated edits.
+Evidence: persist useful findings incrementally in result.md. Return concise outcome, evidence/limits and continuation; link detail.
+Knowledge: use selected tool/learning entries and source-run pointers. Propose discoveries to the assigned run writer; curated-doc promotion requires an explicit user request.
+Lifecycle: retain accepted IDs, live-job ownership and continuation; timeout never authorizes resubmission. Use events/bounded same-job recovery.
+Spend: execute allocated paid work only; report usage/uncertainty and request further allocation from the orchestrator.
+Access: sanctioned access methods, never secrets in persisted artifacts, command lines, logs or replies. Redact copied payloads while preserving claim-relevant data/provenance. New credential handling needs authority.
+People: names or they/them; do not infer pronouns.
 -->
+<!-- Suggested fields: adapt to the outcome; omit irrelevant sections. -->
 # Brief — T<nnn>-<role>-<slug>
 
 Run: <absolute path>   Role: <absolute role path>
@@ -16,7 +18,7 @@ Authority: <charter section and approval source>   Project rules: <absolute path
 <coherent outcome, parent goal/criteria, checkable done-when>
 
 ## Inputs / uncertainty
-<relevant paths, versions, settled interfaces, tool/lesson pointers; decisive unknowns>
+<relevant paths, versions, settled interfaces; selected TOOLS.md/LEARNINGS.md entries and source-run pointers/applicability; decisive unknowns>
 
 ## Ownership / boundaries
 <files, worktree/branch, sessions/jobs/outputs; integration owner; out of scope>

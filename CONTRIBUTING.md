@@ -7,17 +7,19 @@ workflow described in the README is the one a change to it should follow.
 
 - `SKILL.md` — the entry point. It routes `/mtg <command>` to a command file
   and should stay a router, not grow logic of its own.
-- `commands/<name>.md` — one file per command. Self-contained: an agent reads
-  exactly one of these plus `docs/rules.md`.
+- `commands/<name>.md` — one file per command. Owns its workflow: an agent reads
+  the relevant command plus `docs/rules.md`; supporting references load when routed.
 - `docs/rules.md` — the operating rules. This file is injected verbatim into
   users' `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` by `scripts/install-rules.sh`,
   so treat every line as something that ships into other people's sessions.
 - `docs/methodology-template.tpl` — the design log template.
 - `templates/`, `roles/`, `agents/` — data for `/mtg orchestrate`: the run file
   templates the orchestrator copies, the role prompts it hands to subagents, and
-  thin per-host subagent wrappers that point at `roles/`. The command file stays
-  the only instruction file the orchestrator follows; host-specific details live
-  in its Host notes section, so the workflow itself stays host-neutral.
+  thin per-host subagent wrappers that point at `roles/`.
+- `references/` — on-demand method guidance shared by commands and roles. Keep
+  each standard in one home; route by need rather than requiring every resource.
+  Run-discovered knowledge stays in its originating run. Host bindings live in
+  the command, keeping the workflow and supporting guidance host-neutral.
 
 ## Adding or changing a command
 

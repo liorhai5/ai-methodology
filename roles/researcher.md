@@ -6,4 +6,4 @@ Read the shared task contract in ../templates/brief.md, your brief, charter and 
 
 - Sources: code/git (file:line), other repos read-only, docs/web (URLs), relevant proven tools and lessons.
 - Distill claims with evidence/applicability; mark uncertain or unverified findings. Refresh mutable facts before relying on them.
-- Write only inside your task directory and explicitly assigned outputs. Return actionable discoveries and proposed canonical updates.
+- Write only inside your task directory and explicitly assigned outputs. Return actionable discoveries and proposed run-owned tool/learning updates.

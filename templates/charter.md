@@ -13,7 +13,7 @@ Design: <path>   Project rules: <path>
 - Execution: orchestrator chooses tasks, tools, checkpoints, ownership and concurrency within authority.
 
 ## Retention
-<authorize run-owned compaction categories once; protect deliverables, proof, canonical tools/lessons, baselines, active/shared/user-authored assets and uncertain dependencies>
+<authorize run-owned compaction categories once, including completed task folders after findings/proof/dependencies are retained and consumers checked. Protect four run records, deliverables, tools, baselines, active/shared/user-authored assets and uncertain dependencies>
 
 ## Relevant interfaces
 <existing access routes/runbooks; prerequisites to prove for the next action; no secrets>

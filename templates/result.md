@@ -13,7 +13,7 @@ Status: done | partial | blocked | needs-decision
 <remaining jobs: accepted ID, owner, output/log, state and next action; or none>
 
 ## Decisions / lessons
-<orchestrator action needed and recommendation; meaningful hypotheses/attempts/results/reasons/applicability; proposed canonical tool/lesson updates>
+<orchestrator action needed and recommendation; meaningful hypotheses/attempts/results/reasons/applicability; proposed run-owned TOOLS.md/LEARNINGS.md updates with source attribution>
 
 ## Experiment (when applicable)
 <pre-registered expectation/falsifier → observation → confirmed/falsified/inconclusive>
