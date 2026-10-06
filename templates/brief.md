@@ -3,7 +3,7 @@ Authority: act within brief/charter/project rules. Existing approval carries for
 Ownership: assigned resources only; respect shared writers and unrelated edits.
 Evidence: persist useful findings incrementally in result.md. Return concise outcome, evidence/limits and continuation; link detail.
 Knowledge: use selected tool/learning entries and source-run pointers. Propose discoveries to the assigned run writer; curated-doc promotion requires an explicit user request.
-Lifecycle: retain accepted IDs, live-job ownership and continuation; timeout never authorizes resubmission. Use events/bounded same-job recovery.
+Lifecycle: retain accepted IDs, live-job ownership and continuation; timeout never authorizes resubmission. Prefer completion events; no coordination-file watchers or unbounded polling. Recovery is bounded and keeps the accepted job ID.
 Spend: execute allocated paid work only; report usage/uncertainty and request further allocation from the orchestrator.
 Access: sanctioned access methods, never secrets in persisted artifacts, command lines, logs or replies. Redact copied payloads while preserving claim-relevant data/provenance. New credential handling needs authority.
 People: names or they/them; do not infer pronouns.

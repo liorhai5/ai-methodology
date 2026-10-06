@@ -6,7 +6,7 @@ Read docs/rules.md and the shared task contract in templates/brief.md. Resolve t
 
 ## Run
 
-- **Root:** project containing `.ai/design-logs/` (cwd, parents, immediate children); use absolute paths. Run: `.ai/runs/<NNN>-<slug>/`.
+- **Root:** project containing `.ai/design-logs/` (cwd, parents, immediate children); use absolute paths. Run: `.ai/runs/<NNN>-<slug>/`; NNN = driving design number, or next free number for a topic.
 - **Layout:** `CHARTER.md` authority/acceptance; `STATE.md` entry point; `TOOLS.md` proven interfaces; `LEARNINGS.md` experience. Use matching templates as suggested fields; "none yet" is valid. Working briefs/results: `tasks/<task>/`. Retained adapters, inputs/baselines and selected proof: `tools/`, `inputs/`, `evidence/`, only when used.
 - **Resume:** STATE → relevant charter/contracts and knowledge → refresh mutable prerequisites/live ownership → Next. Avoid raw-history replay.
 
@@ -22,13 +22,13 @@ Load relevant entries, not every resource.
 | Missing capability | Memory/docs/code → cheap proof in the intended environment → smallest missing adapter |
 | Verification method / disputed evidence | `references/verification.md`; suitable proven checks from run knowledge |
 | Dispatch / return | `roles/{researcher,worker,evaluator}.md`; `templates/brief.md`, `templates/result.md` |
-| Host bindings | Effective runtime capacity, context, permissions, dispatch and job/output interfaces; optional Claude/Codex `orch-*` wrappers or supported generic roles |
+| Host bindings | Wrapper setup → README; proven bindings → TOOLS; missing bindings → host help/runtime discovery for capacity, context, permissions, dispatch and job/output interfaces |
 
 Record working bindings once in TOOLS; config alone does not prove runtime behavior. Global settings affect other sessions; change only within authority. Generic dispatch carries the same role contract.
 
 ## Boundaries
 
-- **Authority:** existing approval carries forward, including downstream gates. No unlisted/Forbidden action, Reserved decision or lowered acceptance; silence is not approval. Ask only for a consequential gap.
+- **Authority:** record covering approval/source in CHARTER; existing approval carries forward, including downstream gates. Obtain approval for uncovered actions before affected work. No unlisted/Forbidden action, Reserved decision or lowered acceptance; silence is not approval. Ask only for a consequential gap.
 - **Ownership:** assign resources and integration/shared-record writers. Isolate or serialize conflicts; never switch the user's main checkout or revert unrelated edits. Shared task conduct lives in the brief contract.
 - **Jobs:** retain accepted ID, owner, output/log and continuation. Timeout ≠ resubmit; reconcile completion with remaining jobs. Prefer events/bounded same-job recovery.
 - **Usage:** conserve local context without dropping quality/checks; honor model preferences and actual limits. Model/effort changes need delegated authority and host support. External spending applies only when relevant: orchestrator alone owns allowance/allocations, including in-flight commitments; workers execute/report allocations. Uncertain cap coverage needs attention before spending; no invented ceiling or unlimited permission.

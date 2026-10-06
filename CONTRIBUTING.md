@@ -29,7 +29,8 @@ workflow described in the README is the one a change to it should follow.
 2. Update the README's usage list and, if the command joins an existing
    sequence, the Command Chains section.
 3. Write for an agent, not a human reader: state what to read, what to produce,
-   and what gate to stop at. Prefer an explicit refusal over a vague nudge.
+   and what gate to stop at. Make hard boundaries explicit; use routes/defaults
+   for execution choices.
 
 ## Changing the rules
 
