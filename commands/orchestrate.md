@@ -6,7 +6,7 @@ Read docs/rules.md and the shared task contract in templates/brief.md. Resolve t
 
 ## Run
 
-- **Root:** project containing `.ai/design-logs/` (cwd, parents, immediate children); use absolute paths. Run: `.ai/runs/<NNN>-<slug>/`; NNN = driving design number, or next free number for a topic.
+- **Root:** requested project, or project from charter/driving log; otherwise discover from cwd/repository. Use absolute paths. Run: `.ai/runs/<NNN>-<slug>/`; NNN = driving design number, otherwise next free run number.
 - **Layout:** `CHARTER.md` authority/acceptance; `STATE.md` entry point; `TOOLS.md` proven interfaces; `LEARNINGS.md` experience. Use matching templates as suggested fields; "none yet" is valid. Working briefs/results: `tasks/<task>/`. Retained adapters, inputs/baselines and selected proof: `tools/`, `inputs/`, `evidence/`, only when used.
 - **Resume:** STATE → relevant charter/contracts and knowledge → refresh mutable prerequisites/live ownership → Next. Avoid raw-history replay.
 
@@ -45,4 +45,4 @@ Record working bindings once in TOOLS; config alone does not prove runtime behav
 
 **State:** persist useful findings incrementally. One assigned writer integrates tool/learning discoveries. Refresh STATE at material transitions and before compaction/handoff; consistent intent, coverage, live owners/jobs and Next. At milestones/close, consolidate completed work as useful; index retained artifacts/discarded categories.
 
-**Done:** evidence covers the whole approved acceptance and retained record under the verification standard. Failed/unknown coverage cannot close the goal. Record final STATE and design §6 evidence/limits/knowledge pointers. Restore still-owned temporary permissions; remove run-created worktrees without force unless kept. Dirty/untracked worktrees and branches stay. An interrupted run needs a current handoff; never promise execution while idle. Further review follows existing authority, otherwise offer `/mtg code-review <NNN>`.
+**Done:** evidence covers the whole approved acceptance and retained record under the verification standard. Failed/unknown coverage cannot close the goal. Record final STATE with evidence/limits/knowledge pointers; append design §6 when a driving log exists. Restore still-owned temporary permissions; remove run-created worktrees without force unless kept. Dirty/untracked worktrees and branches stay. An interrupted run needs a current handoff; never promise execution while idle. Further review follows existing authority; otherwise offer `/mtg code-review <NNN>` only for a driving design log.
