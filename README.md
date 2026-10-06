@@ -73,7 +73,11 @@ Hosts without these wrappers still work: the orchestrator tells the subagent to 
 
 Use `/mtg design-map` when the destination is known but the route is still foggy. Use `/mtg challenge` to pressure-test whether the work should exist before designing it. Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg investigate` to debug a defect to root cause before fixing.
 
-Use `/mtg orchestrate` for multi-step work you want to delegate. You talk to one session, the orchestrator. It agrees a charter with you once (goal, allowed and forbidden actions, caps, reserved decisions, capabilities), checks access, then hands each task to a fresh-context subagent through a brief file and reports done / running / needs-you. It stops only to escalate. Its subagents need a one-time install (see Install).
+Use `/mtg orchestrate` for long, delegated work. The orchestrator records existing authority in a charter, discovers tools and capacity, assigns coherent outcomes and verifies meaningful checkpoints. It reports inspectable results, uncertainty, next work and required user action. Tasks use focused context; related corrections can reuse an agent. External spending is optional and managed only by the orchestrator. Subagent wrappers are optional (see Install).
+
+The command routes agents to project standards, selected knowledge from prior runs and verification guidance. Load relevant entries; scenario examples are optional. Agents choose methods, checkpoints and template fields; acceptance requires direct evidence with explicit coverage and limits.
+
+Each run keeps `CHARTER.md`, `STATE.md`, `TOOLS.md` and `LEARNINGS.md`. STATE is the entry point and links relevant knowledge from other runs; toolsets and findings depend on the goal. Working briefs/results live under `tasks/`; retained helpers, reproduction data/baselines and selected proof use `tools/`, `inputs/`, `evidence/` when needed. Compaction keeps the run in place, consolidates findings and removes eligible completed task folders after dependencies and links are checked. Discoveries stay with their run; promotion into human-curated documentation requires an explicit user request.
 
 ## The Methodology
 
@@ -145,10 +149,15 @@ ai-methodology/
     worker.md
     evaluator.md
   templates/
-    charter.md                   # run charter, STATE, brief and result templates
+    charter.md                   # run records and task templates
     state.md
+    tools.md
+    learnings.md
     brief.md
     result.md
+  references/
+    verification.md              # general standards, loaded when relevant
+    verification-examples.md     # optional scenario examples
   docs/
     rules.md                     # agent operating rules + design log workflow
     methodology-template.tpl     # design log template + review checklist

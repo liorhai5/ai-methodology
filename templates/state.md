@@ -1,25 +1,25 @@
 # STATE — <NNN>-<slug>
 
-<!-- ≤5 KB. Rewritten (never appended) by the orchestrator after every result. -->
-Updated: <date -u>   Charter: <approved date>
+Updated: <UTC time>   Authority: <charter/approval pointer>
+<!-- Suggested fields; adapt to the run. Readable current view; rewrite at material transitions and before compaction/handoff. Detail linked, no size quota. Linked resume instructions must agree. -->
 
-## Goal
-<one line>
+## Goal / acceptance
+<current intent; criteria → verified/failed/unknown evidence>
 
-## Done
-- T<nnn> <role> — <one-line result> (<result path>)
+## Delivered / current / next
+<inspectable artifact; current work; next useful action>
 
-## Running
-- T<nnn> <role> — started <time>, ETA <time>, status <path> | none
+## Live ownership
+<task/checkpoint + agent; files/worktree/session/preview; accepted job ID, status/output/log, continuation; integration/shared-record writer>
 
-## Needs the user
-- <item> — recommendation: <…> | none
+## Decisions / needs you
+<consequential decisions/reasons; unresolved hypotheses; mandatory-now, later or optional action and what it unblocks>
 
-## Decided under charter (veto window)
-- <decision> (§x) | none
+## Knowledge / evidence
+<links to this run's TOOLS.md and LEARNINGS.md; selected proof/input/baseline index and discarded categories; effective host bindings/prerequisites>
 
-## Preflight
-- <capability> ✓/✗
+## Referenced runs
+<source run/project path + specific entry/artifact + relevance + checkpoint/version; mutable facts to recheck. Knowledge grants no authority or spending allocation; none when unused>
 
-## Next
-<the single next step>
+## External allowance (paid work only)
+<orchestrator-owned limit, consumed/estimated usage, accepted/in-flight allocations; uncertainty>

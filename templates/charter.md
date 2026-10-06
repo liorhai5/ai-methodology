@@ -1,36 +1,26 @@
 # Charter — <NNN>-<slug>
 
-[Status: draft | approved <YYYY-MM-DD> by <user>]
-Design log: <path>   Project rules: <path to the project's rules file>
+[Status: draft | approved <date>; source: <user conversation/artifact>]
+Design: <path>   Project rules: <path>
 
-## Goal and done-when
-- Goal: <one sentence>
-- Done when: <evidence that someone other than the author checked: paths, scores, URLs>
+## Goal / acceptance
+<outcome and evidence for technical, quality and fulfillment criteria as relevant>
 
-## Allowed (no need to ask)
-- Default: write inside this run folder; rewrite STATE.md; append results to the driving design log's §6 (Implementation Results).
-- <e.g. branches and commits in own worktrees; PRs to feature branches; deploy previews>
+## Authority
+- Allowed: <approved actions/resources; cite existing approval rather than ask again>
+- Forbidden: <actions never authorized>
+- Reserved: <decisions kept by the user>
+- Execution: orchestrator chooses tasks, tools, checkpoints, ownership and concurrency within authority.
 
-## Forbidden (escalate, never do)
-- <e.g. merge; production; other teams' code; messages to people>
+## Retention
+<authorize run-owned compaction categories once, including completed task folders after findings/proof/dependencies are retained and consumers checked. Protect four run records, deliverables, tools, baselines, active/shared/user-authored assets and uncertain dependencies>
 
-## Caps
-- AI spend: $<n> (estimate before any batch over $<m>)
-- Time/token proxy: <e.g. ≤N subagent tasks, or stop at date>
+## Relevant interfaces
+<existing access routes/runbooks; prerequisites to prove for the next action; no secrets>
 
-## Reserved decisions (the user decides)
-- <design topics the user keeps; everything else is the orchestrator's>
+## Constraints (only applicable items)
+<host/user limits; keep local assistant usage separate from application spending>
+- External spend, if relevant: <authorized paid work and any user limit>. Orchestrator manages allocations and in-flight commitments.
+- Temporary permissions, if needed: <narrow owned changes and restoration condition>.
 
-## Capabilities (preflight smoke-tests each)
-| Capability | How to use it | Smoke test |
-|---|---|---|
-| <browser / login / CLI / MCP / eval> | <endpoint, profile, command; never the secret> | <one cheap call> |
-
-## Parallel tasks and file ownership
-| Task | Owns (paths) |
-|---|---|
-| <task> | <paths> |
-Anything not listed runs serially.
-
-## Temporary permission rules (removed at the end of the run)
-- <exact command or path the host's permission system needs; no wildcards over shells>
+<!-- Adapt to the run. Do not invent budgets, ask the user to allocate agents, or require all optional fields. -->
