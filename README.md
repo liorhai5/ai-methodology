@@ -55,7 +55,7 @@ Hosts without these wrappers still work: the orchestrator tells the subagent to 
 /mtg plan [topic]            — Lightweight plan for bounded, known-scope tasks
 /mtg review [NNN]            — Review a design log from multiple perspectives
 /mtg implement [NNN]         — Systematically implement an approved design log
-/mtg orchestrate [NNN|topic] — Run a design log or topic through delegated subagents under a user-approved charter
+/mtg orchestrate [NNN|topic] — Deliver a design log or topic under a user-approved charter, directly or through subagents
 /mtg code-review [NNN]       — Review implementation against its design log
 /mtg commit                  — Quality-gated commit workflow
 /mtg investigate [topic]     — Root-cause debugging entry point (no fixes without root cause)
@@ -73,7 +73,7 @@ Hosts without these wrappers still work: the orchestrator tells the subagent to 
 
 Use `/mtg design-map` when the destination is known but the route is still foggy. Use `/mtg challenge` to pressure-test whether the work should exist before designing it. Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg investigate` to debug a defect to root cause before fixing.
 
-Use `/mtg orchestrate` for long, delegated work. The orchestrator records existing authority in a charter, discovers tools and capacity, assigns coherent outcomes and verifies meaningful checkpoints. It reports inspectable results, uncertainty, next work and required user action. Tasks use focused context; related corrections can reuse an agent. External spending is optional and managed only by the orchestrator. Subagent wrappers are optional (see Install).
+Use `/mtg orchestrate` for long work under a user-approved charter. The orchestrator operates covered methodology gates, including supporting design/plan approvals, and chooses direct work or aligned delegation. It reports inspectable results, uncertainty and decisions needing your attention. Major/reserved/uncovered decisions remain with you. External spending applies only when relevant and is allocated by the orchestrator. Subagent wrappers are optional (see Install).
 
 The command routes agents to project standards, selected knowledge from prior runs and verification guidance. Load relevant entries; scenario examples are optional. Agents choose methods, checkpoints and template fields; acceptance requires direct evidence with explicit coverage and limits.
 
@@ -92,7 +92,7 @@ Each run keeps `CHARTER.md`, `STATE.md`, `TOOLS.md` and `LEARNINGS.md`. STATE is
 7. Data aggregation — write findings to disk incrementally; never batch many reads in memory before writing.
 8. Branch discipline — never commit directly to master/main. Create a feature branch first.
 
-Run charter — a user-approved `.ai/runs/<run>/CHARTER.md` is explicit approval for everything it lists as allowed (satisfies rules 1, 5, 6 and workflow gates 2–3 within that scope); anything outside it still needs approval.
+Run charter — a user-approved `.ai/runs/<run>/CHARTER.md` is explicit approval for everything it lists as allowed (satisfies rules 1, 5, 6 and workflow gates 2–3 within that scope). Within it, the orchestrator may create/approve supporting designs and plans and operate routine methodology gates. It cannot expand authority or lower acceptance. Major/risky decisions needing user judgment, Reserved decisions and uncovered actions return to the user. Existing approvals carry forward; outside delegated orchestration, human approval gates remain unchanged.
 
 ### Design Log Workflow
 
