@@ -191,6 +191,9 @@ If the review passed cleanly (all dimensions pass):
 
 ## Next Step
 
+An explicit user finish routes through [cleanup's closeout flow](cleanup.md#lifecycle-and-offers).
+Otherwise keep the chain below; declining the next command alone does not establish finish.
+
 When the review passes (Verified):
   Prompt: "Run `/mtg commit`? [Y/n]"
   If Y → invoke `/mtg commit`.

@@ -37,6 +37,9 @@ Read docs/methodology-template.tpl for the template structure and review checkli
 
 **Phase 3: Execute**
 
+Before creating captures, inputs, logs or changing other assessed artifacts, apply the
+[cleanup writer rule](cleanup.md#material-writers) to the known design §6/run result; normal work remains non-blocking.
+
 Work through the plan table sequentially. For each task:
 
 1. **Read before write** — inspect relevant source files and understand the current code before changing anything
@@ -79,6 +82,9 @@ Report pass/fail for each.
 - Update design log status to `implemented`
 
 ## Next Step
+
+An explicit user finish routes through [cleanup's closeout flow](cleanup.md#lifecycle-and-offers).
+Otherwise keep the chain below; `implemented` or declining the next command alone does not establish finish.
 
 When implementation completes successfully (all verification passes):
   Prompt: "Run `/mtg code-review <NNN>`? [Y/n]"

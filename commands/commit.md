@@ -64,6 +64,9 @@ Run these checks on the staged changes:
 
 ## Next Step
 
+On confirmed merge/workflow finish of a known design, offer [scoped cleanup](cleanup.md#lifecycle-and-offers), preserving the branch-cleanup gate.
+Commit/push alone is not finish; do not add a design-selection gate solely for cleanup. Otherwise keep the flow below.
+
 When the commit and push succeed, detect whether this branch has an open PR:
 
 ```

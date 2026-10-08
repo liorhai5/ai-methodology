@@ -21,6 +21,9 @@ Project: requested or charter/driving-log project, otherwise cwd/repository disc
 
 Keep `CHARTER.md` authority/acceptance, `STATE.md` entry point, `TOOLS.md` proven interfaces and `LEARNINGS.md` experience. Matching templates suggest fields. Working briefs/results: `tasks/<task>/` when useful; retained helpers, inputs/baselines and selected proof: `tools/`, `inputs/`, `evidence/` only when used.
 
+Before material-writing dispatch or scoped artifact changes, the STATE writer applies the
+[cleanup writer rule](cleanup.md#material-writers); bookkeeping failure does not block authorized normal work.
+
 Load relevant guidance, not the whole library.
 
 | Need | Route |
@@ -37,5 +40,7 @@ Load relevant guidance, not the whole library.
 - **Resources:** coordinate shared ownership; protect the user's checkout and unrelated edits. Use sanctioned access; never expose/persist secrets. Use context wisely and honor model preferences/limits; global settings or model changes need authority.
 - **Knowledge:** discoveries stay in their run, separate from curated docs. Promotion requires an explicit user request; proven bindings belong in TOOLS, not just configuration.
 - **Retention:** compact authorized completed work in place after retaining useful findings, evidence and dependencies; check consumers/links before removing eligible task folders. Protect active/shared/user-authored assets and unresolved dependencies. Legacy/shared cleanup needs separate scope.
+  Route eligible milestone/bulk-batch/closeout work through [cleanup](cleanup.md), reusing covering charter authority
+  and protecting these run records; pause/handoff preserves restart material.
 
 Record final STATE with evidence, limits and knowledge pointers; append design §6 when a driving log exists. Restore still-owned temporary permissions; remove run-created worktrees without force unless kept. Keep dirty/untracked worktrees and branches. Interrupted work needs a current handoff; never promise execution while idle. Further review follows covering authority or is offered for a driving design log.

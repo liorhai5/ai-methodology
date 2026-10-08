@@ -33,15 +33,39 @@ Read the design log and report:
 
 **Blockers**: External dependencies, missing information, or references that need follow-up.
 
+## Cleanup briefing
+
+For one design, read its cleanup result and relevant referenced research INDEX/results and run STATE/results.
+For `all` or the no-args listing, enumerate collection entry points: design logs, research topic INDEXes/legacy
+standalone files, runs (including unassociated/legacy results), design maps, adopted codebase-research summaries
+and referenced archive groups. Show other immediate `.ai` groups or missing usable records as not assessed.
+Use existing summaries even without modern STATE/CHARTER files; no retrofit or relationship registry.
+
+Read work/lifecycle and [recorded cleanup status](cleanup.md#recorded-status), not raw payloads. Summarize
+active/intentionally retained material; list pending, deferred and not-assessed groups with reasons/actions,
+grouping repeated unknowns. Pending needs recorded unfinished work or a concrete eligible group; a missing flag
+is not proof of needed deletion. A complete result can retain all assets and remove zero bytes.
+
+Report the last recorded scoped assessment, including known stale-result limits. State uninspected coverage;
+leave unread groups not assessed. Approximate bytes are optional when already known/cheaply available. Do not
+recursively inspect payloads, sizes, hashes or mtimes, repeat consumer verification, or treat RESULTS as cleanup proof.
+
+When actionable, show a scoped `/mtg cleanup` as a briefing line alongside the existing next step. Only explicit
+finish/no existing next action substitutes [cleanup's sole gate](cleanup.md#lifecycle-and-offers), after its concrete
+plan is ready. Reporting grants no deletion authority; unchanged deferrals do not prompt again.
+
 ## Next Step Suggestion
 
 After displaying the status briefing for a specific design log, suggest the next action based on these rules:
 
-| Status | §5 (Plan) | §6 (Results) | Suggestion |
+Interpret §6 by actual implementation activity. Cleanup-only flags/notes and "Not implemented" placeholders
+do not advance the work step; use existing status, plan and results without another marker.
+
+| Status | §5 (Plan) | §6 implementation activity | Suggestion |
 |---|---|---|---|
 | `draft` | — | — | "Run `/mtg design <NNN>`? [Y/n]" |
-| `approved` | any | empty or absent | "Run `/mtg implement <NNN>`? [Y/n]" |
-| `approved` | filled | has content | "Run `/mtg code-review <NNN>`? [Y/n]" |
+| `approved` | any | none (including cleanup-only results) | "Run `/mtg implement <NNN>`? [Y/n]" |
+| `approved` | filled | implementation activity present | "Run `/mtg code-review <NNN>`? [Y/n]" |
 | `implemented` | — | — | "Run `/mtg commit`? [Y/n]" |
 | `abandoned` | — | — | No suggestion |
 
@@ -50,6 +74,6 @@ If Y → invoke the suggested command. If n → end.
 ## Summary table (for "all" or no-args listing)
 
 ```
-| # | Name | Status | Progress | Next Step |
-|---|------|--------|----------|-----------|
+| # / Group | Name | Work status / Progress | Cleanup (last recorded scope) | Next Step |
+|-----------|------|------------------------|-------------------------------|-----------|
 ```

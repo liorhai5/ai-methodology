@@ -64,13 +64,16 @@ Extract what matters for answering the research question.>
 **Step 2: Seed sources**
 
 - List initial sources from the user's links, instructions, or search locations
-- Create `.ai/research-logs/NNN-short-name/INDEX.md` with the research question and seed sources
+- Create `.ai/research-logs/NNN-short-name/INDEX.md` with the research question, seed sources, `[Status: open]` and next use
 - Present the plan to the user
 - Prompt: "Seed sources identified. Proceed with harvesting? [Y/n]"
 
 The source list is a starting point — new sources will be discovered during harvesting.
 
 **Step 3: Harvest**
+
+Keep the topic open in its existing INDEX/result. Before resumed material writes, apply the
+[cleanup writer rule](cleanup.md#material-writers); bookkeeping failures warn without blocking normal work.
 
 Repeat for each source in the queue:
 1. Read/fetch ONE source
@@ -96,6 +99,9 @@ After all sources are harvested:
 1. Read the shard files (not memory — re-read from disk)
 2. Answer the original research question based on the gathered findings
 3. Update `INDEX.md` with a synthesis section
+
+At standalone synthesis, offer close/compact or continuation via [cleanup's lifecycle flow](cleanup.md#lifecycle-and-offers).
+Research serving an active parent stays open; closure retains findings/evidence in its existing INDEX/result.
 
 ## Key rules
 
