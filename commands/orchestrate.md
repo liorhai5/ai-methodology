@@ -1,48 +1,41 @@
 # Orchestrate Workflow
 
-Deliver the user's goal through aligned subagents. Own integration, decisions and progress; choose methods, work units, concurrency and checkpoints within authority.
+Deliver the user's goal. Choose direct work or aligned delegation; own integration, decisions and progress.
 
-Read docs/rules.md and the shared task contract in templates/brief.md. Resolve this skill's root for supporting paths.
+Read docs/rules.md. Resolve this skill's root for supporting paths.
 
-## Run
+## Directions
 
-- **Root:** requested project, or project from charter/driving log; otherwise discover from cwd/repository. Use absolute paths. Run: `.ai/runs/<NNN>-<slug>/`; NNN = driving design number, otherwise next free run number.
-- **Layout:** `CHARTER.md` authority/acceptance; `STATE.md` entry point; `TOOLS.md` proven interfaces; `LEARNINGS.md` experience. Use matching templates as suggested fields; "none yet" is valid. Working briefs/results: `tasks/<task>/`. Retained adapters, inputs/baselines and selected proof: `tools/`, `inputs/`, `evidence/`, only when used.
-- **Resume:** STATE → relevant charter/contracts and knowledge → refresh mutable prerequisites/live ownership → Next. Avoid raw-history replay.
-
-## Routes
-
-Load relevant entries, not every resource.
-
-| Need | Look up / use |
+| Keyword | Direction |
 |---|---|
-| Authority / standards | Existing approvals → charter Allowed, Forbidden, Reserved; project rules and approved design |
-| Known source run | STATE → selected TOOLS/LEARNINGS entry → tool, inputs and evidence |
-| Prior work without a known run | Search available `.ai/runs/*/STATE.md` summaries by goal/capability |
-| Missing capability | Memory/docs/code → cheap proof in the intended environment → smallest missing adapter |
-| Verification method / disputed evidence | `references/verification.md`; suitable proven checks from run knowledge |
-| Dispatch / return | `roles/{researcher,worker,evaluator}.md`; `templates/brief.md`, `templates/result.md` |
-| Host bindings | Wrapper setup → README; proven bindings → TOOLS; missing bindings → host help/runtime discovery for capacity, context, permissions, dispatch and job/output interfaces |
+| Goal | Deliver agreed acceptance; choose execution. Repeated failure calls for new evidence or a different approach. |
+| Authority | Apply the charter exception in docs/rules.md; record covering approvals and consequential decisions. Respect Allowed/Forbidden/Reserved; silence or knowledge grants no authority. |
+| Evidence | Verify actual results and whole-goal coverage; challenge consequential uncertainty. Approval is not proof; failed/unknown coverage cannot close the goal. |
+| Continuity | Keep STATE, proven tools, useful lessons, live owners/jobs and Next current at material changes and before compaction/handoff. Refresh mutable prerequisites when resuming. |
+| Progress | Delivered · verified · uncertain · current · next · needs you. Link inspectable results and explain consequential decisions; keep long work visible. |
+| Attention | Escalate major/reserved/uncovered decisions, unclear intent/access or limits with evidence/recommendation; continue independent authorized work. |
 
-Record working bindings once in TOOLS; config alone does not prove runtime behavior. Global settings affect other sessions; change only within authority. Generic dispatch carries the same role contract.
+## Run and routes
 
-## Boundaries
+Project: requested or charter/driving-log project, otherwise cwd/repository discovery. Use absolute paths. Run: `.ai/runs/<NNN>-<slug>/`; NNN = driving design number, otherwise next free run number. Reuse the run for bounded follow-ups.
 
-- **Authority:** record covering approval/source in CHARTER; existing approval carries forward, including downstream gates. Obtain approval for uncovered actions before affected work. No unlisted/Forbidden action, Reserved decision or lowered acceptance; silence is not approval. Ask only for a consequential gap.
-- **Ownership:** assign resources and integration/shared-record writers. Isolate or serialize conflicts; never switch the user's main checkout or revert unrelated edits. Shared task conduct lives in the brief contract.
-- **Jobs:** retain accepted ID, owner, output/log and continuation. Timeout ≠ resubmit; reconcile completion with remaining jobs. Prefer events/bounded same-job recovery.
-- **Usage:** conserve local context without dropping quality/checks; honor model preferences and actual limits. Model/effort changes need delegated authority and host support. External spending applies only when relevant: orchestrator alone owns allowance/allocations, including in-flight commitments; workers execute/report allocations. Uncertain cap coverage needs attention before spending; no invented ceiling or unlimited permission.
-- **Knowledge:** discoveries stay in their run. Knowledge does not transfer authority or spending allocation. Record source run/project, entry, applicability and checkpoint in STATE; pin only needed reproduction dependencies. Curated-document handling follows the shared task contract.
-- **Retention:** compact under recorded authority, in the same run folder. Consolidate findings and retain proof/dependencies outside `tasks/` before removing eligible task folders; update consumers and check entry points/links. Protect active/shared/user-authored assets, tools, baselines and restart dependencies. Live or unresolved dependencies → keep. Retain meaningful failures, decisions and evidence; hashes or wholesale archives do not replace proof/selection. Legacy/shared cleanup needs separate scope.
+Keep `CHARTER.md` authority/acceptance, `STATE.md` entry point, `TOOLS.md` proven interfaces and `LEARNINGS.md` experience. Matching templates suggest fields. Working briefs/results: `tasks/<task>/` when useful; retained helpers, inputs/baselines and selected proof: `tools/`, `inputs/`, `evidence/` only when used.
 
-## Progress / completion
+Load relevant guidance, not the whole library.
 
-**Execute:** align coherent outcomes to parent acceptance; propagate steering. Parallelize compatible work after proving risky shared assumptions. Fresh focused contexts for distinct outcomes/reviewers; reuse related corrections. Repeated hypothesis failure → new discriminating evidence/approach; new task IDs do not reset history. Continue useful authorized work while acceptance remains unmet.
+| Need | Route |
+|---|---|
+| Standards / checks | Project rules and approved design; `references/verification.md`, examples when useful |
+| Prior knowledge | STATE → selected TOOLS/LEARNINGS entries; search available run summaries or memory. Keep source/entry, applicability and checkpoint; refresh mutable facts. |
+| Missing capability | Existing code/docs/memory and proven interfaces → cheap proof in the intended environment → smallest missing adapter |
+| Delegation | `roles/{researcher,worker,evaluator}.md`; shared task contract in `templates/brief.md` and `templates/result.md` |
+| Host / jobs | README setup, TOOLS bindings, host help/runtime discovery. Keep accepted ID, owner, output and continuation; timeout is not permission to resubmit. |
+| Paid work | Charter allowance and STATE commitments. Orchestrator alone allocates, including in-flight work; workers report usage. Uncertain cap coverage needs attention before spending. |
 
-**Report:** delivered · verified · uncertain · current · next · needs you. Link inspectable samples/evidence, explain consequential decisions and forecast changes. Keep long work visible; let the model choose cadence.
+## Boundaries and closeout
 
-**Attention:** missing intent/access/authority, Reserved decision, actual limit or no credible authorized next step. Discover first; state evidence, recommendation, what it unblocks and when needed. Separate now/later/optional; continue independent work.
+- **Resources:** coordinate shared ownership; protect the user's checkout and unrelated edits. Use sanctioned access; never expose/persist secrets. Use context wisely and honor model preferences/limits; global settings or model changes need authority.
+- **Knowledge:** discoveries stay in their run, separate from curated docs. Promotion requires an explicit user request; proven bindings belong in TOOLS, not just configuration.
+- **Retention:** compact authorized completed work in place after retaining useful findings, evidence and dependencies; check consumers/links before removing eligible task folders. Protect active/shared/user-authored assets and unresolved dependencies. Legacy/shared cleanup needs separate scope.
 
-**State:** persist useful findings incrementally. One assigned writer integrates tool/learning discoveries. Refresh STATE at material transitions and before compaction/handoff; consistent intent, coverage, live owners/jobs and Next. At milestones/close, consolidate completed work as useful; index retained artifacts/discarded categories.
-
-**Done:** evidence covers the whole approved acceptance and retained record under the verification standard. Failed/unknown coverage cannot close the goal. Record final STATE with evidence/limits/knowledge pointers; append design §6 when a driving log exists. Restore still-owned temporary permissions; remove run-created worktrees without force unless kept. Dirty/untracked worktrees and branches stay. An interrupted run needs a current handoff; never promise execution while idle. Further review follows existing authority; otherwise offer `/mtg code-review <NNN>` only for a driving design log.
+Record final STATE with evidence, limits and knowledge pointers; append design §6 when a driving log exists. Restore still-owned temporary permissions; remove run-created worktrees without force unless kept. Keep dirty/untracked worktrees and branches. Interrupted work needs a current handoff; never promise execution while idle. Further review follows covering authority or is offered for a driving design log.

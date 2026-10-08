@@ -13,7 +13,7 @@ Read docs/methodology-template.tpl for design log template and review checklist.
 7. Data aggregation — write findings to disk incrementally; never batch many reads in memory before writing.
 8. Branch discipline — never commit directly to master/main. Create a feature branch first.
 
-Run charter — a user-approved `.ai/runs/<run>/CHARTER.md` is explicit approval for everything it lists as allowed (satisfies rules 1, 5, 6 and workflow gates 2–3 within that scope); anything outside it still needs approval.
+Run charter — a user-approved `.ai/runs/<run>/CHARTER.md` is explicit approval for everything it lists as allowed (satisfies rules 1, 5, 6 and workflow gates 2–3 within that scope). Within it, the orchestrator may create/approve supporting designs and plans and operate routine methodology gates. It cannot expand authority or lower acceptance. Major/risky decisions needing user judgment, Reserved decisions and uncovered actions return to the user. Existing approvals carry forward; outside delegated orchestration, human approval gates remain unchanged.
 
 ## Design Log Workflow
 

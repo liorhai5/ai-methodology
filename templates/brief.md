@@ -1,4 +1,4 @@
-<!-- Shared task contract: root and roles read; omit this comment when drafting briefs.
+<!-- Shared delegation contract: read when dispatching or taking a task; omit this comment when drafting briefs.
 Authority: act within brief/charter/project rules. Existing approval carries forward; missing scope/access/authority goes to the orchestrator with a recommendation, not directly to the user.
 Ownership: assigned resources only; respect shared writers and unrelated edits.
 Evidence: persist useful findings incrementally in result.md. Return concise outcome, evidence/limits and continuation; link detail.

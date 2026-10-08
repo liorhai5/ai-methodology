@@ -10,7 +10,7 @@ Design: <path>   Project rules: <path>
 - Allowed: <approved actions/resources; cite existing approval rather than ask again>
 - Forbidden: <actions never authorized>
 - Reserved: <decisions kept by the user>
-- Execution: orchestrator chooses tasks, tools, checkpoints, ownership and concurrency within authority.
+- Execution: orchestrator operates covered methodology gates and chooses execution within authority; major/reserved/uncovered decisions reach the user.
 
 ## Retention
 <authorize run-owned compaction categories once, including completed task folders after findings/proof/dependencies are retained and consumers checked. Protect four run records, deliverables, tools, baselines, active/shared/user-authored assets and uncertain dependencies>

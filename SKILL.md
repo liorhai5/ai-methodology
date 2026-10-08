@@ -21,7 +21,7 @@ Based on $ARGUMENTS, read and follow the relevant command file:
 | plan [topic] | commands/plan.md | Lightweight plan for bounded, known-scope tasks |
 | review [NNN] | commands/review.md | Review a design log from multiple perspectives |
 | implement [NNN] | commands/implement.md | Systematically implement an approved design log |
-| orchestrate [NNN\|topic] | commands/orchestrate.md | Run a design log or topic through delegated subagents under a user-approved charter |
+| orchestrate [NNN\|topic] | commands/orchestrate.md | Deliver a design log or topic under a user-approved charter, directly or through subagents |
 | code-review [NNN] | commands/code-review.md | Review implementation against its design log |
 | commit | commands/commit.md | Quality-gated commit workflow |
 | investigate [topic] | commands/investigate.md | Root-cause debugging entry point — no fixes without root cause first |
