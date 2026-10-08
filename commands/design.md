@@ -105,8 +105,8 @@ When all questions are resolved:
 - On approval, update the design log status to `approved`
 - **Do NOT start implementation automatically.**
 
-When the design is abandoned:
-  End without suggestion.
+When the user deliberately abandons or explicitly finishes the work:
+  Offer scoped cleanup through [cleanup's closeout flow](cleanup.md#lifecycle-and-offers).
 
 **Step 6: Plan**
 
@@ -136,4 +136,4 @@ When the design and plan are approved:
   If n → end.
 
 When the design is abandoned:
-  End without suggestion.
+  Use the abandonment closeout above.

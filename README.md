@@ -60,6 +60,7 @@ Hosts without these wrappers still work: the orchestrator tells the subagent to 
 /mtg commit                  — Quality-gated commit workflow
 /mtg investigate [topic]     — Root-cause debugging entry point (no fixes without root cause)
 /mtg status [NNN]            — Progress briefing on a design log
+/mtg cleanup [NNN|research-path|run-path|all] — Compact scoped MTG artifacts and retain useful outcomes/dependencies
 ```
 
 ## Command Chains
@@ -69,6 +70,8 @@ Hosts without these wrappers still work: the orchestrator tells the subagent to 
                  /mtg plan   →               /mtg implement → /mtg code-review → /mtg commit
 
 /mtg investigate → fix (trivial) or → /mtg design (design flaw) → (continues)
+
+Intentional finish / standalone research synthesis → scoped /mtg cleanup offer
 ```
 
 Use `/mtg design-map` when the destination is known but the route is still foggy. Use `/mtg challenge` to pressure-test whether the work should exist before designing it. Use `/mtg design` when the problem is uncertain or has multiple decisions to resolve. Use `/mtg plan` when scope is clear and bounded. Use `/mtg investigate` to debug a defect to root cause before fixing.
@@ -78,6 +81,8 @@ Use `/mtg orchestrate` for long work under a user-approved charter. The orchestr
 The command routes agents to project standards, selected knowledge from prior runs and verification guidance. Load relevant entries; scenario examples are optional. Agents choose methods, checkpoints and template fields; acceptance requires direct evidence with explicit coverage and limits.
 
 Each run keeps `CHARTER.md`, `STATE.md`, `TOOLS.md` and `LEARNINGS.md`. STATE is the entry point and links relevant knowledge from other runs; toolsets and findings depend on the goal. Working briefs/results live under `tasks/`; retained helpers, reproduction data/baselines and selected proof use `tools/`, `inputs/`, `evidence/` when needed. Compaction keeps the run in place, consolidates findings and removes eligible completed task folders after dependencies and links are checked. Discoveries stay with their run; promotion into human-curated documentation requires an explicit user request.
+
+Use `/mtg cleanup` at intentional finish, standalone research synthesis, useful milestones or an explicit project sweep. With no argument it reads context and existing records; omission never defaults to `all`. It presents one scoped keep/compact/remove/unknown plan and uses covering authority or one approval. Retain useful knowledge, deliverables/assets, tools and needed evidence; verify affected consumers before removing originals. Unknown or shared material stays. Research records open/closed in its INDEX/result; cleanup records complete/partial/deferred in existing work records. `/mtg status` reports those outcomes and outstanding groups without a payload audit. The project's `.ai` ignore/tracking policy stays its choice; cleanup needs no commit, registration step or calendar schedule.
 
 ## The Methodology
 
@@ -141,6 +146,7 @@ ai-methodology/
     commit.md                    # /mtg commit
     investigate.md               # /mtg investigate
     status.md                    # /mtg status
+    cleanup.md                   # /mtg cleanup
   agents/
     claude/orch-*.md             # subagent wrappers for Claude Code + Cursor (copy to ~/.claude/agents/)
     codex/orch-*.toml            # subagent wrappers for Codex (copy to ~/.codex/agents/)

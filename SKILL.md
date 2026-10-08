@@ -1,7 +1,7 @@
 ---
 name: mtg
 description: Design-first AI development methodology — structured workflows for design, planning, implementation, review, and commit. Governs non-trivial changes through design logs with approval gates.
-argument-hint: "challenge | design-map | research | design | plan | review | implement | orchestrate | code-review | commit | investigate | status"
+argument-hint: "challenge | design-map | research | design | plan | review | implement | orchestrate | code-review | commit | investigate | status | cleanup"
 ---
 
 # Methodology
@@ -26,5 +26,6 @@ Based on $ARGUMENTS, read and follow the relevant command file:
 | commit | commands/commit.md | Quality-gated commit workflow |
 | investigate [topic] | commands/investigate.md | Root-cause debugging entry point — no fixes without root cause first |
 | status [NNN] | commands/status.md | Progress briefing on a design log |
+| cleanup [NNN\|research-path\|run-path\|all] | commands/cleanup.md | Compact scoped MTG artifacts and retain useful outcomes/dependencies |
 
 If no command matches, show this table and ask what the user needs.
