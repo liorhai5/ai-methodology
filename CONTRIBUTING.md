@@ -9,9 +9,10 @@ workflow described in the README is the one a change to it should follow.
   and should stay a router, not grow logic of its own.
 - `commands/<name>.md` — one file per command. Owns its workflow: an agent reads
   the relevant command plus `docs/rules.md`; supporting references load when routed.
-- `docs/rules.md` — the operating rules. This file is injected verbatim into
-  users' `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` by `scripts/install-rules.sh`,
-  so treat every line as something that ships into other people's sessions.
+- `docs/rules.md` — the operating rules. This file is injected into users'
+  `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` by `scripts/install-rules.sh`, with
+  the template path made absolute, so treat every line as something that ships
+  into other people's sessions.
 - `docs/methodology-template.tpl` — the design log template.
 - `templates/`, `roles/`, `agents/` — data for `/mtg orchestrate`: the run file
   templates the orchestrator copies, the role prompts it hands to subagents, and
