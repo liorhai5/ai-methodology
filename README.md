@@ -18,7 +18,7 @@ When prompted, select **Claude Code** (and any other agents you use). The skill 
 ~/.agents/skills/mtg/scripts/install-rules.sh
 ```
 
-This injects the 8 agent operating rules into your `CLAUDE.md`, `AGENTS.md`, and `GEMINI.md` so they're active in every session — not just when you invoke `/mtg`.
+This injects the 8 agent operating rules into your `CLAUDE.md`, `AGENTS.md`, and `GEMINI.md` so they're active in every session — not just when you invoke `/mtg`. The block points at the design log template in the folder you ran the script from, so re-run it if you move the skill.
 
 **Manual alternative** (no npm required):
 
